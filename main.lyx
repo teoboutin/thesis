@@ -1,0 +1,707 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass mythesis
+\use_default_options true
+\maintain_unincluded_children true
+\language french
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command makeindex
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 5
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type numerical
+\biblio_style unsrtnat
+\biblio_options sorting=none,backref=true,url=false,defernumbers=true
+\biblatex_bibstyle numeric
+\biblatex_citestyle numeric
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch draft
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter1only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter1
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter2
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter2only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter3
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter3only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter4
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter4only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch annex
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch annex_asymptotics
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch annex_solutions_sharp_interface
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME-ENV
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch content
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch annex_lbm
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter5
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter5only
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch figures-tikz
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch conclusion
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch figures-graphics
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch thanks
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1in
+\rightmargin 1.25in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout ThesisTitlePage
+
+\end_layout
+
+\begin_layout SetTitle
+Simulation à l'échelle mésoscopique des gels d'altération des verres nucléaires
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Mesoscopic scale simulation of alteration gels in nuclear glasses
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout SetKeywords
+Champ de phase, Verre, Gel d'altération, Dissolution, LBM
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Phase-field, Glass, Alteration gel, Dissolution, LBM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout SetAbstract
+Le stockage souterrain des déchets nucléaires de haute activité sous forme
+ de colis vitrifiés nécessite de pouvoir garantir l'efficacité des différentes
+ barrières protectrices, pour prévenir tout risque de pollution de l'environneme
+nt par la radioactivité.
+ L'une de ces barrières est formée par le verre servant à immobiliser les
+ éléments radioactifs extraits du combustible usé.
+ Cette problématique a conduit les différents pays exploitant l'énergie
+ nucléaire à s’intéresser à la dissolution du verre en milieu aqueux.
+ Au CEA, cette recherche est menée par le projet VESTA, qui a pour but de
+ quantifier la vitesse d'altération à long terme (plus de 10 000 ans) des
+ colis de verre R7T7 produits à l'usine de retraitement de La Hague.
+ En milieu aqueux, l'altération de certains verres (dont les verres borosilicaté
+s utilisés pour le stockage des déchets nucléaires) conduit à la formation
+ d'une couche poreuse et hydratée formée par un réseau vitreux amorphe,
+ appelée gel d'altération, qui constitue une barrière cinétique à la dissolution
+ du verre.
+ L'évolution de la topologie de ce gel par dissolution, précipitation et
+ réorganisation influe sur ses propriétés de transport et sur la vitesse
+ d'altération du verre.
+ Dans cette thèse, nous cherchons à modéliser l'évolution du gel d'altération
+ à une échelle mésoscopique, dans laquelle la topologie de la porosité du
+ verre est décrite explicitement.
+ Dans ce but, nous proposons un modèle à champ de phase, méthode qui permet
+ de modéliser des interfaces libres de manière implicite, souvent appliquée
+ à la simulation de formation de micro-structure.
+ Le modèle proposé se limite à l'étude d'un verre simplifié à trois composants:
+ l'eau, le silicium et le bore.
+ Il vise à permettre la simulation de la formation du gel d'altération en
+ suivant des hypothèses cohérentes avec les mécanismes chimiques principaux
+ à l'origine de la formation du gel.
+ Parmi ces mécanismes, l'hydratation du verre est modélisée par la diffusion
+ de l'eau dans le verre.
+ Pour résoudre le rapport de diffusion élevé entre les deux phases, nous
+ proposons une méthode originale utilisant les propriétés du modèle à champ
+ de phase pour imposer un coefficient de diffusion infini dans le liquide.
+ La résolution numérique de ce modèle est effectuée par la méthode de Boltzmann
+ sur réseau avec un code haute performance massivement parallèle.
+ Par des simulations numériques, nous montrons que ce modèle est capable
+ de simuler la formation d'une couche poreuse dans le verre.
+ Dans un second temps, nous étudions un phénomène se produisant dans les
+ couples de diffusion multicomposants: une déstabilisation de l'interface
+ due à la diffusion pouvant conduire à la nucléation proche de l'interface.
+ Nous montrons que notre modèle à champ de phase permet de simuler ce cas
+ de figure et que le phénomène peut être appliqué à la formation d'un milieu
+ poreux au sein du verre lors de l'altération par l'eau.
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+Underground storage of vitrified high-level nuclear waste (HLW) requires
+ assessing the effectiveness of the various protective layers, to prevent
+ any possibility of radioactive contamination of the environment.
+ One of these protective layers is the glass used to immobilize radioactive
+ elements from used fuel.
+ This subject has led all countries relying on nuclear energy to study the
+ alteration of glass by an aqueous phase.
+ At CEA, this subject is being researched by the VESTA project, which aims
+ to quantify long-term behavior (more than 10,000 years) of R7T7 glass packages
+ from the reprocessing facility at La Hague, France.
+ Under aqueous environment, the alteration of some glasses leads to the
+ formation of a porous and hydrated layer at its surface, called alteration
+ gel.
+ This layer acts as a kinetic barrier to the alteration of the glass package.
+ The evolution of the topology of this gel layer, driven by dissolution
+ and precipitation, impacts the transport properties and thus the alteration
+ speed.
+ In this thesis, we aim to model the evolution of the alteration layer at
+ a mesoscopic scale, by explicitly tracking the topology of the porous media.
+ To this end, we develop a phase-field model, a method of free interface
+ tracking often used for the study of micro-structure formation.
+ This model is limited to the study of a simplified system with three components
+: water, silicon and boron.
+ This model is meant to allow for the simulation of the formation of the
+ alteration layer under assumptions that are consistent with the main chemical
+ mechanisms driving the formation of the gel layer.
+ Among these mechanisms is the hydration of the glass, modeled through the
+ diffusion of water in the glass.
+ To solve the large ratio of diffusion speed between both phases, an original
+ method for considering infinite diffusion coefficient in the liquid phase
+ in our phase field model is developed.
+ The Lattice Boltzmann Method is used for the numerical resolution of our
+ model.
+ This method is implemented in a high performance and massively parallel
+ code, LBM_saclay.
+ Through numerical simulation, we show that our method is able to simulate
+ the formation of a porous layer in the glass.
+ Then, in a second part, we investigate the potential destabilization of
+ the interface in multi-component diffusion couples, which is due to an
+ asymmetry of diffusivity between the phases.
+ We show that our phase field model is able to accurately simulate this
+ phenomenon and that it can lead to the formation of a porous layer in a
+ material such as glass during alteration by water.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex macros
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand include
+filename "macros.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch content
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Branch thanks
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "ccl/thanks.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+listfigurename}{Liste des figures}
+\end_layout
+
+\end_inset
+
+
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter1
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Flex biblatex/refsegment
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter1/chapter1.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter2
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Flex biblatex/refsegment
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter2/chapter2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter3
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Flex biblatex/refsegment
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter3/chapter3.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch chapter4
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Flex biblatex/refsegment
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "chapter4/chapter4.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch conclusion
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "ccl/conclusion.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch annex
+inverted 0
+status open
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset Branch annex_asymptotics
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Flex biblatex/refsegment
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "annex_asymptotics/annex_asymptotics.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch annex_lbm
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Flex biblatex/refsegment
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "annex_lbm/annex_lbm.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch annex_solutions_sharp_interface
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Flex biblatex/refsegment
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "annex_solutions_sharp_interface/annex_solutions_sharp_interface.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch figures-tikz
+inverted 0
+status open
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Branch figures-graphics
+inverted 0
+status open
+
+\begin_layout Standard
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "thesis"
+options "bibtotoc"
+biblatexopts "title=Bibliographie complète,heading=bibintoc"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

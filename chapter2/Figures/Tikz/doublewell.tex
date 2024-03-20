@@ -1,0 +1,18 @@
+\begin{tikzpicture}
+\begin{axis}[
+%axis lines = left,
+xlabel = \(\phi\),
+ylabel = {\(\)},
+xmajorgrids=true,
+ymajorgrids=true,
+grid style=dashed,
+] % end axis options
+\addplot[
+domain=-0.3:1.3,
+samples=100,
+color=red, 
+]% end plot options
+{8*x*x*(1-x)*(1-x)}; % end plot func
+\addlegendentry{\(g_{dw}(\phi)=8\phi^2(1-\phi)^2\)}
+\end{axis}
+\end{tikzpicture}

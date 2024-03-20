@@ -1,0 +1,776 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass mythesis
+\use_default_options true
+\master ../main.lyx
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 5
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type numerical
+\biblio_style unsrtnat
+\biblio_options sorting=none,backref=true,url=false,defernumbers=true
+\biblatex_bibstyle numeric
+\biblatex_citestyle numeric
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch todos
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter3only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter4only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME-ENV
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1in
+\rightmargin 1.25in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Chapter*
+Résumé chronologique
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Résumé chronologique}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+Avant de passer à la conclusion, j'ai souhaité proposer un court résumé
+ chronologique de mon travail durant ces trois années de thèse.
+ Ce résumé a pour but de permettre de mieux situer les différents travaux
+ présentés dans les Chapitres 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:modele_ternaire"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ et 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:insta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ et d'expliquer les choix et directions de recherches qui ont été approfondies.
+\end_layout
+
+\begin_layout Plain Layout
+Durant ces travaux de thèse, j'ai cherché à appliquer les méthodes champs
+ de phase à la modélisation et la simulation de la dissolution, en particulier
+ la dissolution du verre en milieu aqueux.
+ L'utilisation de méthode à champ de phase dans des problèmes de dissolution
+ est très limitée, ce qui a fait de ce sujet de thèse un travail assez ouvert
+ et libre.
+ D'autant plus que les mécanismes de dissolution à l’œuvre dans ce cas d'applica
+tion sont très spécifiques.
+ J'ai donc choisi de me concentrer sur un aspect en particulier: la simulation
+ de formation de porosité dans un solide par dissolution.
+ L'étude des modèles à champ de phase pour l'application à ce problème spécifiqu
+e forme un point de départ 
+\end_layout
+
+\begin_layout Plain Layout
+La première observation a été la nécessité de prendre en compte un verre
+ multi-composant, pour modéliser la dissolution préférentielle de certains
+ éléments.
+ Par souci de simplicité, nous avons décidé de nous limiter à 2 composants
+ pour le verre.
+ Sous cette hypothèse, nous nous sommes intéressés au modèle à grand-potentiel
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Plapp2011"
+literal "false"
+
+\end_inset
+
+ qui permet de modéliser des changements de phases entraînés par la composition
+ et le potentiel chimique.
+ J'ai étendu ce modèle à un système ternaire en suivant la méthode de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Verdier2022a"
+literal "false"
+
+\end_inset
+
+, puis j'ai implémenté la résolution numérique par méthode de Boltzmann
+ sur réseau pour simuler la dissolution (objet des Sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:model_ternary_pf"
+
+\end_inset
+
+ et 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:model_ternary_schema_lbm"
+
+\end_inset
+
+).
+ Ce travail a fait l'objet des six premiers mois de la thèse environ.
+\end_layout
+
+\begin_layout Plain Layout
+Dans le but de simuler la dissolution du verre, j'ai essayé plusieurs modèles
+ d'énergies libres et cherché à comprendre la thermodynamique résultant
+ de cette modélisation.
+ Lors de ce processus, j'ai remarqué dans certains cas tests de validation
+ (problème de Stefan) qu'une nucléation pouvait se produire proche de l'interfac
+e.
+ En étudiant la question, j'ai remarqué l'instabilité thermodynamique qui
+ pouvait se produire dans les solutions analytiques des problèmes de Stefan
+ et j'ai trouvé quelques travaux (voir Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:instability_biblio"
+
+\end_inset
+
+) s'intéressant à ce sujet dans la littérature, pour la plupart assez anciens.
+ J'ai donc cherché à appliquer ce phénomène à la simulation de formation
+ de porosité dans un solide sain par dissolution, ce qui m'a mené aux simulation
+s présentées dans la Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:insta_appli_gel"
+
+\end_inset
+
+.
+ J'ai également cherché à comprendre la cause de cet effet dans les simulations
+ champs de phase.
+ Cela m'a conduit en particulier aux explications de la Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:instability_qualitative_cdt"
+
+\end_inset
+
+, qui justifie l'application de ces instabilités à la simulation du gel
+ d'altération.
+ Par la suite, j'ai cherché à étudier la sensibilité de la nucléation dans
+ les simulations champ de phase par rapport aux instabilités dans les solutions
+ analytiques.
+ En particulier, j'ai tenté d'appliquer la modélisation à la simulation
+ des résultats expérimentaux de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Coates1971"
+literal "false"
+
+\end_inset
+
+, mais ces efforts n'ont pas abouti.
+ J'ai passé plus d'un an sur cet axe d'étude, avant de me diriger vers une
+ autre méthode pour la simulation de formation de porosité.
+\end_layout
+
+\begin_layout Plain Layout
+Pendant la dernière partie de ma thèse, j'ai cherché à établir un modèle
+ plus phénoménologique.
+ Il s'agit de la méthode introduite en Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:model_ternary_method_diff_instant"
+
+\end_inset
+
+ et des simulations de la Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:model_ternary_simulations"
+
+\end_inset
+
+.
+ Le principe était de former la porosité par la dissolution préférentielle
+ de zones riches en élément soluble (bore).
+ Pour simuler ce cas de figure, il est nécessaire que le temps caractéristique
+ de formation de la porosité (voir 
+\begin_inset Formula $t_{c}$
+\end_inset
+
+ défini en Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:asymptotics_adim"
+
+\end_inset
+
+) soit petit.
+ Cela peut se faire soit par une tension de surface faible, soit par une
+ diffusion très rapide dans le liquide.
+ Comme on souhaite conserver un effet de tension de surface et que l'épaisseur
+ d'interface est limitée par la discrétisation spatiale, il faut utiliser
+ un coefficient de diffusion très élevé.
+ J'ai donc cherché une méthode alternative de résolution de la diffusion
+ dans le liquide, ce qui m'a mené à la méthode de diffusion instantanée
+ dans les composantes connexes du liquide.
+ Cette méthode permet de résoudre des grands rapports de diffusion avec
+ un gain de performance important.
+ En particulier, les temps simulés accessibles avec cette méthode sont environ
+ 15 fois plus grands que dans le Chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:insta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Avec ce modèle, j'ai pu simuler la formation d'un milieu poreux dans laquelle
+ on observe plusieurs régimes de dissolution au cours du temps, qui corresponden
+t qualitativement aux observations expérimentales.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+d'abord défini modèle + étude insta.
+ permis de prédire la formation de pores liquides dans un système qui ressemble
+ au verre.
+ Montre la cohérence de l'approche de modélisation.
+ Intérêt théorique innovant(??).
+ (sujet de la première année, 1.5 ans peut être)
+\end_layout
+
+\begin_layout Itemize
+Difficulté à obtenir des résultats quantitatifs plus intéressants.
+ (travail de la 2e année, tentative d'appli au cas expérimental de coates
+ kirkaldy echouée)
+\end_layout
+
+\begin_layout Itemize
+Developpement de la méthode à composante connexes.
+ (pas mal d'implémentation, facilité par les développement préalables).
+ (début de 3e année)
+\end_layout
+
+\begin_layout Itemize
+Quelques résultats plus quantitatifs sur les verres (limité à montrer la
+ cohérence encore une fois)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter*
+Conclusion
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:conclusion"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{chapter}{Conclusion}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cette thèse a démarré par l'étude de la simulation de la dissolution d'un
+ milieu poreux par un modèle à champ de phase 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Boutin2022"
+literal "false"
+
+\end_inset
+
+, dont un des objectifs était la prise en main des méthodes à champ de phase
+ et de la méthode de Boltzmann sur réseau.
+ Un travail d'implémentation autour de la méthode LBM a également été réalisé
+ afin de faciliter l'implémentation de modèles physiques dans le code LBM_saclay.
+ Puis, dans le but de modéliser la dissolution du verre à l'échelle du gel
+ d'altération, nous avons étudié la bibliographie de l'altération des verres.
+ En collaboration avec le projet VESTA du CEA, nous avons dégagé deux phénomènes
+ cruciaux nécessaires à la formation du gel d'altération: le caractère multicomp
+osant (différences de solubilité entre les composants) et l'hydratation
+ du verre (diffusion d'eau dans le verre).
+\end_layout
+
+\begin_layout Standard
+Nous avons alors proposé un modèle à champ de phase qui tient compte de
+ ces deux aspects, présenté dans le Chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:modele_ternaire"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Ce modèle est basé sur la minimisation d'une fonctionnelle de grand-potentiel,
+ qui a pour but de décrire correctement les forces thermodynamiques entraînant
+ un changement d'état dû à un déséquilibre chimique.
+ Dans notre cas, ce modèle couple une phase solide (le verre) et une phase
+ liquide (le solvant aqueux) dont la frontière évolue par dissolution (ou
+ précipitation) du solide, accompagné d'un flux de composant entre les deux
+ phases.
+ Ce modèle de changement de phase est accompagné de la diffusion des espèces
+ chimiques et la thermodynamique des phases est décrite par une modélisation
+ de l'énergie libre des phases utilisant l'approximation de l'entropie d'une
+ solution diluée.
+\end_layout
+
+\begin_layout Standard
+Pour tenir compte des différences de solubilité entre les composants, nous
+ avons choisi de modéliser un système à trois composants: le solvant et
+ deux composants du verre ayant des solubilités différentes.
+ Le composant soluble est principalement associé au bore et le composant
+ peu soluble au silicium.
+ Pour modéliser l'hydratation du verre, nous avons considéré que le solide
+ admet une solubilité d'eau admissible dans le verre non-altéré, et que
+ cette eau peut être transportée au sein du verre par une diffusion réactive,
+ avec un coefficient de diffusion très faible.
+ Cette prise en compte de l'hydratation soulève une difficulté importante:
+ il devient nécessaire de coupler une diffusion très rapide des composants
+ du verre dans la solution aqueuse avec une diffusion lente de l'eau dans
+ le verre.
+ Pour contourner ce problème, j'ai développé une méthode originale permettant
+ de résoudre la diffusion dans les zones liquides d'un milieu poreux en
+ atteignant l'état stationnaire de manière instantanée.
+ 
+\end_layout
+
+\begin_layout Standard
+Avec cette méthode, nous avons pu simuler la formation de porosité dans
+ un verre de composition initiale spatialement inhomogène.
+ Ce type de simulation correspond à la formation du gel d'altération observé
+ dans les verres CJ2 ou ISG 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020"
+literal "false"
+
+\end_inset
+
+.
+ La porosité se forme par dissolution préférentielle des éléments solubles
+ (dans notre cas le bore).
+ Les zones riches en éléments solubles laissent place à une porosité largement
+ ouverte, qui va se refermer par réorganisation des éléments peu solubles
+ (le silicium).
+ Dans notre modèle, cette réorganisation est due à l'effet de la tension
+ de surface.
+ Dans les simulations réalisées avec ce modèle, nous avons pu observer un
+ comportement du milieu cohérent avec les connaissances expérimentales,
+ en particulier la transition entre différents régimes d'altération, qui
+ semblent être influencés par la manière dont la porosité se forme.
+ Ces simulations n'ont pas été poussées au point d'obtenir des résultats
+ quantitatifs, en partie car l'implémentation algorithmique est encore incomplèt
+e et ne permet que des performances limitées.
+ Cependant, une méthode d'implémentation performante a été proposée et permettra
+ de réaliser des simulations sur des échelles spatiales et temporelles suffisant
+es pour obtenir des résultats comparables aux données expérimentales.
+\end_layout
+
+\begin_layout Standard
+Puis, dans le Chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:insta"
+
+\end_inset
+
+, une méthode alternative pour la simulation de formation de porosité dans
+ un solide par dissolution a été proposée et étudiée.
+ Cette approche est basée sur un phénomène d'instabilité d'interface qui
+ se produit dans les systèmes ternaires lorsque la mobilité des éléments
+ varie fortement d'une phase à l'autre.
+ Le Chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:insta"
+
+\end_inset
+
+ présente dans un premier temps une étude théorique de ce phénomène (Sections
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:insta_sharp_int"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:insta_4p"
+
+\end_inset
+
+ et 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:insta_simu_pf"
+
+\end_inset
+
+), puis dans un second temps sa mise en œuvre en simulation appliquée à
+ la formation d'un milieu poreux (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:insta_appli_gel"
+
+\end_inset
+
+).
+ Dans la partie théorique nous cherchons à comprendre le phénomène d'instabilité
+ et à justifier sa mise en œuvre dans les simulations champs de phase.
+ Ces travaux ne sont pas entièrement aboutis, mais permettent tout de même
+ de soutenir la validité physique de ce phénomène dans les simulations champ
+ de phase.
+ 
+\end_layout
+
+\begin_layout Standard
+La partie applicative à pour but de mettre en œuvre ce phénomène afin de
+ simuler la formation de porosité dans le verre.
+ Après avoir montrer que les paramètres du verre (diffusion et compositions)
+ remplissent les conditions d'instabilités, la simulation du modèle à champ
+ de phase avec des paramètres proches de ceux du verre permet d'observer
+ la formation d'un gel d'altération similaire aux images obtenues expérimentalem
+ent.
+ L'analyse de la simulation permet de proposer de nouvelles voies d'études
+ de l'impact du gel d'altération sur la dissolution du verre.
+ En particulier, on observe une augmentation importante de la mobilité des
+ éléments dans la couche poreuse formée, qui semble due à la mobilité de
+ la porosité, plutôt qu'à la présence de porosité ouverte dans le gel.
+ Les mécanismes et la dynamique de réorganisation de la porosité dans un
+ gel de silice sont une voie d'étude future importante, qui pourra être
+ étudiée par des modèles à champ de phase.
+\end_layout
+
+\begin_layout Standard
+En résumé, durant ces travaux de thèse, nous avons proposé deux méthodes
+ de modélisation basées sur la méthode champ de phase pour la simulation
+ de la formation et de l'évolution du gel d'altération dans des verres borosilic
+atés.
+ Ces méthodes sont pensées spécifiquement pour la simulation du gel d'altération
+, mais pourraient être appliquées à d'autres problèmes concernant la dissolution
+ d'un solide multicomposant.
+ Nous avons démontré la cohérence phénoménologique de ces méthodes avec
+ les principaux mécanismes d'altération et nous avons pu obtenir quelques
+ résultats intéressants qui pourraient permettre de mieux comprendre la
+ mobilité des éléments dans le gel d'altération.
+\end_layout
+
+\begin_layout Section*
+Perspectives
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+addcontentsline{toc}{section}{Perspectives}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quelques perspectives de poursuites ont déjà été proposées dans les conclusions
+ des chapitres précédents.
+ Ces perspectives s'articulent autour de deux axes principaux:
+\end_layout
+
+\begin_layout Itemize
+La simulation quantitative de l'évolution de la porosité dans le gel d'altératio
+n, à fin de remontée d'échelle par la détermination de la mobilité des éléments
+ dans le gel d'altération.
+ Dans ce but, l'utilisation de la méthode du Chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:modele_ternaire"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ (diffusion instantanée) semble plus appropriée.
+ Comme mentionné dans la conclusion de ce chapitre, il est important d'étudier
+ l'influence des paramètres numériques et physiques sur la méthode et de
+ valider expérimentalement la modélisation.
+ Un travail d'implémentation reste également nécessaire pour permettre des
+ simulations à plus grande échelle.
+\end_layout
+
+\begin_layout Itemize
+La compréhension des mécanismes de formation et d'évolution de la porosité.
+ Dans le Chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:insta"
+
+\end_inset
+
+, nous avons pu observer des mécanismes de migration de pores très particuliers
+ qui permettent le transport du bore dissous vers l'extérieur du verre.
+ Les mécanismes d'évolution de la porosité dans le gel ne sont pas bien
+ connus, il est donc difficile d'évaluer la pertinence de ces résultats
+ de simulation.
+ Des études expérimentales ciblées sur ces phénomènes pourraient être mise
+ en place.
+\begin_inset Newline newline
+\end_inset
+
+Un de ces mécanismes de migration des pores est dû aux instabilités thermodynami
+ques provoquées par la diffusion de l'eau.
+ L'étude théorique de ces instabilités pourrait aider à comprendre ce mécanisme.
+ Les travaux du chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:insta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sur ce sujet n'ont pas abouti à des résultats concluant sur la prédiction
+ du déclenchement de nucléation par instabilité.
+ Une approche de type Mullins-Sekerka 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mullins1963,Mullins1964,Hoyt2020"
+literal "false"
+
+\end_inset
+
+ pourrait apporter une meilleure compréhension.
+\end_layout
+
+\begin_layout Standard
+Enfin, dans le cas où la validation expérimentale de la modélisation proposée
+ dans cette thèse porte ses fruits sur des verres simples, il pourra être
+ intéressant de chercher à appliquer le modèle à des verres plus complexes,
+ en ajoutant des composants ou en améliorant la modélisation de la thermodynamiq
+ue.
+ De plus, des variations sur le modèle peuvent être étudiées, en particulier
+ pour éviter certaines des limitations du modèle discutées en Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:limit_model"
+
+\end_inset
+
+.
+ Par exemple, l'hypothèse de volume molaire constant pour tous les composants
+ pourrait être évitée afin de mieux décrire la diffusion de l'eau dans le
+ verre sain.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Itemize
+Analyse: simu sur domaines et temps plus grand des simus du chapitre 3,
+ plus d'analyses physico-chimiques.
+ nécessite implé commu des compo connexes améliorée.
+ Aussi impact de l'environnement (il y a puits de compo )
+\end_layout
+
+\begin_layout Itemize
+Appli différente: applis murissement ostwald, sujet de recherche qui me
+ semble très intéressant.
+ pas étudié dans la litt.
+ dans le cas pores liquides dans un solide.
+ devrait être similaire à des grains solides dans un liquide (colloides)
+\end_layout
+
+\begin_layout Itemize
+Insta pas utile: La recherche sur les instabilités d'interfaces dans le
+ modèle à champ de phase est complexe.
+ Très théorique, pas sur que l'on puisse en tirer des avancées vraiement
+ utiles.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+point théorique qui peut être intéressant: diffusion des compos couplée
+ à CH.
+ 
+\begin_inset Quotes fld
+\end_inset
+
+nucléation
+\begin_inset Quotes frd
+\end_inset
+
+ est mieux définie dans CH, intérressant de voir ce qui se passe quand la
+ diffusion conduit à une instabilité thermo si le champ de phase est modélisé
+ par CH.
+ est ce que ça à un sens?
+\end_layout
+
+\begin_layout Itemize
+Pour comprendre la nucléation, il faudrait appliquer une approche d'analyse
+ mathématique, type mullins sekerka.
+ La nucléation se produit significativement loin de l'interface malgré terme
+ source nulle quand 
+\begin_inset Formula $\phi$
+\end_inset
+
+=0 ou1.
+ Il y a une faible perturbation qui croit a un certain moment.
+ soutenu par le fait que le temps de déclenchement change avec lambda
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+En général, le modèle peut être amélioré de manière classique: meilleur
+ modèle thermo, prise en compte multi-compo....
+ A faire après le premier point.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

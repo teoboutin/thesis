@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{multicol}
+
+\providecommand{\thesistitre}{Titre}
+\providecommand{\thesistitle}{Traduction du titre de la these (sur plusieurs lignes si necessaire)}
+
+\providecommand{\thesisresume}{Resume}
+\providecommand{\thesisabstract}{Abstract}
+
+\providecommand{\thesismotscles}{3 a 6 mots cles}
+\providecommand{\thesiskeywords}{3 to 6 keywords}
+
+
+
+
+\AtBeginDocument{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Title page 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\makeThesisTitlePage}{
+    \begin{titlepage}
+        
+        
+        \newgeometry{left=6cm,bottom=2cm, top=1cm, right=1cm}
+        
+        \begin{tikzpicture}[remember picture,overlay] 
+        \node[opacity=1,inner sep=0pt, anchor=north west] (banner) at (current page.north west){
+            % \includegraphics{Frame-ups.pdf}
+            % \includegraphics{Bandeau_UPaS.pdf}
+            \includegraphics{bandeau.png}
+        };
+        \node[opacity=1,inner sep=0pt, anchor=north west] (logo) at ($(banner.north east)+(1cm,0)$){
+            \includegraphics[height=3cm]{Logo_ups.png}
+        };
+        \node[opacity=1,inner sep=0pt, anchor=south west, color=white] at ($(current page.south west)+(1.7cm,3cm)$){\rotatebox{90}{\LARGE {\textsf{THESE DE DOCTORAT}}}};
+        
+        %*****************************************************
+        %******** NUMÉRO D'ORDRE DE LA THÈSE À COMPLÉTER *****
+        %******** POUR LE SECOND DÉPOT                   *****
+        %*****************************************************
+        \node[opacity=1,inner sep=0pt, anchor=south west, color=white] at ($(current page.south west)+(2.7cm,3cm)$){\rotatebox{90}{\Large \textbf{NNT : 2025UPAST040}}};
+        
+        
+        \end{tikzpicture}
+        
+        
+        %*****************************************************
+        %**  LOGO  ÉTABLISSEMENT PARTENAIRE SI COTUTELLE
+        %**  CHANGER L'IMAGE PAR DÉFAUT **
+        %*****************************************************
+        %\vspace{-14mm} % à ajuster en fonction de la hauteur du logo
+        %\flushright \includegraphics[scale=1]{logo2.png}
+        
+        %*****************************************************
+        %******************** TITRE **************************
+        %*****************************************************
+        
+        \flushright
+        \vspace{20mm} % à régler éventuellement
+        \color{Prune}
+        \fontfamily{fvs}\fontseries{m}\selectfont
+        \huge {\thesistitre} \\
+        
+        \normalsize
+        \color{black}
+        \Large {{\textit{\thesistitle}}} \\
+        %*****************************************************
+        
+        \fontfamily{fvs}\fontseries{m}\fontsize{8}{12}\selectfont
+        
+        \vspace{1.5cm}
+        
+        \normalsize
+        \textbf{Thèse de doctorat de l'université Paris-Saclay}
+        
+        \vspace{6mm}
+        \small
+        \begin{tabular}{>{\raggedleft\arraybackslash}p{5cm}>{\raggedright\arraybackslash}p{7cm}}
+            \'Ecole doctorale n°579 &Sciences Mécaniques et \'Energétiques, Matériaux et Géosciences (SMEMaG) \\
+            Spécialité de doctorat & Sciences des Matériaux\\
+            Graduate School & Université Paris-Saclay GS Sciences de l’ingénierie et des systèmes\\
+            Référent & CentraleSupélec
+        \end{tabular}
+        \vspace{6mm}
+        
+        \footnotesize Thèse préparée dans l'unité de recherche \\ CEA/STMF -- Service de Thermohydraulique et de Mécanique des Fluides,\\ sous la direction de \textbf{Alain CARTALADE}, Directeur de recherche\\
+        
+        \vspace{15mm}
+        
+        \textbf{Thèse soutenue à Paris-Saclay, le 28 avril 2025, par}\\
+        \bigskip
+        \LARGE {\color{Prune} \textbf{Téo Boutin}} % Changer le Prénom et le NOM
+        
+        %************************************
+        \vspace{\fill} % ALIGNER LE TABLEAU EN BAS DE PAGE
+        %************************************
+        
+        \bigskip
+        
+        \flushleft
+        \small \textbf{Composition du jury}\\
+        \vspace{2mm}
+        \scriptsize
+        \begin{tabular}{|>{\raggedright\arraybackslash}p{9cm}l}
+            \arrayrulecolor{Prune}
+            % \textbf{Prénom Nom} &   Président ou Présidente\\ 
+            % Titre, Affiliation & \\
+            \textbf{Virginie Marry}											& Présidente du Jury\\ 
+            Professeure des universités, Sorbonne Université				& \\ 
+            \textbf{Helena Zapolsky}										& Rapporteuse \& Examinatrice \\ 
+            Professeure des universités, Université de Rouen-Normandie		& \\ 
+            \textbf{Franck Pigeonneau}										& Rapporteur \& Examinateur \\ 
+            Directeur de recherche, Mines ParisTech							& \\ 
+            \textbf{Thomas Philippe} 										& Examinateur\\ 
+            Chargé de recherche, CNRS, \'Ecole Polytechnique				& \\ 
+            \textbf{Jean-Marc Delaye} 										& Examinateur\\ 
+            Directeur de recherche, CEA Marcoule (DES/ISEC/DPME/SEME/LEMC)	&
+            
+        \end{tabular} 
+        \vspace{5mm}
+    \end{titlepage}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Second page with resume
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\newgeometry{left=1.5cm,right=1.5cm,bottom=1cm, top=0.6cm}
+
+\noindent 
+%*****************************************************
+%***** LOGO DE L'ED À CHANGER IMPÉRATIVEMENT *********
+%*****************************************************
+\includegraphics[height=2.45cm]{logo_usp_SMEMAG}
+\vspace{0.1cm}
+%*****************************************************
+{ % start of abstract page
+\footnotesize
+% \scriptsize
+
+\begin{mdframed}[linecolor=Prune,linewidth=1]
+    
+    \textbf{Titre:} \thesistitre\dotfill{}
+    
+    \noindent \textbf{Mots clés:} \thesismotscles\dotfill{}
+    
+    \vspace{-4mm}
+    \begin{multicols}{2}
+    \begin{otherlanguage}{french}
+        \noindent \textbf{Résumé:} \thesisresume
+    \end{otherlanguage}%
+    \end{multicols}%
+    
+\end{mdframed}
+
+\vspace{1mm}
+
+\begin{mdframed}[linecolor=Prune,linewidth=1]
+    
+    \textbf{Title:} \thesistitle\dotfill{}
+    
+    \noindent \textbf{Keywords:} \thesiskeywords\dotfill{}
+    
+    \vspace{-4mm}
+    \begin{multicols}{2}
+        \noindent \textbf{Abstract:} \thesisabstract
+    \end{multicols}
+\end{mdframed}
+
+} % end of abstract page
+\loadgeometry{default}
+
+} % new command
+} %at begin doc
+
+
+
+

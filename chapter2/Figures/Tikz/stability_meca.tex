@@ -1,0 +1,153 @@
+
+\usetikzlibrary{calc}
+
+\makeatletter
+
+
+
+
+\pgfplotsset{
+    /tikz/dot/.style={
+        circle, fill, inner sep=0, minimum size=6pt
+    },
+    /tikz/max node/.style={
+        anchor=south
+    },
+    /tikz/min node/.style={
+        anchor=north
+    },
+    mark min/.style={
+        point meta rel=per plot,
+        visualization depends on={x \as \xvalue},
+        scatter/@pre marker code/.code={%
+            \ifx\pgfplotspointmeta\pgfplots@metamin
+                \def\markopts{mark=none}%
+                \coordinate (min);
+                \node [min node] (minlabel) {
+                    % \pgfmathprintnumber[fixed]{\xvalue},%
+                    % \pgfmathprintnumber[fixed]{\pgfplotspointmeta}
+                };
+            \else
+                \def\markopts{mark=none}
+            \fi
+            \expandafter\scope\expandafter[\markopts,every node near coord/.style=green]
+        },%
+        scatter/@post marker code/.code={%
+            \endscope
+        },
+        scatter,
+    },
+    mark max/.style={
+        point meta rel=per plot,
+        visualization depends on={x \as \xvalue},
+        scatter/@pre marker code/.code={%
+        \ifx\pgfplotspointmeta\pgfplots@metamax
+            \def\markopts{mark=none}%
+            \coordinate (max);
+            \node [max node] (maxlabel){
+                % \pgfmathprintnumber[fixed]{\xvalue},%
+                % \pgfmathprintnumber[fixed]{\pgfplotspointmeta}
+            };
+        \else
+            \def\markopts{mark=none}
+        \fi
+            \expandafter\scope\expandafter[\markopts]
+        },%
+        scatter/@post marker code/.code={%
+            \endscope
+        },
+        scatter
+    }
+}
+\makeatother
+
+\def\rhogL{10}
+\def\width{1}
+\def\aspectratio{2}
+
+\newcommand{\energy}[1]{\rhogL * \width^3 / 2 * (\aspectratio ^2 * sin(#1) + \aspectratio * cos(#1))}
+
+
+
+
+
+
+\begin{tikzpicture}
+
+\newcommand{\drawRectangle}[2]{
+
+\begin{scope}[shift={#2}]
+\def\localtheta{90-#1};
+
+\coordinate (p0) at (0,0);
+\coordinate (p1) at (\localtheta:1);
+\coordinate (p2) at ($(\localtheta:1)+(\localtheta+90:\aspectratio)$);
+\coordinate (p3) at (90+\localtheta:\aspectratio);
+\draw (p0) -- (p1) -- (p2) -- (p3) -- (p0);
+\coordinate (mass_center) at ($(p0)!0.5!(p2)$);
+
+\fill (mass_center) circle [radius=1pt]; 
+\coordinate (base_left) at (p3 |- 0,0);
+\coordinate (base_right) at (p1 |- 0,0);
+\coordinate (base_middle) at ($(base_left)!0.5!(base_right)$);
+\draw ($(base_left)-(1,0)$) -- ($(base_right)+(1,0)$);
+\end{scope}
+
+}
+
+
+\begin{axis}[
+%axis lines = left,
+xlabel = \(\theta\),
+ylabel = {\(E(\theta)\)},
+xmajorgrids=true,
+ymajorgrids=true,
+grid style=dashed,
+] % end axis options
+\addplot[
+domain=0:90,
+samples=91,
+color=black, mark max, 
+]% end plot options
+{\rhogL * \width^3 / 2 * (\aspectratio ^2 * sin(x) + \aspectratio * cos(x))}; % end plot func
+% \addplot[
+% domain=0:70,
+% samples=100,
+% color=black, 
+% ]% end plot options
+% {\rhogL * \width^3 / 2 * (tan(x) ^2 * sin(x) + tan(x) * cos(x))}; % end plot func
+% \addlegendentry{Energie du système}
+\addplot +[mark=none,color=black,] coordinates {(0, 10) (0, 30)};
+\addplot +[mark=none,color=black,] coordinates {(90, 20) (90, 30)};
+
+% \node []    at (xticklabel cs:0)   {ab};
+
+
+\node[dot] (stable) at (axis cs:0,10) {};
+\node[dot] (metastable) at (axis cs:90,20) {};
+\node[] (middle) at (axis cs:45,20) {};
+
+% \node (label_unstable) at (axis cs:0.55,0.15) {Instable};
+% \node (label_metastable) at (axis cs:0.97,0.01) {Metastable};
+
+% \node[circle,fill, blue, minimum size=6pt, inner sep=0] (unstable) at (axis cs: 0.55,0.089) {};
+% \node[circle,fill, green, minimum size=6pt, inner sep=0] (metastable) at (axis cs: 0.97,0.049) {};
+% \draw[-stealth] (label_metastable) to [out=90,in=-90] (metastable.south);
+% \draw[-stealth] (label_unstable) to [out=-90,in=90] (unstable.north);
+
+
+\end{axis}
+\node[dot] (unstable) at (max) {};
+
+\coordinate (stable_pic) at ($(middle |- 0,7)-(4,0)$);
+\drawRectangle{0}{(stable_pic)};
+
+\coordinate (unstable_pic) at ($(middle |- 0,7)$);
+\drawRectangle{63.43}{(unstable_pic)};
+
+\coordinate (metastable_pic) at ($(middle |- 0,7)+(3,0)$);
+\drawRectangle{90}{(metastable_pic)};
+
+
+\end{tikzpicture}
+

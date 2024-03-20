@@ -1,0 +1,62 @@
+{
+"Dimensionless": {
+    "Dimension": [0,0,0,0,0,0,0],
+    "Symbol": "ø"},
+"Hz": {
+    "Dimension": [0,0,-1,0,0,0,0],
+    "Symbol": "Hz"},
+"D": {
+    "Dimension": [0,2,-1,0,0,0,0],
+    "Symbol": "m2/s"},
+"Newton": {
+    "Dimension": [1,1,-2,0,0,0,0],
+    "Symbol": "N"},
+"mol": {
+    "Dimension": [0,0,0,0,0,0,1]},
+"m": {
+    "Dimension": [0,1,0,0,0,0,0]},
+"number": {
+    "Dimension": [0,0,0,0,0,0,1],
+    "Factor": "6.02214076*10**23",
+    "Symbol": "#"},
+"Pa": {
+    "Dimension": [1,-1,-2,0,0,0,0]},
+"J": {
+    "Dimension": [1,2,-2,0,0,0,0]},
+"sigma": {
+    "Dimension": [1,0,-2,0,0,0,0],
+    "Symbol": "J/m^2"},
+"msigma": {
+    "Dimension": [1,0,-2,0,0,0,0],
+    "Factor": "1/10**20",
+    "Symbol": "mJ/m^2"},
+"W": {
+    "Dimension": [1,2,-3,0,0,0,0]},
+"Celsius": {
+    "Dimension": [0,0,0,0,0,1,0],
+    "Symbol": "°C"},
+"minute": {
+    "Dimension": [0,0,1,0,0,0,0],
+    "Factor": "1/60",
+    "Symbol": "minutes"},
+"hour": {
+    "Dimension": [0,0,1,0,0,0,0],
+    "Factor": "1/3600",
+    "Symbol": "hours"},
+"day": {
+    "Dimension": [0,0,1,0,0,0,0],
+    "Factor": "1/3600/24",
+    "Symbol": "days"},
+"cm": {
+    "Dimension": [0,1,0,0,0,0,0],
+    "Factor": "100",
+    "Symbol": "cm"},
+"dm": {
+    "Dimension": [0,1,0,0,0,0,0],
+    "Factor": "10",
+    "Symbol": "dm"},
+"Litre": {
+    "Dimension": [0,3,0,0,0,0,0],
+    "Factor": "1000",
+    "Symbol": "L"}
+}

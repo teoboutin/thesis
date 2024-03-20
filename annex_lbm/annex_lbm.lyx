@@ -1,0 +1,470 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass mythesis
+\use_default_options true
+\master ../main.lyx
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 5
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type numerical
+\biblio_style unsrtnat
+\biblio_options sorting=none,backref=true,url=false
+\biblatex_bibstyle numeric
+\biblatex_citestyle numeric
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch todos
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter3only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter4only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME-ENV
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1in
+\rightmargin 1.25in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Développement de Chapman-Enskog pour les équations scalaires
+\begin_inset CommandInset label
+LatexCommand label
+name "annex:lbm"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cette annexe a pour but de présenter le développement de Chapman-Enskog
+ du schéma LBM introduit en Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:schema_lbm_general"
+
+\end_inset
+
+.
+ Ce contenu n'est bien entendu pas un résultat original et à seulement pour
+ but de compléter le manuscrit en fournissant les résultats mathématiques
+ sur lesquels la résolution des équations de la thèse est basée.
+\end_layout
+
+\begin_layout Standard
+On rappelle le schéma LBM que l'on souhaite analyser, défini en 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:BGK_std_discrete_boltzmann_adim_tau"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f_{i}\left(\boldsymbol{x}+\delta t\boldsymbol{c}_{i},t+\delta t\right)=f_{i}\left(\boldsymbol{x},t\right)-\frac{1}{\bar{\tau}}\left[f_{i}\left(\boldsymbol{x},t\right)-f_{i}^{eq}\left(\boldsymbol{x},t\right)\right]+\delta tS_{i}
+\]
+
+\end_inset
+
+L'analyse commence par l'expansion du terme de gauche à l'ordre 2 en utilisant
+ la formule de Taylor
+\begin_inset Formula 
+\begin{equation}
+\delta t\left[\partial_{t}+\boldsymbol{c}_{i}\cdot\boldsymbol{\nabla}\right]f_{i}+\frac{\delta t^{2}}{2}\left[\partial_{t}+\boldsymbol{c}_{i}\cdot\boldsymbol{\nabla}\right]^{2}f_{i}+O\left(\delta t^{3}\right)=-\frac{1}{\bar{\tau}}\left[f_{i}-f_{i}^{eq}\right]+\delta tS_{i}\label{eq:BGK_std_expanded_discrete_boltzmann}
+\end{equation}
+
+\end_inset
+
+À ce stade, on applique l'opérateur 
+\begin_inset Formula $1-\frac{\delta t}{2}\left[\partial_{t}+\boldsymbol{c}_{i}\cdot\boldsymbol{\nabla}\right]$
+\end_inset
+
+ à l'équation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:BGK_std_expanded_discrete_boltzmann"
+
+\end_inset
+
+.
+ Cette étape est facultative mais permet de simplifier l'analyse.
+ En négligeant les termes en 
+\begin_inset Formula $\delta t^{3}$
+\end_inset
+
+, on obtient
+\begin_inset Formula 
+\begin{equation}
+\delta t\left[\partial_{t}+\boldsymbol{c}_{i}\cdot\boldsymbol{\nabla}\right]f_{i}=\frac{\delta t}{2}\left[\partial_{t}+\boldsymbol{c}_{i}\cdot\boldsymbol{\nabla}\right]\frac{1}{\bar{\tau}}\left[f_{i}^{neq}\right]-\frac{1}{\bar{\tau}}\left[f_{i}^{neq}\right]+\delta tS_{i}-\frac{\delta t}{2}\left[\partial_{t}+\boldsymbol{c}_{i}\cdot\boldsymbol{\nabla}\right]\left[\delta tS_{i}\right]\label{eq:BGK_std_expanded_discrete_boltzmann_simplified}
+\end{equation}
+
+\end_inset
+
+où 
+\begin_inset Formula $f_{i}^{neq}=f_{i}-f_{i}^{eq}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Pour la suite, la méthode standard consiste à introduire 
+\begin_inset Formula $\varepsilon=\delta x/L$
+\end_inset
+
+ et à décomposer la fonction de distribution en 
+\begin_inset Formula $f_{i}=f_{i}^{eq}+f_{i}^{neq}$
+\end_inset
+
+, où on suppose que la partie de non-équilibre 
+\begin_inset Formula $f_{i}^{neq}$
+\end_inset
+
+ est d'ordre 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+, et plus précisément que 
+\begin_inset Formula $f_{i}^{neq}=\varepsilon f_{i}^{(1)}+\varepsilon^{2}f_{i}^{(2)}+O\left(\varepsilon^{3}\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $L$
+\end_inset
+
+ est une longueur caractéristique du domaine, et 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ est une grandeur petite, qui tend vers 0.
+ De plus, on remarque que la collision doit se faire sans variation du moment
+ d'ordre 0 (car il n'y a pas de déplacement de matière), on doit donc avoir
+ 
+\begin_inset Formula $\sum_{i}f_{i}=\sum_{i}f_{i}^{eq}$
+\end_inset
+
+.
+ Ceci implique 
+\begin_inset Formula $\sum_{i}f_{i}^{neq}=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On introduit également un adimensionnement des opérateurs différentiels
+ 
+\begin_inset Formula $\partial_{t}$
+\end_inset
+
+ et 
+\begin_inset Formula $\boldsymbol{\nabla}$
+\end_inset
+
+, en utilisant la longueur de référence 
+\begin_inset Formula $L$
+\end_inset
+
+ pour 
+\begin_inset Formula $\boldsymbol{\nabla}$
+\end_inset
+
+ et le temps de référence 
+\begin_inset Formula $t_{ref}=L\delta t/\delta x$
+\end_inset
+
+ qui correspond au temps nécessaire pour une particule pour traverser la
+ longueur de référence 
+\begin_inset Formula $L$
+\end_inset
+
+.
+ Ceci permet d'obtenir la relation
+\begin_inset Formula 
+\begin{equation}
+\delta t\left[\partial_{t}+\boldsymbol{c}_{i}\cdot\boldsymbol{\nabla}\right]=\varepsilon\left[\partial_{\bar{t}}+\boldsymbol{e}_{i}\cdot\bar{\boldsymbol{\nabla}}\right]:=\varepsilon D_{\bar{t}}
+\end{equation}
+
+\end_inset
+
+Enfin, pour que le terme source soit cohérent avec le reste de l'équation,
+ il doit être d'ordre 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kruger2017,Buick2000,Varmazyar2013"
+literal "false"
+
+\end_inset
+
+.
+ Autrement, l'équation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_lbm_pde_fneq_unknown"
+
+\end_inset
+
+ ci-dessous ne serait pas valide.
+ On introduit donc l'expansion du terme source
+\begin_inset Formula 
+\[
+S_{i}=\varepsilon\bar{S}_{i}
+\]
+
+\end_inset
+
+Dans le cas présent, il n'est pas nécessaire de considérer des termes aux
+ ordres supérieurs.
+\end_layout
+
+\begin_layout Standard
+En introduisant ces relations dans 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:BGK_std_expanded_discrete_boltzmann_simplified"
+
+\end_inset
+
+, on obtient l'équation 
+\begin_inset Formula 
+\begin{equation}
+\varepsilon D_{\bar{t}}\left[f_{i}^{eq}+f_{i}^{neq}\right]=\frac{1}{2}\varepsilon D_{\bar{t}}\frac{1}{\bar{\tau}}\left[f_{i}^{neq}\right]-\frac{1}{\bar{\tau}}f_{i}^{neq}+\delta t\varepsilon\bar{S}_{i}-\frac{\varepsilon}{2}D_{\bar{t}}\left[\delta t\varepsilon\bar{S}_{i}\right]\label{eq:BGK_std_expanded_discrete_boltzmann_simplified_adim}
+\end{equation}
+
+\end_inset
+
+En calculant le moment d'ordre 0 de cette équation, on obtient alors (on
+ rappelle 
+\begin_inset Formula $\sum_{i}f_{i}^{neq}=0$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{multline}
+\varepsilon\partial_{\bar{t}}\left[\sum_{i}\left(f_{i}^{eq}+\varepsilon\frac{\delta t}{2}\bar{S}_{i}\right)\right]+\varepsilon\bar{\boldsymbol{\nabla}}\cdot\left[\sum_{i}\left(f_{i}^{eq}+\varepsilon\frac{\delta t}{2}\bar{S}_{i}\right)\boldsymbol{e}_{i}\right]\\
+=\varepsilon\bar{\boldsymbol{\nabla}}\cdot\left[\left(\frac{1}{2\bar{\tau}}-1\right)\sum_{i}f_{i}^{neq}\boldsymbol{e}_{i}\right]+\varepsilon\sum_{i}\delta t\bar{S}_{i}\label{eq:annex_lbm_pde_fneq_unknown}
+\end{multline}
+
+\end_inset
+
+On s'approche d'une équation différentielle sur les moments de 
+\begin_inset Formula $f_{i}^{eq}$
+\end_inset
+
+.
+ Il reste cependant à exprimer 
+\begin_inset Formula $\sum f_{i}^{neq}\boldsymbol{e}_{i}$
+\end_inset
+
+.
+ Comme on néglige tout se qui se trouve à un ordre supérieur à 
+\begin_inset Formula $\varepsilon^{2}$
+\end_inset
+
+, on n'a en réalité besoin que de 
+\begin_inset Formula $\sum f_{i}^{(1)}\boldsymbol{e}_{i}$
+\end_inset
+
+.
+ Pour l'obtenir, on isole les termes à l'ordre 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ dans 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:BGK_std_expanded_discrete_boltzmann_simplified_adim"
+
+\end_inset
+
+, ce qui donne
+\begin_inset Formula 
+\begin{align}
+\left[\partial_{\bar{t}}+\boldsymbol{e}_{i}\cdot\bar{\boldsymbol{\nabla}}\right]\left[f_{i}^{eq}\right] & -\delta t\bar{S}_{i}=\frac{-1}{\bar{\tau}}f_{i}^{(1)}\label{eq:BGK_std_Oeps1_eq}
+\end{align}
+
+\end_inset
+
+On calcule ensuite le moment d'ordre 1 
+\begin_inset Formula 
+\[
+\sum_{i}f_{i}^{(1)}\boldsymbol{e}_{i}=-\bar{\tau}\left[\partial_{\bar{t}}\sum_{i}\left[f_{i}^{eq}\right]\boldsymbol{e}_{i}+\bar{\boldsymbol{\nabla}}\cdot\sum_{i}\left[f_{i}^{eq}\right]\boldsymbol{e}_{i}\boldsymbol{e}_{i}-\sum_{i}\delta t\bar{S}_{i}\boldsymbol{e}_{i}\right]
+\]
+
+\end_inset
+
+On peut maintenant injecter 
+\begin_inset Formula $\varepsilon\sum f_{i}^{(1)}\boldsymbol{e}_{i}$
+\end_inset
+
+ dans 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_lbm_pde_fneq_unknown"
+
+\end_inset
+
+, et on obtient
+\begin_inset Formula 
+\begin{multline*}
+\varepsilon\partial_{\bar{t}}\left[\sum_{i}\left(f_{i}^{eq}+\varepsilon\frac{\delta t}{2}\bar{S}_{i}\right)\right]+\varepsilon\bar{\boldsymbol{\nabla}}\cdot\left[\sum_{i}\left(f_{i}^{eq}\boldsymbol{e}_{i}+\varepsilon\frac{\delta t}{2}\bar{S}_{i}\boldsymbol{e}_{i}\right)\right]=\\
+\varepsilon^{2}\bar{\boldsymbol{\nabla}}\cdot\left[\left(\bar{\tau}-\frac{1}{2}\right)\bar{\boldsymbol{\nabla}}\cdot\sum_{i}f_{i}^{eq}\boldsymbol{e}_{i}\boldsymbol{e}_{i}\right]+\varepsilon^{2}\bar{\boldsymbol{\nabla}}\cdot\left[\left(\bar{\tau}-\frac{1}{2}\right)\partial_{\bar{t}}\sum_{i}f_{i}^{eq}\boldsymbol{e}_{i}\right]\\
+-\varepsilon^{2}\bar{\boldsymbol{\nabla}}\cdot\left[\left(\bar{\tau}-\frac{1}{2}\right)\sum_{i}\delta t\bar{S}_{i}\boldsymbol{e}_{i}\right]+\varepsilon\sum_{i}\delta t\bar{S}_{i}
+\end{multline*}
+
+\end_inset
+
+Les termes en 
+\begin_inset Formula $\bar{\boldsymbol{\nabla}}\cdot\sum\delta t\bar{S}_{i}\boldsymbol{e}_{i}$
+\end_inset
+
+ se regroupent et on obtient
+\begin_inset Formula 
+\begin{multline*}
+\varepsilon\partial_{\bar{t}}\left[\sum_{i}\left(f_{i}^{eq}+\varepsilon\frac{\delta t}{2}\bar{S}_{i}\right)\right]+\varepsilon\bar{\boldsymbol{\nabla}}\cdot\left[\sum_{i}\left(f_{i}^{eq}+\varepsilon\bar{\tau}\frac{\delta t}{2}\bar{S}_{i}\right)\boldsymbol{e}_{i}\right]=\\
+\varepsilon^{2}\bar{\boldsymbol{\nabla}}\cdot\left[\left(\bar{\tau}-\frac{1}{2}\right)\bar{\boldsymbol{\nabla}}\cdot\sum_{i}f_{i}^{eq}\boldsymbol{e}_{i}\boldsymbol{e}_{i}\right]+\varepsilon^{2}\bar{\boldsymbol{\nabla}}\cdot\left[\left(\bar{\tau}-\frac{1}{2}\right)\partial_{\bar{t}}\sum_{i}f_{i}^{eq}\boldsymbol{e}_{i}\right]+\varepsilon\sum_{i}\delta t\bar{S}_{i}
+\end{multline*}
+
+\end_inset
+
+Enfin, on redimensionne l'équation pour obtenir l'équation aux dérivées
+ partielles suivie par les moments de la fonction d'équilibre:
+\begin_inset Formula 
+\begin{align}
+\partial_{t}\left(\sum_{i}f_{i}^{eq}+\frac{\delta t}{2}\sum_{i}S_{i}\right)+\boldsymbol{\nabla}\cdot\left(\sum_{i}\left[f_{i}^{eq}+\bar{\tau}\delta tS_{i}\right]\boldsymbol{c}_{i}\right) & =\boldsymbol{\nabla}\delta t\left(\bar{\tau}-\frac{1}{2}\right)\boldsymbol{\nabla}:\sum_{i}f_{i}^{eq}\boldsymbol{c}_{i}\boldsymbol{c}_{i}\nonumber \\
+ & \quad\quad\quad+\sum_{i}S_{i}+E\label{eq:BGK_std_recovered_PDE-1}
+\end{align}
+
+\end_inset
+
+Cette équation correspond bien à une équation d'advection diffusion classique
+ avec un terme source.
+ L'erreur numérique de résolution 
+\begin_inset Formula $E$
+\end_inset
+
+ s'exprime par
+\begin_inset Formula 
+\begin{equation}
+E=\boldsymbol{\nabla}\cdot\delta t\left(\bar{\tau}-\frac{1}{2}\right)\partial_{t}\left(\sum_{i}f_{i}^{eq}\boldsymbol{c}_{i}\right)+O\left(\delta t^{2}\right)+O\left(\varepsilon^{3}\right)\label{eq:BGK_std_error_term-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "thesis"
+biblatexopts "segment=\\therefsegment,title=Références,heading=subbibintoc"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

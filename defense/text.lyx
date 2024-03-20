@@ -1,0 +1,903 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 3cm
+\rightmargin 2cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Enumerate
+Bonjour à tous, merci d'être venus assister à ma soutenance de thèse qui
+ s'intitule Simulation à l'échelle mésoscopique des gels d'altération des
+ verres nucléaires, réalisée au CEA de Saclay sous la direction d'Alain
+ Cartalade.
+\end_layout
+
+\begin_layout Enumerate
+Pour cette présentation, je commencerais par une introduction du contexte
+ de la thèse et des objectifs, puis je présenterais mes travaux: le développemen
+t d'un modèle champ de phase pour le système verre eau, puis 2 méthodes
+ permettant de simuler la formation des gels d'altération dans les verres
+ de stockage.
+\end_layout
+
+\begin_layout Enumerate
+Commençons par le contexte.
+ Le stockage des déchets nucléaires de haute activité.
+ Ces déchets sont issus du recyclage des combustibles usés.
+ Après avoir extrait le plutonium et l'uranium, on obtient des déchets ultimes
+ formés par les actinides mineurs et les produits de fission sous forme
+ d'un effluent liquide, chaud et fortement radioactif.
+ Pour réduire le risque de dispersion de ces déchets, on les immobilise
+ dans une matrice de verre, selon le procédé représenté en bas à gauche.
+ Le liquide est asséché dans un calcinateur, puis on mélange les particules
+ à de la fritte de verre, que l'on fait fondre dans un four à induction.
+ Le mélange est ensuite coulé dans un fut en acier.
+ On obtient des colis de déchets comme celui de la photo en bas à droite.
+\end_layout
+
+\begin_layout Enumerate
+La radioactivité de ces colis persistera jusque 1 millions d'années.
+ Pour isoler les déchets de l'environnement durant une si longue période,
+ il a été décidé en France de les stocker dans un centre souterrain à 500m
+ de profondeur, afin de bénéficier de la protection des couches géologiques,
+ qui restent stables durant des 100aines de millions d'années.
+ Cependant, pendant la durée de ce stockage, l'eau souterraine érodera petit
+ à petit le centre de stockage.
+ On estime que les premières protections en béton et acier seront percés
+ après une durée d’environ 10000 ans.
+ Suite à cela, l'eau atteint le colis en verre, ce qui va entamer la dissolution
+ du verre par l'eau.
+ Pour limiter le relâchement potentiel de déchets dans environnement, on
+ s'intéresse donc à la vitesse d'altération du verre par l'eau.
+\end_layout
+
+\begin_layout Enumerate
+L'altération du verre par l'eau se déroule en plusieurs étapes: 
+\begin_inset Newline newline
+\end_inset
+
+d'abord une étape d'hydratation, pendant laquelle l'eau diffuse dans le
+ verre solide.
+\begin_inset Newline newline
+\end_inset
+
+Puis l’hydrolyse des liaisons entre composants du verre se déclenche, provoquant
+ la dissolution de certains éléments.
+ Cela va laisser place à de la porosité à l'intérieur du verre.
+ La couche poreuse ainsi formés est appelée gel d'altération, la fig a en
+ montre un exemple.
+\begin_inset Newline newline
+\end_inset
+
+La présence de cette couche d'altération induit un ralentissement important
+ de la vitesse d'altération du verre, comme schématisé en figure b.
+\begin_inset Newline newline
+\end_inset
+
+Pour maîtriser la vitesse d'altération du verre, il est donc important de
+ comprendre l'impact du gel d'altération sur la dissolution du verre.
+ C'est ce à quoi on va s'intéresser dans cette thèse.
+\end_layout
+
+\begin_layout Enumerate
+D'autres travaux se sont déjà intéressés à cette question, sur les plans
+ expérimentaux et modélisation.
+ Sur le plan de la modélisation/simulation, plusieurs méthodes ont été étudiés
+ pour simuler la microstructure du gel d'altération, comme des méthodes
+ de type DM, ou des méthodes Monte Carlo.
+\begin_inset Newline newline
+\end_inset
+
+Sur le plan expérimental, des expériences de longue durée (dissolution du
+ verre pendant plusieurs années) permettent d'obtenir des informations comme
+ la profondeur du gel, la quantité de matière dissoute, la distribution
+ de taille de pores, les coefficients de diffusion apparent dans le gel.
+\end_layout
+
+\begin_layout Enumerate
+Dans ce contexte, nous nous sommes intéressés à est la modélisation de l'évoluti
+on de la microstructure du gel d'altération.
+ L'objectif principal de ce travail est de pouvoir simuler cette évolution,
+ en commençant par la formation du gel d'altération.
+ à terme, le but est de pouvoir prédire l'impact du gel d'altération sur
+ des grandeurs macroscopiques d’intérêt comme la mobilité des composants
+ dans le gel ou la vitesse d'altération du verre.
+\begin_inset Newline newline
+\end_inset
+
+Dans notre modélisation, nous chercherons à décrire un système diphasique,
+ composé du verre solide et de l'eau liquide, en utilisant la méthode champ
+ de phase pour suivre l'évolution de l'interface verre/eau à l'échelle de
+ la porosité.
+\begin_inset Newline newline
+\end_inset
+
+Nous prendrons en compte un système ternaire, composé de trois composants:
+ l'eau, et deux composants du verre.
+ Cette approximation est réaliséee en remarquant que les composants du verre
+ suivent deux comportement distincts, illustrés sur la figure en bas: certains
+ composant comme le si et l'al sont peu solubles et restent solides, tandis
+ que d'autres comme le bore, sodium, calcium se dissolvent rapidement, laissant
+ place à la porosité.
+ Nous prendrons donc en compte des éléments solubles et des éléments insolubles,
+ que je nommerais bore et silicium dans la suite.
+\end_layout
+
+\begin_layout Enumerate
+Je vais donc présenter la modélisation champ de phase de ce système.
+ Les méthodes champ de phase sont des méthodes de suivi d'interface eulérienne.
+ On utilise une indicatrice de phase, 
+\begin_inset Formula $\phi$
+\end_inset
+
+, qui dans notre cas vaudra 1 dans le liquide et 0 dans le liquide.
+\begin_inset Newline newline
+\end_inset
+
+Une particularité des méthode champ de phase est d'utiliser une indicatrice
+ diffuse, ie qu'elle est continue entre les valeurs 0 et 1, variant selon
+ un profil d'épaisseur fixée 
+\begin_inset Formula $W$
+\end_inset
+
+, comme illustrée en fig a.
+\begin_inset Newline newline
+\end_inset
+
+L'autre particularité des méthodes champ de phase est d'être basées sur
+ un principe de minimisation d'énergie.
+ Pour décrire l'évolution de l'indicatrice de phase, on introduit d'abord
+ une fonctionnelle d'énergie, ici l'énergie libre F.
+ Cette fonctionnelle est définie comme l'intégrale sur le domaine de 2 termes
+ d'énergies locales.
+ Le premier, le gradient de l'indicatrice au carré, est un terme diffusif
+ qui va étaler l'interface.
+ Le second, un terme local en double puits avec des minimums en 0 et 1,
+ représenter en fig b, qui va imposer les valeurs limites de l'indicatrice
+ dans les phases.
+\begin_inset Newline newline
+\end_inset
+
+L'évolution de l'indicatrice de phase doit ensuite minimiser cette fonctionnelle
+ F, ce qui est garanti en utilisant les équations d'Allen-Cahn ou de Cahn-Hillia
+rd (conservative).
+\begin_inset Newline newline
+\end_inset
+
+Pour prendre en compte la dissolution du solide, il est maintenant nécessaire
+ d'ajouter à cette fonctionnelle des termes d’énergie faisant intervenir
+ les compositions du système.
+\end_layout
+
+\begin_layout Enumerate
+On introduit donc les champs de composition: C1, C2 et C3 pour le silicium,
+ le bore et l'eau.
+ On introduit également des champs de compositions associés à chacune des
+ phases: Clalpha pour la phase liquide et Csalpha pour la phase solide.
+ Pour modéliser la thermodynamique du système, qui dirigera la dissolution,
+ on introduit les énergies libres locales pour chacune des phases: fl et
+ fs.
+ Cependant, il n'est pas possible de définir directement une énergie libre
+ locale valide dans tout le domaine, car dans l'interface, les compositions
+ globales sont différentes des compositions des phases, et ne permettent
+ pas de calculer l'énergie libre dans l'interface.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+La solution à ce problème est de passer en formalisme grand potentiel.
+ On introduit les potentiels chimiques, et le gp qui est la transformée
+ de Legendre de l'énergie libre.
+\begin_inset Newline newline
+\end_inset
+
+L'avantage est que ce potentiel chimique est commun aux deux phases, et
+ donc continue à l'interface.
+ Il est donc possible de définir le grand potentiel dans tout le domaine
+ en interpolant 
+\begin_inset Formula $\omega^{l}$
+\end_inset
+
+ et 
+\begin_inset Formula $\omega^{s}$
+\end_inset
+
+ (équation 4).
+\begin_inset Newline newline
+\end_inset
+
+On peut maintenant injecter ce grand potentiel dans la fonctionnelle définie
+ précédemment, et on obtient la fonctionnelle de grand potentiel 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+On peut désormais définir des équations d'évolutions pour toutes nos variables:
+ le champ de phase évolue selon l'équation d'Allen-Cahn, car la phase solide
+ n'est pas conservée.
+\begin_inset Newline newline
+\end_inset
+
+La composition évolue selon une équation de diffusion avec un flux de diffusion
+ lié aux gradients de potentiels chimiques.
+ Pour compléter le modèle, il faut relier les potentiels chimiques à nos
+ champs de composition et phase.
+ Pour cela, on utilise des relations de fermetures qui prennent la forme
+ d'une interpolation des compositions du liquide et du solide, qui peuvent
+ être calculées à partir du potentiel chimique.
+\begin_inset Newline newline
+\end_inset
+
+Pour résoudre le modèle, on à deux possibilité: injecter 8 dans 7 pour avoir
+ une équaiton d'évolution sur mu
+\begin_inset Newline newline
+\end_inset
+
+ou inverser 8 pour calculer mu de phi et C, et garder 7, ce qui donne une
+ formulation conservative du problème.
+\end_layout
+
+\begin_layout Enumerate
+Pour compléter cette modélisation, il reste à spécifier la thermodynamique
+ du système.
+ En l'absence de données thermodynamiques sur les matériaux qui nous intéressent
+, on va choisir de rester sur un modèle simple pour pouvoir utiliser la
+ formulation conservative du problème.
+ Il est également nécessaire que le modèle thermodynamique reste cohérent
+ lorsque la composition en bore tend vers 0, ce qui est lez cas dans le
+ solide car tout le bore se dissous et laisse place à un gel composé de
+ silicium.
+ Pour respecter ces contraintes, on va utiliser le modèle de solution diluée,
+ qui prend la forme suivante.
+ Ce modèle fait intervenir les paramètres 
+\begin_inset Formula $\varepsilon_{\alpha}^{\Phi}$
+\end_inset
+
+, qui correspondent à des densités énergétiques des différents composants
+ dans chaque phase.
+ Pour éclairer l'influence de ces paramètres, on va chercher à reformuler
+ ce modèle de solution diluée selon d'autres paramètres.
+\end_layout
+
+\begin_layout Enumerate
+Avant cela, je vais expliquer rapidement la lecture d'un diagramme de phase
+ ternaire.
+ Ces diagrammes de phases permettent de représenter de données à trois valeurs
+ dont la somme est constante dans un triangle en positionnant les points
+ avec les coordonnées barycentriques.
+ Dans un diagramme de phase ternaire, on va représenter les zones de stabilité
+ de chacune des phases possibles, ici le solide est le liquide, qui sont
+ délimités par les frontière (en orange).
+ Ces frontières sont définies par l'égalité des grand potentiels.
+ La résolution de cette équation donne une paire de compositions, dites
+ de coexistence, qui sont représentés sur le diagramme par les traits noir
+ reliant les frontières, appelées conodes.
+ La zone entre les frontière est appelée lacune de miscibilité.
+ Un système se trouvant dans cette zone va naturellement se séparé en 2
+ phases, dont les compositions se trouveront à l'extrémité d'une même conode.
+\end_layout
+
+\begin_layout Enumerate
+Pour notre modèle thermodynamique de solution diluée, ce diagramme de phase
+ prend une forme assez simple: les frontières sont simplement des droites,
+ dont les points à l’intersection avec le bord du triangle sont équidistant
+ (sur chaque bord).
+\begin_inset Newline newline
+\end_inset
+
+Pour décrire la thermodynamique, il est donc suffisant de spécifier 3 de
+ ces points aux intersections avec le bord du domaine.
+\begin_inset Newline newline
+\end_inset
+
+De plus, ces points s’interprètent comme des compositions de saturation:
+ C
+\begin_inset Formula $_{1}^{l}$
+\end_inset
+
+ correspond à la saturation de l'eau en silicium dans le système binaire
+ eau/silicium.
+ Il sera donc plus simple d'obtenir ces paramètres pour appliquer notre
+ modèle au verre.
+\end_layout
+
+\begin_layout Enumerate
+Pour appliquer ce modèle au verre, on a donc utilisé des paramètres de compositi
+ons de saturation issues de la littérature, en gras dans ce tableau qui
+ résume les différents paramètres du modèle.
+ Le diagramme de phase est représenté à droite, la solubilité du silicium
+ étant très faible, la zone de stabilité du liquide (délimité en bleu) est
+ très proche du bord du triangle.
+\end_layout
+
+\begin_layout Enumerate
+On résume les équations d'évolutions de notre modèle avec le modèle thermodynami
+que de solution diluée:
+\begin_inset Newline newline
+\end_inset
+
+L'équation du champ de phase est composée de 3 termes.
+\begin_inset space ~
+\end_inset
+
+Les 2 premiers sont classiques et assurent la structure de l'interface diffuse.
+ Le 3e est la force motrice de changement de phase, proportionnelle au déséquili
+bre thermodynamique.
+ Le paramètre 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ contrôle le rapport entre les deux premiers termes et la force motrice.
+\begin_inset Newline newline
+\end_inset
+
+On a ensuite 2 équations de compositions sur le silicium et le bore.
+\begin_inset Newline newline
+\end_inset
+
+Puis les relations de fermeture que l'on a pu inversées.
+\begin_inset Newline newline
+\end_inset
+
+La résolution numérique de ces équations sera faite par méthode de Boltzmann
+ sur réseau, je ne détaille pas cet aspect.
+\end_layout
+
+\begin_layout Enumerate
+La question qui se pose maintenant est: comment simuler la formation de
+ porosité avec ce modèle ? Je n'ai pas trouvé de modèle champ de phase appliqué
+ à la 
+\begin_inset Quotes fld
+\end_inset
+
+formation
+\begin_inset Quotes frd
+\end_inset
+
+ d'un milieu poreux par dissolution dans la littérature, et j'ai décidé
+ durant ma thèse de chercher à le faire.
+\begin_inset Newline newline
+\end_inset
+
+Je vais donc présenter 2 méthodes qui permettent d'obtenir ce type de simulation.
+\begin_inset Newline newline
+\end_inset
+
+La première, que j'appelle approche verre inhomogène, vise à reproduire
+ ce qui est fait dans les modélisation monte Carlo: on a un verre spatialement
+ inhomogène, l'eau diffuse dans le verre, dissous le bore, qui laisse place
+ à de la porosité.
+\begin_inset Newline newline
+\end_inset
+
+La seconde est plus originale, basées sur un phénomène d'instabilité qui
+ se produit dans les systèmes ternaires diphasiques.
+\end_layout
+
+\begin_layout Enumerate
+On commence par l'approche verre inhomogène.
+ Dans cette approche, on cherche à simuler un milieu comme celui ci (image),
+ avec des zones de bores solubles en rouge et des zones de silicium non
+ soluble en vert.
+\begin_inset Newline newline
+\end_inset
+
+On souhaite que la zone rouge se dissolve en première.
+ Cela nécessite que la dissolution soit contrôlée par un déséquilibre thermodyna
+mique plutôt que par la diffusion dans le solvant, car les deux composants
+ diffuse à la même vitesse dans le solvant.
+\begin_inset Newline newline
+\end_inset
+
+Si la diffusion dans le solvant est lente, on a un équilibre thermodynamique
+ qui est atteint proche de l'interface très rapidement et la dissolution
+ est contrôlée par la diffusion.
+\begin_inset Newline newline
+\end_inset
+
+Il faut donc que la diffusion dans le solvant soit très rapide, mais cela
+ limitera considérablement le pas de temps de la résolution numérique (pas
+ d'implicite en LBM)
+\end_layout
+
+\begin_layout Enumerate
+Pour résoudre cette diffusion rapide dans la phase liquide, on va chercher
+ une méthode alternative.
+ Plutôt que résoudre la diffusion dans le liquide par une EDP, on va considérer
+ que le coefficient de diffusion est infini.
+ Le champ de composition doit donc atteindre l'état stationnaire dans le
+ liquide après chaque itération.
+ On va pouvoir accomplir ça en utilisant une astuce liée à la formulation
+ du modèle champ de phase.
+ On utilise la relation de fermeture, qui permet de voir la composition
+ globale comme l'interpolation des compositions de chaque phase.
+\begin_inset Newline newline
+\end_inset
+
+On peut alors en extraire la composition de la phase liquide, et calculer
+ sa valeur moyenne par l’équation 16, qui correspond à l'état stationnaire
+ de la diffusion.
+\begin_inset Newline newline
+\end_inset
+
+On va ensuite recalculer le champ de composition en remplaçant la composition
+ du liquide par la valeur moyenne dans 15
+\end_layout
+
+\begin_layout Enumerate
+Cependant, appliqué comme ceci, cette méthode est incorrecte.
+ En pratique, dans nos simulation, on aura de la porosité fermée, et la
+ méthode de la diapo précédente fait diffuser la composition dans toute
+ la phase liquide, indépendamment de la connectivité des zones de liquide.
+\begin_inset Newline newline
+\end_inset
+
+Pour mettre en place la méthode, il va falloir décomposer le domaine en
+ sous domaines connexes et appliqué la méthode indépendamment sur chaque
+ composantes connexes.
+ Cette décomposition est faite avec un algorithme d'étiquetage en composantes
+ connexes.
+ Il fallait un algorithme performant sur GPU, après un peu de biblio, j'ai
+ choisi la méthode WARP0 de la thèse de cabaret 2016.
+ Il s'agit de méthode itérative basée sur la diffusion d'un maximum, ce
+ qui est facilement performant sur GPU, et qui est fait avec le même type
+ d'opérations que ce que l'on faisait déjà dans le code de calcul, donc
+ facile à implémenter.
+ Au final, la méthode prend un temps raisonnable par rapport aux autres
+ opérations de résolutions LBM, et on peut donc la coupler (50 à 90%, mais
+ implémentation pas encore complètement optimal)
+\end_layout
+
+\begin_layout Enumerate
+On va maintenant chercher à simuler la formation d'un gel d'altération avec
+ notre méthode.
+ Le milieu initiale est celui ci que j'ai déjà montrer plus tôt.
+ J'ai cherché à utiliser des paramètres proches des conditions réel du verre
+ pour voir si l'approche pouvait s'appliquer sur une échelle de temps et
+ espace cohérente avec ce qu'on observe en réalité.
+ Les simulations correspondent à un domaine de 100 nm de coté, sur une durée
+ totale de 1 jour (avec des calculs court, ~1h).
+ On est assez proche des échelles de temps et espaces sur lesquelles on
+ peut voir un gel se former en labo.
+\begin_inset Newline newline
+\end_inset
+
+Je vais montrer 2 simulations, pour voir l'effet de certains paramètres:
+ l'épaisseur d'interface, la force motrice, qui jouent aussi sur la tension
+ de surface.
+ En résumé la tension de surface est plus faible dans la seconde simulation.
+\end_layout
+
+\begin_layout Enumerate
+Sur les images, l'interface est localisé au niveau du contour noir (peu
+ visible).
+ La zone bleue est la zone d'influence de la diffusion instantanée.
+ Vert=silicium et rouge=bore.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Lancer la vidéo.
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+On voit l'eau diffuser dans le verre et dissoudre la zone rouge, créant
+ des canaux.
+ Puis l'effet de la tension de surface commence à agir et referme les canaux.
+ Dans la simulation de gauche, la tension de surface est trop forte et referme
+ la porosité en faisant disparaître tous les canaux.
+ Sur celle de droite, on a pu produire un milieu poreux qui ressemble qualitativ
+ement à ce qu'on souhaite simuler.
+\end_layout
+
+\begin_layout Enumerate
+On se demande si on peut observer des comportements macro cohérent avec
+ l'application expérimentale.
+ On regarde le volume de verre dissous au cours du temps.
+ On attend un premier régime linéaire, un régime en racine de t gouverner
+ par la diffusion dans le gel, puis une vitesse résiduelle.
+ La simulation 2 montre les 2 premiers régimes.
+ La 1ère simulation montre une légère altération résiduelle vers la fin.
+ On attend le même comportement de la simulation 2 si on fait une simulation
+ plus longue, mais il faudrait un domaine plus grand (faisable).
+\end_layout
+
+\begin_layout Enumerate
+On passe maintenant à l'approche 
+\begin_inset Quotes fld
+\end_inset
+
+instabilités thermodynamiques
+\begin_inset Quotes frd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Je vais commencer par expliquer le principe de ces instabilités.
+ Ils s'agit d'un phénomène qui peut se produire dans les systèmes diphasiques
+ ternaires, lorsque l'un des composants diffuse plus vite que l'autre dans
+ une des phases.
+ Un exemple est présenté à droite, où le composant 1 diffuse plus vite dans
+ la phase 0.
+ Dans ce cas, le profil de diffusion de C1 est plus éloigné de l'interface
+ que celui de C2.
+ Le point A correspond à une composition loin de l'interface (à l'infini).
+ Loin de l'interface, seule la composition en C1 varie, et le profil dans
+ le diagramme de phase est horizontal.
+ Cela conduit le profil à entrer dans le lacune de miscibilité.
+ Puis, au niveau du point B, la diffusion de C2 commence, et la composition
+ se dirige vers la frontière de stabilité, pour être à l'équilibre avec
+ l'autre phase.
+\begin_inset Newline newline
+\end_inset
+
+Ce qui est intéressant, c'est que le point B se trouve dans la lacune de
+ miscibilité.
+ La phase 0 se trouve donc en situation d'instabilité thermodynamique, et
+ il y a possibilité de nucléation de phase 1 (liquide) dans la phase 0 (solide)
+ à cet endroit.
+\begin_inset Newline newline
+\end_inset
+
+On remarque aussi que le verre que l'on étudie se trouve dans cette situation,
+ car dans la phase solide, on considère que seul le bore peut diffuser à
+ cause de la présence d'eau.
+ On va donc souhaiter utiliser ce phénomène pour simuler l'apparition de
+ porosité liquide dans le verre.
+\begin_inset Newline newline
+\end_inset
+
+La question qui se pose alors est: notre modèle à champ de phase peut il
+ simuler la nucléation dans les conditions d'instabilité ? Et la nucléation
+ avec un modèle Allen-Cahn est elle mathématiquement correcte ?
+\end_layout
+
+\begin_layout Enumerate
+J'ai cherché à répondre à ces questions en étudiant un cas test analytique,
+ le problème de Stefan.
+ Maugis et al en 1997 ont remarqué ce phénomène d'instabilité dans les solutions
+ analytiques d'un problème de Stefan 1D, pour un système ternaire diphasique
+ avec modèle thermodynamique de solution diluée.
+ Ils ont remarqué que sous certaines conditions, le problème de Stefan admet
+ plusieurs solutions analytiques, qui vont traverser la lacune de miscibilité.
+ Les paramètres de leur cas test sont dans le tableau, la Fig a montre le
+ diagramme de phase correspondant, et la figure b les solutions analytiques
+ possibles.
+ On va donc chercher à simuler ce cas test avec notre modèle champ de phase.
+\end_layout
+
+\begin_layout Enumerate
+Dans un premier temps, quand la force motrice, contrôlée par le paramètre
+ 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, est suffisamment faible (ici 
+\begin_inset Formula $\lambda=300$
+\end_inset
+
+), la simulation champ de phase reste stable et suit une des solutions analytiqu
+es du problème de Stefan.
+ On remarque de plus que la simulation suit la solution qui maximise la
+ dissipation d'énergie libre.
+\end_layout
+
+\begin_layout Enumerate
+Maintenant, on va voir ce qui se passe quand on augmente la force motrice.
+ Je vais montrer la simulation en vidéo, parce que c'est beaucoup plus clair
+ quand on voit ce qui se passe en mouvement.
+ En haut à gauche, on a l'indicatrice de phase en fonction de 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ En bas à gauche, les positions des interfaces.
+ À droite, je trace les compositions, en fonction de 
+\begin_inset Formula $x$
+\end_inset
+
+ en haut et dans le diagramme de phase en bas.
+\begin_inset Newline newline
+\end_inset
+
+On voit dès le début de la simulation, une première nucléation qui se produit
+ à droite.
+ Puis plusieurs nucléations successives se produisent à gauche, mais les
+ interfaces ainsi créées se déplacent vers la droite et se rencontrent.
+ Le système oscille entre un état à 3 interfaces et un état à 5 interfaces.
+ Mais cette simulation pose un problème: l'équation d'Allen-Cahn ne permet
+ normalement pas de simuler la nucléation, car le terme source est localisé
+ dans l'interface.
+ Pour éclaircir ce point, on va essayer de voir si la simulation champ de
+ phase est numériquement correcte.
+\end_layout
+
+\begin_layout Enumerate
+Pour ça on va chercher la solution analytique d'un problème de type Stefan,
+ mais avec 3 interfaces, pour comparer à notre simulation champ de phase.
+ Ce problème de Stefan prend la forme des équations 18-22.
+ On le représente avec le schéma en haut.
+ Il y a quatre régions qui alternent entre les phases 0 et 1, numérotées
+ par 
+\begin_inset Formula $p$
+\end_inset
+
+ allant de 1 à 4.
+ Dans chaque phase, on a la diffusion des 2 composants.
+ Il y a trois interfaces qui se déplacent au cours du temps, et sur chaque
+ interface on à les conditions d'équilibre thermodynamique et de conservation
+ des flux.
+\end_layout
+
+\begin_layout Enumerate
+On peut résoudre ce système avec la méthode classique pour les problème
+ de Stefan: on cherche des profils de diffusion en erfc et des positions
+ d'interfaces en 
+\begin_inset Formula $\sqrt{t}$
+\end_inset
+
+.
+ Pour les paramètres de Maugis, on trouve une solution à trois interfaces,
+ représentée sur le diagramme en bas à droite en rouge.
+\end_layout
+
+\begin_layout Enumerate
+On compare maintenant cette solution analytique à notre simulation champ
+ de phase.
+ Sur le dernier graphe en bas à droite, on voit que du côté droit de l'interface
+, la simulation suit très bien la solution analytique.
+ Du côté gauche, il y a toujours un écart, qui s'explique par les multiples
+ nucléations qui continuent de se produire à gauche.
+ Ces nucléations s'expliquent car le profil de diffusion à gauche traverse
+ toujours la lacune de miscibilité, il est donc toujours instable.
+\begin_inset Newline newline
+\end_inset
+
+Le résultat notable, c'est que notre simulation champ de phase avec nucléation
+ s'accorde sur une solution analytique d'un problème adapté.
+ On en conclut que la nucléation simulée par le modèle champ de phase est
+ un phénomène numériquement valide, et pas un artefact numérique.
+ 
+\end_layout
+
+\begin_layout Enumerate
+On va pouvoir appliquer ce phénomène à la simulation de la formation d'un
+ gel d'altération.
+ On va utiliser les mêmes paramètres thermodynamiques qu'avant.
+ Pour la diffusion, on n'utilise pas la méthode de diffusion instantanée.
+ Pour la milieu initial, on va utiliser un verre homogène avec 70% de silicium
+ et 30% de bore, ce qui correspond aux compositions réelles.
+ Sur la simulation que je vais montrer, on trace la composition en eau en
+ échelle log.
+ Le noir correspond à une composition proche de 1, donc la phase liquide.
+ Le blanc à une composition de 0 dans le verre.
+ Le bleu correspond à de l'eau dans la phase solide.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Lancer la vidéo.
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Au début, l'eau diffuse de manière uniforme dans le verre.
+ Puis, quand une composition suffisante est atteinte, l'eau va former de
+ la porosité liquide, que l'on voit en noir dans le verre.
+ On remarque que ces pores se déplacent et se réorganisent rapidement dans
+ la couche altérée.
+\begin_inset Newline newline
+\end_inset
+
+Qualitativement, on a une simulation qui ressemble beaucoup aux images de
+ gel d'altération que l'on peut obtenir en laboratoire.
+\begin_inset Newline newline
+\end_inset
+
+Comme on a obtenu une couche poreuse assez conséquente, on peut s’intéresser
+ à son impact sur la mobilité des composants dans la couche altérée.
+\end_layout
+
+\begin_layout Enumerate
+Pour ça, je trace ici la composition en eau moyennée dans la direction verticale.
+ On remarque dans la partie verre hydraté que le profil est bien en erfc.
+ Dans la partie gel, on a un profil de diffusion linéaire, qui indique une
+ diffusion très rapide, on peut estimer le coefficient de diffusion apparent
+ de l'eau à environ 40 fois celui de l'eau dans le verre.
+ Cette mobilité élevée permet le transport de bore depuis le verre non altérée
+ vers l'extérieur à travers la couche de gel, et donc l'altération continue
+ du verre en profondeur.
+\begin_inset Newline newline
+\end_inset
+
+Cette mobilité élevée s'explique par la mobilité de la porosité que l'on
+ a pu observée dans la simulation.
+\end_layout
+
+\begin_layout Enumerate
+On peut remarquer que cette mobilité se fait par trois mécanismes:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Le mécanisme classique de mûrissement d'Ostwald.
+\end_layout
+
+\begin_layout Enumerate
+Un mécanisme moins classique, la migration par dissolution/reprécipitation.
+ Cela est dû au gradient de composition en eau dans le verre.
+ Ce gradient provoque la dissolution du côté droit des pores, et la précipitatio
+n du côté gauche.
+ Visuellement, on voit la porosité 
+\begin_inset Quotes fld
+\end_inset
+
+glisser
+\begin_inset Quotes frd
+\end_inset
+
+ vers la droite.
+\end_layout
+
+\begin_layout Enumerate
+Le troisième mécanisme est plus original.
+ Je le qualifie de chaînage de nucléation-coalescence.
+ Lorsque qu'on a une zone sans porosité à droite d'un pore existant, il
+ va y avoir la nucléation d'un nouveau pore qui va se produire à droite.
+ Le pore de gauche va ensuite être absorbé par celui de droite.
+ Ce processus va se répéter plusieurs fois de suite rapidement, amenant
+ la porosité à migrer vers l'extérieur du verre, évacuant ainsi le bore
+ dissous qui était présent dans l'eau porale.
+\end_layout
+
+\begin_layout Enumerate
+On observe ces mécanismes de réorganisation de la porosité dans nos simulations,
+ mais il n'y a pas de données à ma connaissance sur les gels d'altération
+ qui permettent de valider ces phénomènes.
+ Il serait assez compliqué d'observer l'évolution de la porosité du gel
+ au vu des échelles de temps et d'espaces sur lesquelles ces phénomènes
+ se produisent.
+ Si ces méthodes de simulations permettent d'obtenir des résultats macro
+ satisfaisant, il pourra être intéressant de s'intéresser à ces phénomènes
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Conclusion:
+\begin_inset Newline newline
+\end_inset
+
+Pour conclure cette présentation, je résume les principaux résultats obtenus
+ pendant cette thèse.
+ Nous avons proposé 2 méthodes permettant de simuler la formation de porosité
+ dans un solide par dissolution.
+ Nous avons montré que ces méthodes sont applicables à la simulation de
+ la formation des gels d'altération dans les verres de stockages, en terme
+ d'échelle de temps et d'espace que l'on peut simuler.
+\begin_inset Newline newline
+\end_inset
+
+Nous avons réalisé une étude théorique du phénomène d'instabilité d'interface,
+ pour montrer sa validité physique afin de l'appliquer à la formation d'un
+ milieu poreux.
+ Et enfin, j'ai réalisé des développements importants dans l'outil LBM_saclay
+ qui devraient se pérenniser.
+ 
+\begin_inset Newline newline
+\end_inset
+
+En terme de perspective de poursuite de ces travaux, je pense que le principal
+ objectif pour la suite est de chercher à appliquer les méthodes développées
+ à des cas plus concrets pour valider par comparaison à l'expérimental ou
+ à d'autres approches de modélisation.
+\begin_inset Newline newline
+\end_inset
+
+Il pourrait aussi être intéressant de poursuivre l'étude des instabilités
+ thermodynamiques.
+ En particulier, une question importante à laquelle je n'ai pas répondu
+ est 
+\begin_inset Quotes fld
+\end_inset
+
+Pourquoi et comment la nucléation se déclenche-t-elle dans le modèle d'Allen-Cah
+n ?
+\begin_inset Quotes frd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Merci !
+\end_layout
+
+\end_body
+\end_document

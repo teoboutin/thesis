@@ -1,0 +1,154 @@
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[x={(0.8cm,0cm)}, y={(0cm,0.8cm)}, z={(-3.85mm, -3.85mm)}, scale=1.85,every node/.style={transform shape}]
+\def\rayon{4}
+
+%styledesnœuds
+\tikzstyle{textLine}=[rectangle, text=black]
+\tikzstyle{textw}=[rectangle, text=black]
+\tikzstyle{pointx}=[circle, fill, scale=0.2]
+\tikzstyle{vector}=[-stealth,thin]
+
+
+%local normal base
+\coordinate (00) at (0,0);
+\coordinate (p1) at (210:\rayon);
+\coordinate (p2) at (330:\rayon);
+\coordinate (p3) at (90:\rayon);
+
+\coordinate (C1) at (330:\rayon);
+\coordinate (C2) at (90:\rayon);
+\coordinate (C3) at (210:\rayon);
+
+\newcommand{\defTernaryCoord}[3]{
+\coordinate (#3) at ($(C3)!#1!(C1)+(C3)!#2!(C2)-(C3)$);
+}
+
+% input C0A, C0B, C1A, C1B, zeta (tie line parameter, in [0,1])
+\newcommand{\drawTieLine}[5]{
+\draw ($(#1)!#5!(#2)$) -- ($(#3)!#5!(#4)$);
+\coordinate (TieLineS) at ($(#1)!#5!(#2)$);
+\coordinate (TieLineL) at ($(#3)!#5!(#4)$);
+}
+%~ \newcommand{\getTernaryCoord}[3]{
+%~ \coordinate (#3) at ($(C3)!#1!(C1)+(C1)!#2!(C2)$);
+%~ }
+%(C2)!\pgfmathresult!(C3)-(C2)
+
+%triangle
+\draw (C1) -- (C2) -- (C3) -- (C1);
+\draw[-stealth] (C1) -- ($(C3)!1.03!(C1)$);
+\draw[-stealth] (C2) -- ($(C1)!1.03!(C2)$);
+\draw[-stealth] (C3) -- ($(C2)!1.03!(C3)$);
+
+% legend
+\def\colorCone{black}
+\def\colorCtwo{black}
+\def\colorCthree{black}
+%~ \node[textLine,rotate=0] (t) at ($(p1)!0.5!(p2)+(-90:1)$) {$C_1$};
+%~ \node[textLine,rotate=0] (t) at ($(p2)!0.5!(p3)+(30:1)$) {$C_2$};
+%~ \node[textLine,rotate=0] (t) at ($(p3)!0.5!(p1)+(150:1)$) {$C_3$};
+
+\node[textLine,rotate=0,color=\colorCone] (t) at ($(p2)+(-30:0.5)$) {$C_1$};
+\node[textLine,rotate=0,color=\colorCtwo] (t) at ($(p3)+(90:0.5)$) {$C_2$};
+\node[textLine,rotate=0,color=\colorCthree] (t) at ($(p1)+(240:0.5)$) {$C_3$};
+
+% ticks
+\def\ticklength{3pt}
+\edef\ticks{0.1,0.2}
+\foreach \t in {1,...,10} {
+\draw[color=\colorCone] ($(C3)!\t/10!(C1)$) -- ($(C3)!\t/10!(C1)+(-120:\ticklength)$);
+\draw[dotted,color=black] ($(C3)!\t/10!(C1)$) -- ($(C2)!\t/10!(C1)$);
+
+\pgfmathparse{\t/10}
+\node[rotate=60, anchor=east, inner sep=0, scale=0.5] at ($(C3)!\t/10!(C1)+(-120:\ticklength)$) {\pgfmathprintnumber[fixed,precision=1]{\pgfmathresult}};
+
+
+\draw[dashed,color=\colorCtwo] ($(C1)!\t/10!(C2)$) -- ($(C1)!\t/10!(C2)+(0:\ticklength)$);
+\draw[dotted,color=black] ($(C1)!\t/10!(C2)$) -- ($(C3)!\t/10!(C2)$);
+
+\node[anchor=west, inner sep=0, scale=0.5] at ($(C1)!\t/10!(C2)+(0:\ticklength)$) {\pgfmathprintnumber[fixed,precision=1]{\pgfmathresult}};
+
+\draw[dashed,color=\colorCthree] ($(C2)!\t/10!(C3)$) -- ($(C2)!\t/10!(C3)+(120:\ticklength)$);
+\draw[dotted,color=black] ($(C2)!\t/10!(C3)$) -- ($(C1)!\t/10!(C3)$);
+
+\node[rotate=-60, anchor=east, inner sep=0, scale=0.5] at ($(C2)!\t/10!(C3)+(120:\ticklength)$) {\pgfmathprintnumber[fixed,precision=1]{\pgfmathresult}};
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Thermo definition
+
+% def phase diagram
+\def\CalphaOne{0.3}
+\def\CalphaTwo{0.4}
+
+\def\CbetaOne{0.7}
+
+\pgfmathparse{\CalphaTwo-\CalphaOne+\CbetaOne}
+\edef\CbetaTwo{\pgfmathresult}
+
+
+% C0 coords
+\defTernaryCoord{\CalphaOne}{0}{Calpha13}
+\defTernaryCoord{0}{\CalphaTwo}{Calpha23}
+%~ \coordinate (Calpha13) at ($(C3)!\CalphaA!(C1)$);
+
+\coordinate (Cbeta13) at ($(p1)!\CbetaOne!(p2)$);
+\coordinate (Cbeta23) at ($(p1)!\CbetaTwo!(p3)$);
+
+% %circle C0 coords
+% \draw (Calpha13) circle (3pt);
+% \draw (Calpha23) circle (3pt);
+% \draw (Cbeta13) circle (3pt);
+% \draw (Cbeta23) circle (3pt);
+
+%plot phase frontiers
+\draw[color=black] (Calpha13) -- (Calpha23);
+\draw[color=black] (Cbeta13) -- (Cbeta23);
+
+%add phase legend
+
+\defTernaryCoord{0.57}{0.3}{phase0}
+\defTernaryCoord{0.1}{0.1}{phase1}
+\node[scale=0.5,align=center] at (phase0) {Phase 0\\ (solide)};
+\node[scale=0.5,align=center] at (phase1) {Phase 1\\ (liquide)};
+
+
+
+
+% plot some tielines
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.6}
+
+
+% plot init compos
+\defTernaryCoord{0.666}{0.066}{Clinf}
+\defTernaryCoord{0.03}{0.32}{Csinf}
+\draw[fill] (Clinf) circle (1pt);
+\draw[fill] (Csinf) circle (1pt);
+
+
+\defTernaryCoord{0.55}{0.0666}{pB}
+
+\draw[fill] (pB) circle (0.5pt);
+\draw[dashed] (Clinf) -- (pB);
+
+\draw[fill] (TieLineL) circle (0.5pt);
+\draw[dashed] (pB) -- (TieLineL);
+
+\draw[fill] (TieLineS) circle (0.5pt);
+\draw[dashed] (TieLineS) -- (Csinf);
+
+\node[scale=0.5, anchor=south west] at ($(Clinf)$) {A};
+\node[scale=0.5, anchor=south west] at ($(pB)$) {B};
+\node[scale=0.5, anchor=south west] at ($(TieLineL)$) {C};
+\node[scale=0.5, anchor=north west] at ($(TieLineS)$) {D};
+\node[scale=0.5, anchor=north east] at ($(Csinf)$) {E};
+
+\end{tikzpicture}
+
+

@@ -1,0 +1,6 @@
+--output html 
+--dict ./dico.txt
+--ignore sh:nobreak,sh:seclen,sh:secskip,sh:012
+--remove-macros og,fg,fxnote,index,footfullcite,citetitle,setcounter,chapterPartialToc,def,qtysiux,numsiux,tensor,long,subsecref,global,expnotation,ch,foreignlanguage
+--remove anfxnote,subequations,multline,dummyenv
+--check fr ./dummy.tex
