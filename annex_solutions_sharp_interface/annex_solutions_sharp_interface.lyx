@@ -1,0 +1,2386 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass mythesis
+\use_default_options true
+\master ../main.lyx
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 5
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type numerical
+\biblio_style unsrtnat
+\biblio_options sorting=none,backref=true,url=false
+\biblatex_bibstyle numeric
+\biblatex_citestyle numeric
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch todos
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter3only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter4only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1in
+\rightmargin 1.25in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Solutions analytiques aux problèmes de Stefan ternaires
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Solutions analytiques aux problèmes de Stefan
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "annex:solution_analytique_sharp_ternaire"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapterPartialToc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex macros
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset include
+LatexCommand input
+filename "macros.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dans cette annexe, nous allons dériver les solutions analytiques pour 2
+ problèmes de Stefan unidimensionnels:
+\end_layout
+
+\begin_layout Itemize
+Le cas standard à 2 phases, pour un système ternaire.
+ 
+\end_layout
+
+\begin_layout Itemize
+Un problème de Stefan à 4 phases, également en ternaire.
+ Dans ce cas, nous considérerons un domaine 1D infini séparé en 4 par 3
+ interfaces.
+ Nous considérerons que ces 4 domaines correspondent à une de 2 phase possible
+ de manière alterné, c'est-à dire s-l-s-l pour les phases solides et liquides,
+ mais les solutions obtenues sont valides pour des phases quelconques.
+\end_layout
+
+\begin_layout Standard
+Nous calculerons également les variations d'énergies de grand-potentiels
+ associées aux solutions analytiques.
+\end_layout
+
+\begin_layout Standard
+Ces résultats sont utilisées pour étudier les instabilités thermodynamiques
+ dans les couple de diffusion ternaire dans le Chapitre 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:insta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Problème de Stefan à deux régions
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:solution_analytique_sharp_ternaire_1int"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le problème de Stefan 1D à 2 phases est un cas test numérique très standard.
+ Il est également utilisé expérimentalement pour déterminer des coefficients
+ de diffusion.
+ Il s'agit d'un cas test 1D dans un domaine infini, séparé en 2 phases distincts
+ par une interface mobile initialement situé en 
+\begin_inset Formula $x=0$
+\end_inset
+
+.
+ Dans chacune des phases, on définit un champ de composition régit par une
+ équation de diffusion et une condition de Dirichlet (composition imposée)
+ à l'infini.
+ Le déplacement de l'interface est régit par les conditions de couplage
+ des 2 phases, qui sont composées d'une condition d'égalité des flux de
+ diffusion à l'interface (condition de Stefan) et d'une condition d'équilibre
+ thermodynamique (condition de Gibbs-Thomson).
+ 
+\end_layout
+
+\begin_layout Standard
+Dans le cas d'un système ternaire, chaque phase contient 2 champs de composition
+, ce qui dédouble toutes les équations et conditions limites (sauf la condition
+ d'équilibre thermodynamique).
+\end_layout
+
+\begin_layout Standard
+On peut trouver des solutions analytique pour ce cas test dans 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Maugis1997"
+literal "false"
+
+\end_inset
+
+.
+ Nous allons les dériver à nouveau dans cette annexe pour la complétion
+ du manuscrit, et pour avoir des notations cohérentes avec le reste du document.
+\end_layout
+
+\begin_layout Subsection
+Modèle à interface nette
+\end_layout
+
+\begin_layout Standard
+Comme décrit en Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:instability_stefan_std"
+
+\end_inset
+
+, le modèle à interface nette s'écrit
+\end_layout
+
+\begin_layout Subeqs
+\begin_inset Formula 
+\begin{align}
+\partial_{t}C_{\alpha}^{\Phi} & =\boldsymbol{\nabla}\cdot\left[D_{\alpha}^{\Phi}\boldsymbol{\nabla}C_{\alpha}^{\Phi}\right] &  & \text{dans la phase }\Phi\label{eq:annex_model_sharp_1int_diff}\\
+\mu_{\alpha}^{s} & =\mu_{\alpha}^{l}=\mu_{\alpha}^{co} &  & \text{à l'interface}\label{eq:annex_model_sharp_1int_chempot_c0}\\
+\dphi\omega\left(\mu_{1}^{co},\mu_{2}^{co}\right) & =0 &  & \text{à l'interface}\label{eq:annex_model_sharp_1int_chem_eq}\\
+\frac{\partial x_{I}}{\partial t}\left(C_{\alpha}^{l,co}-C_{\alpha}^{s,co}\right) & =-\left(D_{\alpha}^{l}\boldsymbol{\nabla}_{n}C_{\alpha}^{l}-D_{\alpha}^{s}\boldsymbol{\nabla}_{n}C_{\alpha}^{s}\right) &  & \text{à l'interface}\label{eq:annex_model_sharp_1int_stefan}\\
+C_{\alpha}^{\Phi} & =C_{\alpha}^{\Phi,co}=C_{\alpha}^{\Phi}\left(\mu_{\alpha}^{co}\right) &  & \text{à l'interface}\label{eq:annex_model_sharp_1int_comp_int_bdy}\\
+C_{\alpha}^{\Phi} & =C_{\alpha}^{\Phi,\infty} &  & \text{à l'infini}\label{eq:annex_model_sharp_1int_comp_inf_bdy}\\
+x_{I}\left(t=0\right) & =0
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Les inconnues de ce système sont 
+\begin_inset Formula $C_{\alpha}^{\Phi}\left(x,t\right)$
+\end_inset
+
+ et 
+\begin_inset Formula $x_{I}\left(t\right)$
+\end_inset
+
+.
+ Les potentiels chimiques découleront directement des compositions.
+\end_layout
+
+\begin_layout Subsection
+Résolution
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:solution_analytique_sharp_ternaire_1int_reso"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On cherche donc les solutions 
+\begin_inset Formula $C_{\alpha}^{\Phi}$
+\end_inset
+
+ sous la forme d'un profil de diffusion classique pour une équation de diffusion
+ 1D
+\begin_inset Formula 
+\begin{equation}
+C_{\alpha}^{\Phi}\left(x,t\right)=A_{\alpha}^{\Phi}+B_{\alpha}^{\Phi}\text{erfc}\left(\frac{s_{\Phi}x}{2\sqrt{D_{\alpha}^{\Phi}t}}\right)\label{eq:annex_diff_profil_general}
+\end{equation}
+
+\end_inset
+
+avec 
+\begin_inset Formula $s_{\Phi}=\delta_{\Phi,l}-\delta_{\Phi,s}$
+\end_inset
+
+ où les coefficients 
+\begin_inset Formula $A_{\alpha}^{\Phi}$
+\end_inset
+
+ et 
+\begin_inset Formula $B_{\alpha}^{\Phi}$
+\end_inset
+
+ sont constants.
+\end_layout
+
+\begin_layout Standard
+Pour commencer, on peut facilement déterminer les 
+\begin_inset Formula $A_{\alpha}^{\Phi}$
+\end_inset
+
+ en évaluant 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_diff_profil_general"
+
+\end_inset
+
+ aux conditions limites à l'infini, ce qui donne simplement
+\begin_inset Formula 
+\[
+A_{\alpha}^{\Phi}=C_{\alpha}^{\Phi,\infty}
+\]
+
+\end_inset
+
+Ensuite, on utilise la condition limite à l'interface 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_model_sharp_1int_comp_int_bdy"
+
+\end_inset
+
+, ce qui nous donne
+\begin_inset Formula 
+\[
+C_{\alpha}^{\Phi}\left(x_{I}\left(t\right),t\right)=C_{\alpha}^{\Phi,\infty}+B_{\alpha}^{\Phi}\text{erfc}\left(\frac{s_{\Phi}x_{I}\left(t\right)}{2\sqrt{D_{\alpha}^{\Phi}t}}\right)=C_{\alpha}^{\Phi,co}
+\]
+
+\end_inset
+
+Dans le cas classique du problème de Stefan en thermique, ou bien en composition
+ pour un système binaire, un seul équilibre thermodynamique est possible.
+ La condition d'équilibre thermodynamique impose donc que la température
+ ou composition à l'interface est constante, et cela permet de déterminer
+ le profil de composition.
+ Dans notre cas, nous avons plusieurs équilibres thermodynamiques possibles,
+ ce qui empêche l'utilisation de la méthode usuelle.
+\end_layout
+
+\begin_layout Standard
+Nous allons donc devoir justifier que l'équilibre thermodynamique à l'interface
+ reste le même au cours de l'évolution temporelle.
+ Pour voir cela, il suffit de remarquer que la condition de Stefan 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_model_sharp_1int_stefan"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ revient à considérer que les flux de composition à travers l'interface
+ par mouvement de l'interface et par diffusion vers (ou depuis) l'interface
+ se compensent exactement.
+ Dans cette condition, la composition à l'interface est donc nécessairement
+ constante.
+\end_layout
+
+\begin_layout Standard
+Tout les termes de la dernière équation obtenue étant constants, cela permet
+ de conclure que l'argument de la fonction 
+\begin_inset Formula $\erfc$
+\end_inset
+
+ est constant, et on peut alors écrire 
+\begin_inset Formula 
+\begin{equation}
+x_{I}\left(t\right)=\xi\sqrt{t}\label{eq:annex_sol_x_sqrt_time}
+\end{equation}
+
+\end_inset
+
+avec 
+\begin_inset Formula $\xi$
+\end_inset
+
+ une constante inconnue.
+ On peut également exprimer les coefficients 
+\begin_inset Formula $B_{\alpha}^{\Phi}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+B_{\alpha}^{\Phi}=\frac{C_{\alpha}^{\Phi,co}-C_{\alpha}^{\Phi,\infty}}{\text{erfc}\left(s_{\Phi}\xi/2\sqrt{D_{\alpha}^{\Phi}}\right)}
+\]
+
+\end_inset
+
+Dans la suite, nous allons introduire les coordonnées réduites
+\begin_inset Formula 
+\begin{align*}
+\theta & =x/\sqrt{t}\\
+\theta_{I} & =x_{I}\left(t\right)/\sqrt{t}=\xi
+\end{align*}
+
+\end_inset
+
+qui permettent d'exprimer les solutions plus simplement, en remarquant qu'elles
+ sont constantes dans ce système de paramètres.
+\end_layout
+
+\begin_layout Standard
+Pour résumer ces premières étapes, nous avons déterminé les profils de compositi
+on sous la forme
+\begin_inset Formula 
+\begin{equation}
+C_{\alpha}^{\Phi}=C_{\alpha}^{\Phi,\infty}+\left(C_{\alpha}^{\Phi,co}-C_{\alpha}^{\Phi,\infty}\right)\frac{\text{erfc}\left(s_{\Phi}\theta/2\sqrt{D_{\alpha}^{\Phi}}\right)}{\text{erfc}\left(s_{\Phi}\xi/2\sqrt{D_{\alpha}^{\Phi}}\right)}\label{eq:diff_couple_sol_C}
+\end{equation}
+
+\end_inset
+
+dans laquelle les inconnues restantes sont les compositions à l'interface
+ 
+\begin_inset Formula $C_{\alpha}^{\Phi,co}$
+\end_inset
+
+ et la position de l'interface 
+\begin_inset Formula $\lambda_{I}=\xi/2$
+\end_inset
+
+.
+ Les 4 inconnues de compositions 
+\begin_inset Formula $C_{\alpha}^{\Phi,co}$
+\end_inset
+
+ peuvent en pratique être réduites aux 2 potentiels chimiques inconnus 
+\begin_inset Formula $\mu_{\alpha}^{co}$
+\end_inset
+
+, qui sont reliés entre eux par 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_model_sharp_1int_chem_eq"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Conservation du flux
+\end_layout
+
+\begin_layout Standard
+On utilise ensuite la condition de Stefan 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_model_sharp_1int_stefan"
+
+\end_inset
+
+ en y injectant les résultats précédents 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_sol_x_sqrt_time"
+
+\end_inset
+
+ et 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff_couple_sol_C"
+
+\end_inset
+
+.
+ On obtient
+\begin_inset Formula 
+\[
+\frac{\xi}{2\sqrt{t}}\left(C_{\alpha}^{l,co}-C_{\alpha}^{s,co}\right)=D_{\alpha}^{l}B_{\alpha}^{l}\frac{1}{\sqrt{\pi D_{\alpha}^{l}t}}e^{-\left(\xi/2\sqrt{D_{\alpha}^{l}}\right)^{2}}+D_{\alpha}^{s}B_{\alpha}^{s}\frac{1}{\sqrt{\pi D_{\alpha}^{s}t}}e^{-\left(-\xi/2\sqrt{D_{\alpha}^{s}}\right)^{2}}
+\]
+
+\end_inset
+
+ce qui se simplifie en 
+\begin_inset Formula 
+\[
+\xi\left(C_{\alpha}^{l,co}-C_{\alpha}^{s,co}\right)=\left[C_{\alpha}^{l,co}-C_{\alpha}^{l,\infty}\right]u_{\alpha}^{l}\left(\xi\right)+\left[C_{\alpha}^{s,co}-C_{\alpha}^{s,\infty}\right]u_{\alpha}^{s}\left(\xi\right)
+\]
+
+\end_inset
+
+où on a défini les fonctions 
+\begin_inset Formula $u_{\alpha}^{\Phi}$
+\end_inset
+
+ par
+\begin_inset Formula 
+\begin{equation}
+u_{\alpha}^{\Phi}\left(\xi\right)=2\sqrt{\frac{D_{\alpha}^{\Phi}}{\pi}}\frac{\exp\left(-\frac{\xi^{2}}{4D_{\alpha}^{\Phi}}\right)}{\text{erfc}\left(\frac{s_{\Phi}\xi}{2\sqrt{D_{\alpha}^{\Phi}}}\right)}\label{eq:annex_solution_1int_fct_u}
+\end{equation}
+
+\end_inset
+
+Pour être plus explicite, on écrit les 2 équations pour les 2 composants
+ sous la forme
+\end_layout
+
+\begin_layout Subeqs
+\begin_inset Formula 
+\begin{align}
+\xi\left(C_{1}^{l,co}-C_{1}^{s,co}\right) & =\left[C_{1}^{l,co}-C_{1}^{l,\infty}\right]u_{1}^{l}\left(\xi\right)+\left[C_{1}^{s,co}-C_{1}^{s,\infty}\right]u_{1}^{s}\left(\xi\right)\label{eq:1Dsharp_transcendental_eq_A}\\
+\xi\left(C_{2}^{l,co}-C_{2}^{s,co}\right) & =\left[C_{2}^{l,co}-C_{2}^{l,\infty}\right]u_{2}^{l}\left(\xi\right)+\left[C_{2}^{s,co}-C_{2}^{s,\infty}\right]u_{2}^{s}\left(\xi\right)\label{eq:1Dsharp_transcendental_eq_B}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On a donc 3 inconnues 
+\begin_inset Formula $\xi$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{1}^{co}$
+\end_inset
+
+ et 
+\begin_inset Formula $\mu_{2}^{co}$
+\end_inset
+
+ et 2 équations.
+ Il nous reste une équation à utiliser, l'équilibre thermodynamique 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_model_sharp_1int_chem_eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Pour simplifier les équations, nous allons utiliser le paramétrage des
+ équilibres thermodynamiques défini en Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:model_ternary_dilute_parametrization"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Reformulation avec 
+\begin_inset Formula $\zeta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nous allons donc injecter les relations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dilute_CAlco"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dilute_CBsco"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) dans (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1Dsharp_transcendental_eq_A"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1Dsharp_transcendental_eq_B"
+
+\end_inset
+
+), ce qui donne les équations
+\end_layout
+
+\begin_layout Subeqs
+\begin_inset Formula 
+\begin{align}
+\xi\left(C_{1}^{l,0}-C_{1}^{s,0}\right)\zeta & =\left[\zeta C_{1}^{l,0}-C_{1}^{l,\infty}\right]u_{1}^{l}\left(\xi\right)+\left[\zeta C_{1}^{s0}-C_{1}^{s,\infty}\right]u_{1}^{s}\left(\xi\right)\\
+\xi\left(C_{2}^{l,0}-C_{2}^{s,0}\right)\left(1-\zeta\right) & =\left[\left(1-\zeta\right)C_{2}^{l,0}-C_{2}^{\infty}\right]u_{A}^{l}\left(\xi\right)+\left[\left(1-\zeta\right)C_{2}^{s,0}-C_{2}^{s,\infty}\right]u_{2}^{s}\left(\xi\right)
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On remarque que ces équations sont linéaires en 
+\begin_inset Formula $\zeta$
+\end_inset
+
+, ce qui permet d'en extraire assez facilement une unique équation avec
+ 
+\begin_inset Formula $\xi$
+\end_inset
+
+ comme unique inconnue.
+ Cependant, elles sont solvables numériquement sous cette forme, il n'est
+ donc pas nécessaire d'effectuer cette reformulation.
+\end_layout
+
+\begin_layout Standard
+Le système d'équations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1Dsharp_transcendental_eq_A"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1Dsharp_transcendental_eq_B"
+
+\end_inset
+
+) couplé avec 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_model_sharp_1int_chem_eq"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ est d'ailleurs également solvable numériquement de manière efficace, mais
+ la reformulation permet d'obtenir directement le paramètre 
+\begin_inset Formula $\zeta$
+\end_inset
+
+, ce qui est plus naturel.
+\end_layout
+
+\begin_layout Subsection
+Calcul de la variation d'énergie
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:annex_stefan_2p_energy"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On souhaite calculer la variation d'énergie de grand-potentiel au cours
+ du temps dans la solution analytique précédemment obtenue.
+ Cette variation se définie par
+\begin_inset Formula 
+\[
+\Delta\Omega=\Omega\left(t\right)-\Omega\left(0\right)
+\]
+
+\end_inset
+
+avec 
+\begin_inset Formula 
+\[
+\Omega\left(t\right)=\int_{-\infty}^{x_{I}\left(t\right)}\omega^{s}\left(x,t\right)dx+\int_{x_{I}\left(t\right)}^{\infty}\omega^{l}\left(x,t\right)dx
+\]
+
+\end_inset
+
+On remarque qu'on travaille en 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ car le modèle est exprimé sur un domaine infini, et les intégrales de 
+\begin_inset Formula $\omega^{\Phi}$
+\end_inset
+
+ ne convergent pas (elles divergent même grossièrement, car les valeurs
+ de 
+\begin_inset Formula $\omega^{\Phi}$
+\end_inset
+
+ ne tendent pas vers 
+\begin_inset Formula $0$
+\end_inset
+
+ à l'infini).
+\end_layout
+
+\begin_layout Standard
+On écrira de manière interchangeable les grands-potentiels 
+\begin_inset Formula $\omega^{\Phi}$
+\end_inset
+
+ en fonction du temps et de l'espace, des potentiels chimiques ou des compositio
+ns.
+ Les profils étant invariant dans le système de coordonnée réduite 
+\begin_inset Formula $\theta$
+\end_inset
+
+, on pourra également les exprimés en fonction de 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ sans ambiguïté.
+ On notera donc
+\begin_inset Formula 
+\[
+\omega^{\Phi}\left(\theta\right)=\omega^{\Phi}\left(x,t\right)=\omega^{\Phi}\left(\mu_{1}\left(x,t\right),\mu_{2}\left(x,t\right)\right)=\omega^{\Phi}\left(C_{1}\left(x,t\right),C_{2}\left(x,t\right)\right)
+\]
+
+\end_inset
+
+On notera de même 
+\begin_inset Formula $x_{I}=x_{I}\left(t\right)$
+\end_inset
+
+ pour simplifier.
+\end_layout
+
+\begin_layout Standard
+On commence par regrouper les intégrales de sortes à obtenir des intégrales
+ convergentes
+\begin_inset Formula 
+\begin{align*}
+\Delta\Omega & =\left[\int_{-\infty}^{x_{I}}\omega^{s}\left(x,t\right)+\int_{x_{I}}^{\infty}\omega^{l}\left(x,t\right)\right]-\left[\int_{-\infty}^{0}\omega^{s,\infty}+\int_{0}^{\infty}\omega^{l,\infty}\right]\\
+ & =\left[\int_{-\infty}^{x_{I}}\omega^{s}\left(x,t\right)+\int_{x_{I}}^{\infty}\omega^{l}\left(x,t\right)\right]-\left[\int_{-\infty}^{x_{I}}\omega^{s,\infty}+\int_{x_{I}}^{0}\omega^{s,\infty}+\int_{0}^{x_{I}}\omega^{l,\infty}+\int_{x_{I}}^{\infty}\omega^{l,\infty}\right]\\
+ & =\left[\int_{-\infty}^{x_{I}}\left(\omega^{s}\left(x,t\right)-\omega^{s,\infty}\right)\right]+\left[\int_{x_{I}}^{\infty}\left(\omega^{l}\left(x,t\right)-\omega^{l,\infty}\right)\right]-\left[\int_{x_{I}}^{0}\omega^{s,\infty}+\int_{0}^{x_{I}}\omega^{l,\infty}\right]\\
+ & =\left[\int_{-\infty}^{x_{I}}\left(\omega^{s}\left(x,t\right)-\omega^{s,\infty}\right)\right]+\left[\int_{x_{I}}^{\infty}\left(\omega^{l}\left(x,t\right)-\omega^{l,\infty}\right)\right]-x_{I}\dphi\omega^{\Phi,\infty}
+\end{align*}
+
+\end_inset
+
+où on a noté 
+\begin_inset Formula $\omega^{\Phi}\left(x,0\right)=\omega^{\Phi,\infty}$
+\end_inset
+
+ car les conditions initiales sont constantes, égales aux conditions à l'infini.
+\end_layout
+
+\begin_layout Standard
+Ensuite, on effectue un changement de variable dans les intégrales pour
+ faire apparaître la coordonnée réduite 
+\begin_inset Formula $\lambda$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\Delta\Omega & =\sqrt{t}\left\{ \left[\int_{-\infty}^{\xi}\left(\omega^{s}\left(\lambda\right)-\omega^{s,\infty}\right)\right]+\left[\int_{\xi}^{\infty}\left(\omega^{l}\left(\lambda\right)-\omega^{l,\infty}\right)\right]-\xi\dphi\omega^{\Phi,\infty}\right\} 
+\end{align*}
+
+\end_inset
+
+Puis on remplace les expressions des grands-potentiels pour faire apparaître
+ les compositions, que l'on regroupe entre composant et phase
+\begin_inset Formula 
+\begin{align*}
+\Delta\Omega & =\sqrt{t}\left\{ \int_{-\infty}^{\xi}\left[f_{3}^{s}-C_{1}^{s}-C_{2}^{s}-\left(f_{3}^{s}-C_{1}^{s,\infty}-C_{2}^{s,\infty}\right)\right]d\theta+\int_{\xi}^{\infty}\left[\omega-\omega^{l}\right]d\theta-\xi\left(\omega^{l,\infty}-\omega^{s,\infty}\right)\right\} \\
+ & =\sqrt{t}\left\{ \int_{-\infty}^{\xi}\left[C_{1}^{s,\infty}-C_{1}^{s}+C_{2}^{s,\infty}-C_{2}^{s}\right]d\theta+\int_{\xi}^{\infty}\left[C_{1}^{l,\infty}-C_{1}^{l}+C_{2}^{l,\infty}-C_{2}^{l}\right]d\theta\right.\\
+ & \quad\quad\quad\quad\quad\left.-\xi\left(\dphi\varepsilon_{3}-\dphi C_{1}^{\infty}-\dphi C_{2}^{\infty}\right)\vphantom{\int_{-\infty}^{\xi}\left[C_{1}^{s,\infty}-C_{1}^{s}+C_{2}^{s,\infty}-C_{2}^{s}\right]}\right\} 
+\end{align*}
+
+\end_inset
+
+Pour simplifier les expressions dans la suite, on va séparer en 4 intégrales
+ 
+\begin_inset Formula $I_{\alpha}^{\Phi}$
+\end_inset
+
+ correspondant à chaque phase et composant, définies par
+\begin_inset Formula 
+\begin{align*}
+I_{\alpha}^{s} & =\int_{-\infty}^{\xi}\left[C_{\alpha}^{s,\infty}-C_{\alpha}^{s}\right]d\theta & I_{\alpha}^{l} & =\int_{\xi}^{\infty}\left[C_{\alpha}^{l,\infty}-C_{\alpha}^{l}\right]d\theta
+\end{align*}
+
+\end_inset
+
+et on a
+\begin_inset Formula 
+\begin{equation}
+\Delta\Omega=\sqrt{t}\left\{ I_{1}^{s}+I_{2}^{s}+I_{1}^{l}+I_{2}^{l}-\xi\left(\dphi\varepsilon_{3}-\dphi C_{1}^{\infty}-\dphi C_{2}^{\infty}\right)\right\} \label{eq:solu_2phases_gp_var_intregrals}
+\end{equation}
+
+\end_inset
+
+On va pouvoir calculer ces intégrales en injectant les profils de composition
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:diff_couple_sol_C"
+
+\end_inset
+
+.
+ Pour cela, on a besoin d'une primitive de 
+\begin_inset Formula $\erfc$
+\end_inset
+
+, qui est donné par
+\begin_inset Formula 
+\begin{equation}
+\int\erfc\left(z\right)dz=z\erfc\left(z\right)-\frac{e^{-z^{2}}}{\sqrt{\pi}}+C\label{eq:erfc_primitive}
+\end{equation}
+
+\end_inset
+
+Pour simplifier le calcul des intégrales, on utilise les formules ci-dessous
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+On peut les obtenir avec l'outil Wolfram Alpha, voir 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.wolframalpha.com/input?i=integrate+erfc(-x)+from+-infinity+to+xi/(2sqr
+t(D))
+\end_layout
+
+\end_inset
+
+ et 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.wolframalpha.com/input?i=integrate+erfc(x)+from+xi/(2sqrt(D))+to+infin
+ity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Ces formules sont utilisées pour passer de la 2e à la 3e ligne dans chacun
+ des calculs.
+ 
+\end_layout
+
+\begin_layout Subeqs
+\begin_inset Formula 
+\begin{align}
+\int_{-\infty}^{\frac{\xi}{2\sqrt{D}}}\erfc\left(-\xi\right) & =\frac{1}{\sqrt{\pi}}e^{-\xi^{2}/\left(4D\right)}+\frac{\xi}{2\sqrt{D}}\erfc\left(\frac{-\xi}{2\sqrt{D}}\right)\label{eq:annex_sol_erfc_int_a}\\
+\int_{\frac{\xi}{2\sqrt{D}}}^{\infty}\erfc\left(\xi\right) & =\frac{1}{\sqrt{\pi}}e^{-\xi^{2}/\left(4D\right)}-\frac{\xi}{2\sqrt{D}}\erfc\left(\frac{\xi}{2\sqrt{D}}\right)\label{eq:annex_sol_erfc_int_b}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pour le calcul des intégrales du coté solide, on commence par faire un changemen
+t de variable pour simplifier l'intégrande, puis on calcule l'intégrale
+ avec la formule 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:annex_sol_erfc_int_a"
+
+\end_inset
+
+ , et on remplace le coefficient 
+\begin_inset Formula $B_{\alpha}^{s}$
+\end_inset
+
+.
+\begin_inset Formula 
+\begin{align*}
+I_{\alpha}^{s} & =\int_{-\infty}^{\xi}\left[-B_{\alpha}^{s}\text{erfc}\left(-\theta/\left(2\sqrt{D_{\alpha}^{s}}\right)\right)\right]d\theta\\
+ & =-2\sqrt{D_{\alpha}^{s}}B_{\alpha}^{s}\int_{-\infty}^{\xi/2\sqrt{D_{\alpha}^{s}}}\left[\text{erfc}\left(-\sigma\right)\right]d\sigma\\
+ & =-2\sqrt{D_{\alpha}^{s}}B_{\alpha}^{s}\left[\frac{\xi}{2\sqrt{D_{\alpha}^{s}}}\erfc\left(\frac{-\xi}{2\sqrt{D_{\alpha}^{s}}}\right)+\frac{1}{\sqrt{\pi}}e^{-\xi^{2}/\left(4D_{\alpha}^{s}\right)}\right]\\
+ & =-\left[C_{\alpha}^{s,co}-C_{\alpha}^{s,\infty}\right]\left[\xi+2\sqrt{\frac{D_{\alpha}^{s}}{\pi}}e^{-\xi^{2}/\left(4D_{\alpha}^{s}\right)}/\text{erfc}\left(\frac{-\xi}{2\sqrt{D_{\alpha}^{\Phi}}}\right)\right]\\
+ & =-\left[C_{\alpha}^{s,co}-C_{\alpha}^{s,\infty}\right]\left[\xi+u_{\alpha}^{s}\left(\xi\right)\right]
+\end{align*}
+
+\end_inset
+
+Pour le coté liquide, on effectue les mêmes étapes, et on obtient
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\begin{align*}
+I_{\alpha}^{l} & =\int_{\xi}^{\infty}\left[-B_{\alpha}^{l}\text{erfc}\left(\frac{\lambda}{2\sqrt{D_{\alpha}^{l}}}\right)\right]\\
+ & =-2\sqrt{D_{\alpha}^{l}}B_{\alpha}^{l}\int_{\xi/2\sqrt{D_{\alpha}^{l}}}^{\infty}\left[\text{erfc}\left(\sigma\right)\right]d\sigma\\
+ & =-B_{\alpha}^{l}2\sqrt{D_{\alpha}^{l}}\left[-\frac{\xi}{2\sqrt{D_{\alpha}^{l}}}\erfc\left(\frac{\xi}{2\sqrt{D_{\alpha}^{l}}}\right)+\frac{1}{\sqrt{\pi}}e^{-\xi^{2}/\left(4D_{\alpha}^{l}\right)}\right]\\
+ & =\left[C_{\alpha}^{l,co}-C_{\alpha}^{l,\infty}\right]\left[\xi-u_{\alpha}^{l}\left(\xi\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+I_{\alpha}^{l} & =\left[C_{\alpha}^{l,co}-C_{\alpha}^{l,\infty}\right]\left[\xi-u_{\alpha}^{l}\left(\xi\right)\right]
+\end{align*}
+
+\end_inset
+
+Au final, on va regrouper toutes ces intégrales dans 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:solu_2phases_gp_var_intregrals"
+
+\end_inset
+
+, ce qui donne
+\begin_inset Formula 
+\begin{multline}
+\frac{\Delta\Omega}{\sqrt{t}}=-\left[\vphantom{C_{1}^{l,co}}C_{1}^{s,co}-C_{1}^{s,\infty}\right]\left[\xi+u_{1}^{s}\left(\xi\right)\vphantom{u_{1}^{l}\left(\xi\right)}\right]-\left[\vphantom{C_{1}^{l,co}}C_{2}^{s,co}-C_{2}^{s,\infty}\right]\left[\xi+u_{2}^{s}\left(\xi\right)\vphantom{u_{1}^{l}\left(\xi\right)}\right]\\
++\left[C_{1}^{l,co}-C_{1}^{l,\infty}\right]\left[\xi-u_{1}^{l}\left(\xi\right)\right]+\left[C_{2}^{l,co}-C_{2}^{l,\infty}\right]\left[\xi-u_{2}^{l}\left(\xi\right)\right]\\
+-\xi\left(\dphi\varepsilon_{3}-\dphi C_{1}^{\infty}-\dphi C_{2}^{\infty}\right)
+\end{multline}
+
+\end_inset
+
+On peut alors regrouper les coefficients par composition de la manière suivante
+\begin_inset Formula 
+\begin{multline}
+\frac{\Delta\Omega}{\sqrt{t}}=\xi\left(C_{1}^{l,co}-C_{1}^{s,co}\right)-\left[C_{1}^{l,co}-C_{1}^{l,\infty}\right]u_{1}^{l}\left(\xi\right)-\left[\vphantom{C_{1}^{l,co}}C_{1}^{s,co}-C_{1}^{s,\infty}\right]u_{1}^{s}\left(\xi\right)\\
++\xi\left(C_{2}^{l,co}-C_{2}^{s,co}\right)-\left[C_{2}^{l,co}-C_{2}^{l,\infty}\right]u_{2}^{l}\left(\xi\right)-\left[\vphantom{C_{1}^{l,co}}C_{2}^{s,co}-C_{2}^{s,\infty}\right]u_{2}^{s}\left(\xi\right)\\
++\xi\left(C_{1}^{s,\infty}+C_{2}^{s,\infty}-C_{1}^{l,\infty}-C_{2}^{l,\infty}\right)\\
+-\xi\left(\dphi\varepsilon_{3}-\dphi C_{1}^{\infty}-\dphi C_{2}^{\infty}\right)
+\end{multline}
+
+\end_inset
+
+dans laquelle on remarque que les 2 premières lignes disparaissent, car
+ elles correspondent aux équations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1Dsharp_transcendental_eq_A"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:1Dsharp_transcendental_eq_B"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Le résultat se simplifie alors en
+\begin_inset Formula 
+\begin{align*}
+\Delta\Omega & =\left[-\xi\left(\dphi C_{1}^{\infty}+\dphi C_{2}^{\infty}\right)-\xi\left(\dphi\varepsilon_{3}-\dphi C_{1}^{\infty}-\dphi C_{2}^{\infty}\right)\right]\sqrt{t}\\
+ & =-\xi\dphi\varepsilon_{3}\sqrt{t}
+\end{align*}
+
+\end_inset
+
+En remarquant que les 
+\begin_inset Formula $\dphi C_{\alpha}^{\infty}$
+\end_inset
+
+ s'annulent, on se retrouve avec le résultat final qui s'écrit
+\begin_inset Formula 
+\begin{equation}
+\Delta\Omega=\Xi_{\Omega}\sqrt{t}\label{eq:stefan_1int_gp_var}
+\end{equation}
+
+\end_inset
+
+où l'on a défini 
+\begin_inset Formula $\Xi_{\Omega}$
+\end_inset
+
+ le coefficient de variation du grand-potentiel, qui s'écrit simplement
+\begin_inset Formula 
+\begin{equation}
+\Xi_{\Omega}=-\xi\dphi\varepsilon_{3}\label{eq:stefan_1int_gp_growth_constant_Xi}
+\end{equation}
+
+\end_inset
+
+On remarque que la diminution du grand-potentiel nécessite que 
+\begin_inset Formula $\xi$
+\end_inset
+
+ et 
+\begin_inset Formula $\dphi\varepsilon_{3}$
+\end_inset
+
+ soient de même signe, pour avoir
+\begin_inset Formula 
+\begin{equation}
+\xi\dphi\varepsilon_{3}>0\label{eq:stefan_1int_gp_minimization_condition}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Problème de Stefan à 4 phases
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:solution_analytique_sharp_ternaire_4p"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex macros
+status open
+
+\begin_layout Plain Layout
+\begin_inset FormulaMacro
+\renewcommand{\indexcomp}{\alpha}
+{\boldsymbol{\alpha}}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset FormulaMacro
+\renewcommand{\indexphase}{p}
+{\boldsymbol{p}}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le cas du problème de Stefan à 4 phases est une contribution originale de
+ ce manuscrit.
+ Bien que 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Boettinger2000"
+literal "false"
+
+\end_inset
+
+ indiquent l'avoir étudié, ils n'ont pas publié les solutions analytiques
+ du problème.
+ Le gros des calculs est fourni dans cette annexe pour ne pas alourdir le
+ corps du manuscrit.
+ 
+\end_layout
+
+\begin_layout Subsection
+Modèle
+\end_layout
+
+\begin_layout Standard
+La situation est schématisé en Fig.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:instability_schema_stefan_3int"
+
+\end_inset
+
+.
+ Les exposants 
+\begin_inset Formula $\indexphase\in\left\{ 1,...,4\right\} $
+\end_inset
+
+ désignent les domaines, qui correspondent à la phase liquide (resp.
+ solide) pour les indices 
+\begin_inset Formula $2$
+\end_inset
+
+ et 
+\begin_inset Formula $4$
+\end_inset
+
+ (resp.
+ 
+\begin_inset Formula $1$
+\end_inset
+
+ et 
+\begin_inset Formula $3$
+\end_inset
+
+).
+ On notera 
+\begin_inset Formula $\Phi_{\indexphase}\in\left\{ s,l\right\} $
+\end_inset
+
+ la phase du domaine 
+\begin_inset Formula $\indexphase$
+\end_inset
+
+.
+ Les interfaces sont désignées par 
+\begin_inset Formula $\indexphase/\indexphase+1$
+\end_inset
+
+ pour l'interface entre le domaine 
+\begin_inset Formula $\indexphase$
+\end_inset
+
+ et le domaine suivant 
+\begin_inset Formula $\indexphase+1$
+\end_inset
+
+.
+ Les grandeurs aux interfaces peuvent présenter des discontinuités à travers
+ les interfaces, on distinguera donc les grandeurs en 
+\begin_inset Formula $\indexphase,\indexphase/\indexphase+1$
+\end_inset
+
+ à gauche de l'interface (coté domaine 
+\begin_inset Formula $\indexphase$
+\end_inset
+
+) et 
+\begin_inset Formula $\indexphase+1,\indexphase/\indexphase+1$
+\end_inset
+
+ à droite, coté domaine 
+\begin_inset Formula $\indexphase+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Subequations
+status open
+
+\begin_layout Plain Layout
+Comme décrit en Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:insta_4p"
+
+\end_inset
+
+, l'évolution du système est décrite par le système d'équation suivant:
+\end_layout
+
+\begin_layout Itemize
+Dans les phases désignées par l'exposant, une équation de diffusion
+\begin_inset Formula 
+\begin{equation}
+\partial_{t}C_{\indexcomp}^{\indexphase}=\boldsymbol{\nabla}\cdot\left[D_{\indexcomp}^{\indexphase}\boldsymbol{\nabla}C_{\indexcomp}^{\indexphase}\right]\label{eq:annex_stefan_4p2c_diffusion}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Aux interfaces, des conditions limites:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Continuité du potentiel chimique
+\begin_inset Formula 
+\begin{equation}
+\mu_{\indexcomp}^{\indexphase,\indexphase/\indexphase+1}=\mu_{\indexcomp}^{\indexphase+1,\indexphase/\indexphase+1}=\mu_{\indexcomp}^{\indexphase/\indexphase+1}\label{eq:annex_stefan_4p2c_chem_continuity}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+équilibre thermodynamique
+\begin_inset Formula 
+\begin{equation}
+\omega^{\indexphase}\left(\mu_{1}^{\indexphase/\indexphase+1},\mu_{2}^{\indexphase/\indexphase+1}\right)=\omega^{\indexphase+1}\left(\mu_{1}^{\indexphase/\indexphase+1},\mu_{2}^{\indexphase/\indexphase+1}\right)\label{eq:annex_stefan_4p2c_chem_eq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+équilibre des flux (condition de Stefan)
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial x_{\indexphase/\indexphase+1}}{\partial t}\left(C_{\indexcomp}^{\indexphase+1,\indexphase/\indexphase+1}-C_{\indexcomp}^{\indexphase,\indexphase/\indexphase+1}\right)=-\left(D_{\indexcomp}^{\indexphase+1}\boldsymbol{\nabla}_{n}C_{\indexcomp}^{\indexphase+1}-D_{\indexcomp}^{\indexphase}\boldsymbol{\nabla}_{n}C_{\indexcomp}^{\indexphase}\right)\label{eq:annex_stefan_4p2c_flux}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+composition à l'interface (découle des conditions précédentes)
+\begin_inset Formula 
+\begin{align}
+C_{\indexcomp}^{\indexphase,\indexphase/\indexphase+1} & =C_{\indexcomp}^{\indexphase}\left(\mu_{\indexcomp}^{\indexphase/\indexphase+1}\right)\label{eq:annex_stefan_4p2c_comp_p}\\
+C_{\indexcomp}^{\indexphase+1,\indexphase/\indexphase+1} & =C_{\indexcomp}^{\indexphase+1}\left(\mu_{\indexcomp}^{\indexphase/\indexphase+1}\right)\label{eq:annex_stefan_4p2c_comp_p+1}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+condition à l'infini
+\begin_inset Formula 
+\begin{align}
+C_{\indexcomp}^{1}\left(x=-\infty,t\right) & =C_{\indexcomp}^{1,\infty}\\
+C_{\indexcomp}^{4}\left(x=\infty,t\right) & =C_{\indexcomp}^{4,\infty}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+condition initiale:
+\begin_inset Formula 
+\begin{align}
+C_{\indexcomp}^{1}\left(x,t=0\right) & =C_{\indexcomp}^{1,\infty}\\
+C_{\indexcomp}^{4}\left(x,t=0\right) & =C_{\indexcomp}^{4,\infty}\\
+x_{\indexphase/\indexphase+1}\left(t=0\right) & =0
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Initialement, les trois interfaces sont positionnées en 
+\begin_inset Formula $x=0$
+\end_inset
+
+, et les phases 2 et 3 ont donc une taille nulle, et pas de composition.
+ Le problème n'est donc pas correctement défini en 
+\begin_inset Formula $t=0$
+\end_inset
+
+, mais nous allons voir qu'il est possible de trouver des solutions analytiques
+ valides pour 
+\begin_inset Formula $t>0$
+\end_inset
+
+, qui remplissent les conditions initiales proposées pour 
+\begin_inset Formula $t\rightarrow0^{+}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Résolution
+\end_layout
+
+\begin_layout Standard
+Comme précédent, on cherche les solutions des équations de diffusion sous
+ la forme classique du profil en 
+\begin_inset Formula $\erfc$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+C_{\indexcomp}^{\indexphase}=A_{\indexcomp}^{\indexphase}+B_{\indexcomp}^{\indexphase}\text{erfc}\left(\frac{s_{\Phi_{\indexphase}}x}{2\sqrt{D_{\indexcomp}^{\indexphase}t}}\right)
+\end{equation}
+
+\end_inset
+
+où 
+\begin_inset Formula $s_{\Phi_{\indexphase}}=\delta_{\Phi_{\indexphase},l}-\delta_{\Phi_{\indexphase},s}$
+\end_inset
+
+ prend la valeur 
+\begin_inset Formula $-1$
+\end_inset
+
+ dans les domaines solides (
+\begin_inset Formula $\indexphase=1,3$
+\end_inset
+
+) et 
+\begin_inset Formula $1$
+\end_inset
+
+ dans les domaines liquides (
+\begin_inset Formula $\indexphase=2,4)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+On remarque que ces profils introduisent 16 paramètres 
+\begin_inset Formula $A_{\indexcomp}^{\indexphase}$
+\end_inset
+
+ et 
+\begin_inset Formula $B_{\indexcomp}^{\indexphase}$
+\end_inset
+
+.
+ Les équations restantes sont 4 conditions à l'infini, 3 conditions de continuit
+é des potentiels chimiques, 3 conditions d'équilibre chimiques et 6 conditions
+ d'équilibre des flux, ce qui constitue 16 équations, fermant ainsi le système.
+\end_layout
+
+\begin_layout Standard
+Pour commencer, on peut facilement déterminer les coefficients 
+\begin_inset Formula $A$
+\end_inset
+
+ des phases 
+\begin_inset Quotes fld
+\end_inset
+
+extérieures
+\begin_inset Quotes frd
+\end_inset
+
+ 
+\begin_inset Formula $A_{\indexphase}^{1}$
+\end_inset
+
+ et 
+\begin_inset Formula $A_{\indexphase}^{4}$
+\end_inset
+
+ avec les conditions à l'infini:
+\begin_inset Formula 
+\begin{align}
+A_{\indexcomp}^{1} & =C_{\indexcomp}^{1,\infty} & A_{\indexcomp}^{4} & =C_{\indexcomp}^{4,\infty}
+\end{align}
+
+\end_inset
+
+Ensuite, on applique les conditions aux interfaces 
+\begin_inset Formula $1/2$
+\end_inset
+
+ et 
+\begin_inset Formula $3/4$
+\end_inset
+
+, pour obtenir
+\begin_inset Formula 
+\begin{align*}
+A_{\indexcomp}^{1}+B_{\indexcomp}^{1}\erfc\left(\frac{-x_{1/2}}{2\sqrt{D_{\indexcomp}^{1}t}}\right) & =C_{\indexcomp}^{1,1/2} & A_{\indexcomp}^{3}+B_{\indexcomp}^{3}\erfc\left(\frac{-x_{3/4}}{2\sqrt{D_{\indexcomp}^{3}t}}\right) & =C_{\indexcomp}^{3,3/4}\\
+A_{\indexcomp}^{2}+B_{\indexcomp}^{2}\erfc\left(\frac{x_{1/2}}{2\sqrt{D_{\indexcomp}^{2}t}}\right) & =C_{\indexcomp}^{2,1/2} & A_{\indexcomp}^{4}+B_{\indexcomp}^{4}\erfc\left(\frac{x_{3/4}}{2\sqrt{D_{\indexcomp}^{4}t}}\right) & =C_{\indexcomp}^{4,3/4}
+\end{align*}
+
+\end_inset
+
+Comme pour le problème de Stefan à 2 phases de la section précédente, les
+ conditions d'équilibre de flux impliquent que les compositions aux interfaces
+ sont constantes.
+ On peut donc introduire les coefficients 
+\begin_inset Formula $\xi_{\indexphase/\indexphase+1}$
+\end_inset
+
+ qui décrivent la position des interfaces par
+\begin_inset Formula 
+\begin{align*}
+x_{\indexphase/\indexphase+1} & =\xi_{\indexphase/\indexphase+1}\sqrt{t}
+\end{align*}
+
+\end_inset
+
+On obtient également les coefficients 
+\begin_inset Formula $B$
+\end_inset
+
+ pour les régions extérieures 
+\begin_inset Formula 
+\begin{align*}
+B_{\indexcomp}^{1} & =\frac{\left[C_{\indexcomp}^{1,1/2}-C_{\indexcomp}^{1,\infty}\right]}{\erfc\left(\frac{-\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{1}}}\right)} & B_{\indexcomp}^{4} & =\frac{\left[C_{\indexcomp}^{4,3/4}-C_{\indexcomp}^{4,\infty}\right]}{\erfc\left(\frac{\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{4}}}\right)}
+\end{align*}
+
+\end_inset
+
+On regarde maintenant la condition de bord à l'interface centrale 
+\begin_inset Formula $2/3$
+\end_inset
+
+, qui donne
+\begin_inset Formula 
+\begin{align*}
+A_{\indexcomp}^{2}+B_{\indexcomp}^{2}\erfc\left(\frac{x_{2/3}}{2\sqrt{D_{\indexcomp}^{2}t}}\right) & =C_{\indexcomp}^{2,2/3}\\
+A_{\indexcomp}^{3}+B_{\indexcomp}^{3}\erfc\left(\frac{-x_{2/3}}{2\sqrt{D_{\indexcomp}^{3}t}}\right) & =C_{\indexcomp}^{3,2/3}
+\end{align*}
+
+\end_inset
+
+En calculant la différence 
+\begin_inset Formula $C_{\indexcomp}^{2,1/2}-C_{\indexcomp}^{2,2/3}$
+\end_inset
+
+, on trouve 
+\begin_inset Formula $B_{\indexcomp}^{2}$
+\end_inset
+
+ .
+ On peut ensuite retrouver 
+\begin_inset Formula $A_{\indexcomp}^{2}$
+\end_inset
+
+ en évaluant l'une des deux.
+ On a donc
+\begin_inset Formula 
+\begin{align*}
+B_{\indexcomp}^{2} & =\frac{C_{\indexcomp}^{2,2/3}-C_{\indexcomp}^{2,1/2}}{\erfc\left(\frac{\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{2}}}\right)-\erfc\left(\frac{\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{2}}}\right)}\\
+A_{\indexcomp}^{2} & =C_{\indexcomp}^{2,2/3}-B_{\indexcomp}^{2}\erfc\left(\frac{\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{2}}}\right)=C_{\indexcomp}^{2,1/2}-B_{\indexcomp}^{2}\erfc\left(\frac{\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{2}}}\right)
+\end{align*}
+
+\end_inset
+
+On peut effectuer le même raisonnement pour le domaine 
+\begin_inset Formula $3$
+\end_inset
+
+ en calculant 
+\begin_inset Formula $C_{\indexcomp}^{3,3/4}-C_{\indexcomp}^{3,2/3}$
+\end_inset
+
+, ce qui donne 
+\begin_inset Formula 
+\begin{align*}
+B_{\indexcomp}^{3} & =\frac{C_{\indexcomp}^{3,2/3}-C_{\indexcomp}^{3,3/4}}{\erfc\left(\frac{-\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{3}}}\right)-\erfc\left(\frac{-\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{3}}}\right)}\\
+A_{\indexcomp}^{3} & =C_{\indexcomp}^{3,3/4}-B_{\indexcomp}^{3}\erfc\left(\frac{-\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{3}}}\right)=C_{\indexcomp}^{3,2/3}-B_{\indexcomp}^{3}\erfc\left(\frac{-\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{3}}}\right)
+\end{align*}
+
+\end_inset
+
+Il reste encore à utiliser les équilibres de flux, et les équilibres thermodynam
+iques.
+ Ces derniers ne seront utiliser qu'après pour exprimer les compositions
+ d'interfaces 
+\begin_inset Formula $C_{\indexcomp}^{\indexphase/\indexphase+1}$
+\end_inset
+
+.
+ Pour l'instant, on applique les conditions d'équilibre des flux, ce qui
+ permet de relier explicitement les différentes phases.
+ On a donc
+\begin_inset Formula 
+\begin{align*}
+\frac{\xi_{\indexphase/\indexphase+1}}{2\sqrt{t}}\left(C_{\indexcomp}^{\indexphase+1,co}-C_{\indexcomp}^{\indexphase,co}\right) & =s_{\Phi_{\indexphase+1}}\frac{D_{\indexcomp}^{\indexphase+1}B_{\indexcomp}^{\indexphase+1}}{\sqrt{\pi D_{\indexcomp}^{\indexphase+1}t}}e^{\left(-\left(\frac{\xi_{\indexphase/\indexphase+1}}{2\sqrt{D_{\indexcomp}^{\indexphase+1}}}\right)^{2}\right)}-s_{\Phi_{\indexphase}}\frac{D_{\indexcomp}^{\indexphase}B_{\indexcomp}^{\indexphase}}{\sqrt{\pi D_{\indexcomp}^{\indexphase}t}}e^{\left(-\left(\frac{\xi_{\indexphase/\indexphase+1}}{2\sqrt{D_{\indexcomp}^{\indexphase}}}\right)^{2}\right)}
+\end{align*}
+
+\end_inset
+
+On simplifie ces équations, et on obtient le système sous la forme
+\end_layout
+
+\begin_layout Subeqs
+\begin_inset Formula 
+\begin{align}
+\xi_{1/2}\left(C_{\indexcomp}^{2,1/2}-C_{\indexcomp}^{1,1/2}\right) & =u_{\indexcomp}^{1,1/2}\left(\xi_{1/2}\right)\left(C_{\indexcomp}^{1,1/2}-C_{\indexcomp}^{s,\infty}\right)\nonumber \\
+ & \quad\quad\quad+u_{\indexcomp}^{2,1/2}\left(\xi_{1/2},\xi_{2/3}\right)\left(C_{\indexcomp}^{2,2/3}-C_{\indexcomp}^{2,1/2}\right)\label{eq:stefan_4p2c_solu_generic_1}\\
+\xi_{2/3}\left(C_{\indexcomp}^{3,2/3}-C_{\indexcomp}^{2,2/3}\right) & =u_{\indexcomp}^{2,2/3}\left(\xi_{1/2},\xi_{2/3}\right)\left(C_{\indexcomp}^{2,2/3}-C_{\indexcomp}^{2,1/2}\right)\nonumber \\
+ & \quad\quad\quad+u_{\indexcomp}^{3,2/3}\left(\xi_{2/3},\xi_{3/4}\right)\left(C_{\indexcomp}^{3,2/3}-C_{\indexcomp}^{3,3/4}\right)\label{eq:stefan_4p2c_solu_generic_2}\\
+\xi_{3/4}\left(C_{\indexcomp}^{4,3/4}-C_{\indexcomp}^{3,3/4}\right) & =u_{\indexcomp}^{3,3/4}\left(\xi_{2/3},\xi_{3/4}\right)\left(C_{\indexcomp}^{3,2/3}-C_{\indexcomp}^{3,3/4}\right)\nonumber \\
+ & \quad\quad\quad+u_{\indexcomp}^{4,3/4}\left(\xi_{3/4}\right)\left(C_{\indexcomp}^{4,3/4}-C_{\indexcomp}^{l,\infty}\right)\label{eq:stefan_4p2c_solu_generic_3}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+où les fonctions 
+\begin_inset Formula $u$
+\end_inset
+
+ sont définies dans le tableau 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:stefan_4p2c_fct_u"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Les conditions d'équilibres thermodynamiques 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:annex_stefan_4p2c_chem_eq"
+
+\end_inset
+
+ n'ont toujours pas été utilisées.
+ On peut les utiliser pour exprimer les compositions des interfaces en fonctions
+ des paramètres 
+\begin_inset Formula $\zeta_{\indexphase/\indexphase+1}$
+\end_inset
+
+ et du diagramme de phase, comme dans la section précédente.
+ Cependant, contrairement à la section précédente, on ne pourra pas réduire
+ le système à une unique équation en exploitant la linéarité en fonction
+ des 
+\begin_inset Formula $\zeta$
+\end_inset
+
+, il y a donc peu d’intérêt à réaliser cette étape (au risque d'introduire
+ une erreur dans les calculs mathématiques, ou dans l'écriture des formules
+ dans un langage de programmation pour la résolution numérique).
+ On va donc simplement coupler les 6 équations
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+6 équations car elles sont dédoublées pour chaque composant.
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stefan_4p2c_solu_generic_1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stefan_4p2c_solu_generic_3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) aux 3 équations d'équilibre thermodynamique, ce qui nous donneras un système
+ de 9 équations avec les 9 inconnues 
+\begin_inset Formula $\xi_{1/2}$
+\end_inset
+
+, 
+\begin_inset Formula $\xi_{2/3}$
+\end_inset
+
+, 
+\begin_inset Formula $\xi_{3/4}$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{\alpha}^{co}$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{\alpha}^{co}$
+\end_inset
+
+ et 
+\begin_inset Formula $\mu_{\alpha}^{co}$
+\end_inset
+
+.
+ On rappelle que les compositions des interfaces sont fonctions des potentiels
+ chimiques aux interfaces par (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:annex_stefan_4p2c_comp_p"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:annex_stefan_4p2c_comp_p+1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ On obtient donc le système suivant
+\end_layout
+
+\begin_layout Subeqs
+\begin_inset Formula 
+\begin{align}
+\xi_{1/2}\left(C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{1/2}\right)-C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{1/2}\right)\right) & =u_{\indexcomp}^{1,1/2}\left(\xi_{1/2}\right)\left(C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{1/2}\right)-C_{\indexcomp}^{s,\infty}\right)\nonumber \\
+ & \quad\quad\quad+u_{\indexcomp}^{2,1/2}\left(\xi_{1/2},\xi_{2/3}\right)\left(C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{2/3}\right)-C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{1/2}\right)\right)\label{eq:solution_4p_syst_complet_1}\\
+\xi_{2/3}\left(C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{2/3}\right)-C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{2/3}\right)\right) & =u_{\indexcomp}^{2,2/3}\left(\xi_{1/2},\xi_{2/3}\right)\left(C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{2/3}\right)-C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{1/2}\right)\right)\nonumber \\
+ & \quad\quad\quad+u_{\indexcomp}^{3,2/3}\left(\xi_{2/3},\xi_{3/4}\right)\left(C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{2/3}\right)-C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{3/4}\right)\right)\\
+\xi_{3/4}\left(C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{3/4}\right)-C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{3/4}\right)\right) & =u_{\indexcomp}^{3,3/4}\left(\xi_{2/3},\xi_{3/4}\right)\left(C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{2/3}\right)-C_{\indexcomp}^{s}\left(\mu_{\indexcomp}^{3/4}\right)\right)\nonumber \\
+ & \quad\quad\quad+u_{\indexcomp}^{4,3/4}\left(\xi_{3/4}\right)\left(C_{\indexcomp}^{l}\left(\mu_{\indexcomp}^{3/4}\right)-C_{\indexcomp}^{l,\infty}\right)\\
+\omega^{s}\left(\mu_{1}^{1/2},\mu_{2}^{1/2}\right) & =\omega^{l}\left(\mu_{1}^{1/2},\mu_{2}^{1/2}\right)\\
+\omega^{s}\left(\mu_{1}^{2/3},\mu_{2}^{2/3}\right) & =\omega^{l}\left(\mu_{1}^{2/3},\mu_{2}^{2/3}\right)\\
+\omega^{s}\left(\mu_{1}^{3/4},\mu_{2}^{3/4}\right) & =\omega^{l}\left(\mu_{1}^{3/4},\mu_{2}^{3/4}\right)\label{eq:solution_4p_syst_complet_6}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+qui sera ensuite résolu numériquement par une méthode de Newton.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement p
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="5">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row interlinespace="default">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Fonction
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Définition
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Facteur
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Équation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle u_{\indexcomp}^{1,1/2}\left(\xi_{1/2}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle 2\sqrt{\frac{D_{\indexcomp}^{1}}{\pi}}\frac{\exp\left(-\left(\frac{\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{1}}}\right)^{2}\right)}{\erfc\left(\frac{-\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{1}}}\right)}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \times\left(C_{\indexcomp}^{1,1/2}-C_{\indexcomp}^{s,\infty}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:stefan_4p2c_solu_generic_1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle u_{\indexcomp}^{2,1/2}\left(\xi_{1/2},\xi_{2/3}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle 2\sqrt{\frac{D_{\indexcomp}^{2}}{\pi}}\frac{\exp\left(-\left(\frac{\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{2}}}\right)^{2}\right)}{\erfc\left(\frac{\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{2}}}\right)-\erfc\left(\frac{\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{2}}}\right)}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \times\left(C_{\indexcomp}^{2,2/3}-C_{\indexcomp}^{2,1/2}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:stefan_4p2c_solu_generic_1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle u_{\indexcomp}^{2,2/3}\left(\xi_{1/2},\xi_{2/3}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle -2\sqrt{\frac{D_{\indexcomp}^{2}}{\pi}}\frac{\exp\left(-\left(\frac{\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{2}}}\right)^{2}\right)}{\erfc\left(\frac{\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{2}}}\right)-\erfc\left(\frac{\xi_{1/2}}{2\sqrt{D_{\indexcomp}^{2}}}\right)}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \times\left(C_{\indexcomp}^{2,2/3}-C_{\indexcomp}^{2,1/2}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:stefan_4p2c_solu_generic_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle u_{\indexcomp}^{3,2/3}\left(\xi_{2/3},\xi_{3/4}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle -2\sqrt{\frac{D_{\indexcomp}^{3}}{\pi}}\frac{\exp\left(-\left(\frac{\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{3}}}\right)^{2}\right)}{\erfc\left(\frac{-\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{3}}}\right)-\erfc\left(\frac{-\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{3}}}\right)}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \times\left(C_{\indexcomp}^{3,2/3}-C_{\indexcomp}^{3,3/4}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:stefan_4p2c_solu_generic_2"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle u_{\indexcomp}^{3,3/4}\left(\xi_{2/3},\xi_{3/4}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle 2\sqrt{\frac{D_{\indexcomp}^{3}}{\pi}}\frac{\exp\left(-\left(\frac{\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{3}}}\right)^{2}\right)}{\erfc\left(\frac{-\xi_{2/3}}{2\sqrt{D_{\indexcomp}^{3}}}\right)-\erfc\left(\frac{-\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{3}}}\right)}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \times\left(C_{\indexcomp}^{3,2/3}-C_{\indexcomp}^{3,3/4}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:stefan_4p2c_solu_generic_3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle u_{\indexcomp}^{4,3/4}\left(\xi_{3/4}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $=$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle 2\sqrt{\frac{D_{\indexcomp}^{4}}{\pi}}\frac{\exp\left(-\left(\frac{\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{4}}}\right)^{2}\right)}{\erfc\left(\frac{\xi_{3/4}}{2\sqrt{D_{\indexcomp}^{4}}}\right)}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula ${\displaystyle \times\left(C_{\indexcomp}^{4,3/4}-C_{\indexcomp}^{l,\infty}\right)}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:stefan_4p2c_solu_generic_3"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Définition des fonctions reliant les profils de composition aux sauts aux
+ interfaces dans le système d'équation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stefan_4p2c_solu_generic_1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:stefan_4p2c_solu_generic_3"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stefan_4p2c_fct_u"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Calcul de la variation d'énergie
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:solution_4p_calc_gp_var"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On souhaite à nouveau calculer la variation d'énergie de grand-potentiel
+ de la solution analytique
+\begin_inset Formula 
+\[
+\Delta\Omega=\Omega\left(t\right)-\Omega\left(0\right)
+\]
+
+\end_inset
+
+pour la comparer à celle des solutions du problème de Stefan à 2 phases.
+ Cette variation d'énergie s'écrit de manière explicite
+\begin_inset Formula 
+\[
+\Delta\Omega=\left[\int_{-\infty}^{x_{1/2}}\omega^{s}+\int_{x_{1/2}}^{x_{2/3}}\omega^{l}+\int_{x_{2/3}}^{x_{3/42}}\omega^{s}+\int_{x_{3/4}}^{\infty}\omega^{l}\right]-\left[\vphantom{\int_{x_{1/2}}^{x_{2/3}}\omega^{l}}\int_{-\infty}^{0}\omega^{s,\infty}+\int_{0}^{\infty}\omega^{l,\infty}\right]
+\]
+
+\end_inset
+
+On commence de la même manière par regrouper les termes sous forme d'intégrales
+ convergentes
+\begin_inset Formula 
+\begin{align*}
+\Delta\Omega & =\int_{-\infty}^{x_{1/2}}\left[\omega^{s}-\omega^{s,\infty}\right]+\int_{x_{3/4}}^{\infty}\left[\omega^{l}-\omega^{l,\infty}\right]\\
+ & \quad\quad+\int_{x_{1/2}}^{x_{2/3}}\omega^{l}+\int_{x_{2/3}}^{x_{3/42}}\omega^{s}-\left[\int_{x_{1/2}}^{0}\omega^{s,\infty}+\int_{0}^{x_{3/4}}\omega^{l,\infty}\right]
+\end{align*}
+
+\end_inset
+
+où les intégrales dans les régions internes 2 et 3 sont naturellement convergent
+es, puisque les régions sont de taille finie.
+\end_layout
+
+\begin_layout Standard
+On effectue ensuite le changement de variable 
+\begin_inset Formula $\theta=x/\sqrt{t}$
+\end_inset
+
+, ce qui donne
+\begin_inset Formula 
+\begin{align*}
+\Delta\Omega & =\sqrt{t}\left\{ \int_{-\infty}^{\xi_{1/2}}\left[\omega^{s}-\omega^{s,\infty}\right]+\int_{\xi_{1/2}}^{\xi_{2/3}}\omega^{l}+\int_{\xi_{2/3}}^{\xi_{3/4}}\omega^{s}+\int_{\xi_{3/4}}^{\infty}\left[\omega^{l}-\omega^{l,\infty}\right]+\xi_{1/2}\omega^{s,\infty}-\xi_{3/4}\omega^{l,\infty}\right\} 
+\end{align*}
+
+\end_inset
+
+On va maintenant remplacer les grand-potentiels par leurs expressions en
+ fonction des compositions
+\begin_inset Formula 
+\begin{align*}
+\frac{\Delta\Omega}{\sqrt{t}} & =\sum_{\indexcomp=1,2}\left\{ \int_{-\infty}^{\xi_{1/2}}\left[C_{\indexcomp}^{s,\infty}-C_{\indexcomp}^{s}\right]-\int_{\xi_{1/2}}^{\xi_{2/3}}C_{\indexcomp}^{l}-\int_{\xi_{2/3}}^{\xi_{3/4}}C_{\indexcomp}^{s}+\int_{\xi_{3/4}}^{\infty}\left[C_{\indexcomp}^{l,\infty}-C_{\indexcomp}^{l}\right]{\color{red}-\xi_{1/2}C_{\indexcomp}^{s,\infty}}{\color{blue}+\xi_{3/4}C_{\indexcomp}^{l,\infty}}\right\} \\
+ & \quad\quad\quad+\int_{\xi_{1/2}}^{\xi_{2/3}}\left[\varepsilon_{3}^{l}\right]+\int_{\xi_{2/3}}^{\xi_{3/4}}\left[\varepsilon_{3}^{s}\right]+\xi_{1/2}\varepsilon_{3}^{s}-\xi_{3/4}\varepsilon_{3}^{l}
+\end{align*}
+
+\end_inset
+
+On remarque alors que l'on peut regrouper les intégrales des compositions
+ sous la forme
+\begin_inset Formula 
+\begin{align*}
+\frac{\Delta\Omega}{\sqrt{t}} & =\sum_{\indexcomp=1,2}\left\{ \int_{-\infty}^{\xi_{1/2}}\left[C_{\indexcomp}^{s,\infty}\right]{\color{red}+\int_{\xi_{1/2}}^{0}C_{\indexcomp}^{s,\infty}}+\int_{\xi_{3/4}}^{\infty}\left[C_{\indexcomp}^{l,\infty}\right]{\color{blue}+\int_{0}^{\xi_{3/4}}C_{\indexcomp}^{l,\infty}}\right\} \\
+ & -\sum_{\indexcomp=1,2}\left\{ \int_{-\infty}^{\xi_{1/2}}\left[C_{\indexcomp}^{s}\right]+\int_{\xi_{1/2}}^{\xi_{2/3}}\left[C_{\indexcomp}^{l}\right]+\int_{\xi_{2/3}}^{\xi_{3/4}}\left[C_{\indexcomp}^{s}\right]+\int_{\xi_{3/4}}^{\infty}\left[C_{\indexcomp}^{l}\right]\right\} \\
+ & \quad\quad\quad+\int_{\xi_{1/2}}^{\xi_{2/3}}\left[\varepsilon_{3}^{l}\right]+\int_{\xi_{2/3}}^{\xi_{3/4}}\left[\varepsilon_{3}^{s}\right]+\xi_{1/2}\varepsilon_{3}^{s}-\xi_{3/4}\varepsilon_{3}^{l}
+\end{align*}
+
+\end_inset
+
+Sur la première ligne, on a alors l'intégrale de la composition initiale
+ sur tout le domaine, tandis que sur la seconde ligne, on a l’intégrale
+ de la composition au temps 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Par conservation de la composition totale, il est donc clair que ces 2
+ termes s'annulent.
+ On se retrouve donc directement avec
+\begin_inset Formula 
+\begin{align*}
+\frac{\Delta\Omega}{\sqrt{t}} & =\int_{\xi_{1/2}}^{\xi_{2/3}}\left[\varepsilon_{3}^{l}\right]+\int_{\xi_{2/3}}^{\xi_{3/4}}\left[\varepsilon_{3}^{s}\right]+\xi_{1/2}\varepsilon_{3}^{s}-\xi_{3/4}\varepsilon_{3}^{l}\\
+ & =\varepsilon_{3}^{l}\left(\xi_{2/3}-\xi_{1/2}\right)+\varepsilon_{3}^{s}\left(\xi_{3/4}-\xi_{2/3}\right)+\xi_{1/2}\varepsilon_{3}^{s}-\xi_{3/4}\varepsilon_{3}^{l}\\
+ & =\varepsilon_{3}^{l}\left(\xi_{2/3}-\xi_{1/2}-\xi_{3/4}\right)+\varepsilon_{3}^{s}\left(\xi_{3/4}-\xi_{2/3}+\xi_{1/2}\right)\\
+ & =\left(\varepsilon_{3}^{l}-\varepsilon_{3}^{s}\right)\left(\xi_{2/3}-\xi_{1/2}-\xi_{3/4}\right)
+\end{align*}
+
+\end_inset
+
+On a donc obtenu la variation de grand-potentiel
+\begin_inset Formula 
+\begin{align}
+\Delta\Omega\left(t\right) & =\Xi_{\Omega}\sqrt{t}\label{eq:annex_stefan_4p2c_gpvar}
+\end{align}
+
+\end_inset
+
+avec la constante de variation
+\begin_inset Formula 
+\begin{equation}
+\Xi_{\Omega}=\left(\xi_{2/3}-\xi_{1/2}-\xi_{3/4}\right)\dphi\varepsilon_{3}^{\Phi}\label{eq:annex_stefan_4p2c_Xi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "thesis"
+biblatexopts "segment=\\therefsegment,title=Références de l'annexe,heading=subbibintoc"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

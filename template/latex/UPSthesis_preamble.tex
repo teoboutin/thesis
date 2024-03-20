@@ -1,0 +1,490 @@
+% makes the page borders visible
+% \usepackage{showframe}
+% \usepackage{blindtext}
+
+
+% \tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xstring,xifthen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Template colors
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{Prune}{RGB}{99,0,60} % l14-33 : couleurs de la charte graphique upsaclay
+\definecolor{UPSgray1}{RGB}{49,62,72} % l14-33 : couleurs de la charte graphique upsaclay
+\definecolor{UPSgray2}{RGB}{49,62,72} % l14-33 : couleurs de la charte graphique upsaclay
+\definecolor{UPSgray3}{RGB}{49,62,72} % l14-33 : couleurs de la charte graphique upsaclay
+\definecolor{UPSblue1}{RGB}{0,78,125} % l14-33 : couleurs de la charte graphique upsaclay
+\definecolor{A1}{RGB}{99,0,60} % l14-33 : couleurs de la charte graphique upsaclay
+\definecolor{B1}{RGB}{49,62,72}
+\definecolor{C1}{RGB}{124,135,143}
+\definecolor{D1}{RGB}{213,218,223}
+\definecolor{A2}{RGB}{198,11,70}
+\definecolor{B2}{RGB}{237,20,91}
+\definecolor{C2}{RGB}{238,52,35}
+\definecolor{D2}{RGB}{243,115,32}
+\definecolor{A3}{RGB}{124,42,144}
+\definecolor{B3}{RGB}{125,106,175}
+\definecolor{C3}{RGB}{198,103,29}
+\definecolor{D3}{RGB}{254,188,24}
+\definecolor{A4}{RGB}{0,78,125}
+\definecolor{B4}{RGB}{14,135,201}
+\definecolor{C4}{RGB}{0,148,181}
+\definecolor{D4}{RGB}{70,195,210}
+\definecolor{A5}{RGB}{0,128,122}
+\definecolor{B5}{RGB}{64,183,105}
+\definecolor{C5}{RGB}{140,198,62}
+\definecolor{D5}{RGB}{213,223,61}
+
+
+\usepackage{mdframed}
+\usepackage{titling}
+\usepackage{emptypage}
+
+
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\usetikzlibrary{calc,angles,quotes}
+
+
+
+\usepackage{chngcntr}
+\counterwithout{equation}{chapter}
+\counterwithout{figure}{chapter}
+\counterwithout{table}{chapter}
+
+\usepackage{perpage}
+\MakePerPage{footnote}
+
+
+\newlength{\oldparskip}
+\newlength{\newparskip}
+\setlength{\oldparskip}{\parskip}
+\usepackage{parskip}
+\setlength{\newparskip}{\parskip}
+
+%%% Font
+\usepackage{libertine}
+
+
+
+\usepackage{scrextend} %% Forcer la 4ème  de couverture en page pair
+
+
+
+\usepackage[absolute]{textpos}
+\usepackage{colortbl}
+\usepackage{array}
+
+
+
+
+
+\usepackage[noindentafter,explicit]{titlesec}
+\usepackage{titletoc}
+\usepackage[chapter]{tocbibind}
+
+\usepackage[twoside]{fancyhdr}
+\pagestyle{fancy}
+
+
+
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{fourier-orns}
+
+%%% hyperref needs to be loaded at the perfectly right time for everything to work...
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=5,
+ breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},backref=false,colorlinks=true]
+ {hyperref}
+ 
+\definecolor{titles}{HTML}{336084}
+\hypersetup{linkcolor={titles},citecolor={A5},urlcolor={A3}}
+
+
+
+\makeatletter
+\def\@afterindentfalse{\let\if@afterindent\iffalse}
+\@afterindentfalse
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\def\isnum#1{%
+  \if!\ifnum9<1#1!\fi%
+     \emph{#1}%
+  \else#1%
+  \fi}
+  
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+
+
+
+% \charcount 
+% \spaces
+% \wordchars
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Numbering
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\thechapter-\arabic{section}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Toc (titletoc package)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\contentsmargin[1em]{2em}
+
+\definecolor{tocvrules}{HTML}{8B8B8B}
+\dottedcontents{}[]{}{}{}
+
+\newcommand{\MainTocDottedRule}{%
+{\titlerule*[8pt]{.}}%
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% chapter toc content
+
+\newcommand{\formatstarredchapter}[1]{{\normalsize #1}}
+ 
+\newcommand{\formatcontentchapter}[1]{%
+\parbox[b]{0pt}{%
+\vspace{1pt}\makebox[0pt][r]{\huge \hyperpage{\thecontentspage}}%
+}% end parbox with page
+\hspace{6pt}%
+{\color{tocvrules}\vrule width 1.5pt }% vrule between page and title
+\hspace{6pt}%
+\parbox[c]{0.7\textwidth}{%
+%\vspace{2pt}%
+\if!\ifnum9<1\thecontentslabel!\fi
+\Large\textsc{\chaptertitlename} \thecontentslabel\vspace{1pt}\\%
+\else%
+\Large\textsc{\IfSubStr{ABCDEFGH}{\thecontentslabel}{Annexe}{\chaptertitlename}} \thecontentslabel\vspace{1pt}\\%
+\fi%
+\normalsize #1%
+%\vspace{2pt}%
+}% end parbox with title
+\vspace{3pt}%
+}% end \formatcontentchapter
+
+
+\newcommand{\formatcontentchapterSimple}[1]{%
+%\vspace{2pt}%
+% \if!\ifnum9<1\thecontentslabel!\fi
+% \Large\textsc{\chaptertitlename} \thecontentslabel\vspace{1pt}\\%
+% \else%
+\Large\textsc{\IfSubStr{ABCDEFGH}{\thecontentslabel}{Annexe}{\chaptertitlename}} \thecontentslabel\vspace{1pt}\\*%
+% \fi%
+\normalsize #1%
+\vspace{3pt}%
+}% end \formatcontentchapterSimple
+
+\titlecontents{chapter}%
+[0pt]% left
+{\addvspace{1pc}%
+% \IfStrEq{III}{\thecontentslabel}{\clearpage}{}%
+}% above code
+{\formatcontentchapterSimple}% for normal chapter
+{\contentsmargin{0pt}%
+\formatstarredchapter}% for starred chapter
+{%
+\StrLen{\thecontentslabel}[\mystringlen]%
+    \ifthenelse{\mystringlen > 0}% test whether chapter is starred (by getting the length of the label)
+    {%
+        \hspace*{1ex}\MainTocDottedRule\contentspage[\textit{\thecontentspage}]%
+    }%TRUE
+    {%FALSE begin
+        \hspace*{1ex}\MainTocDottedRule\contentspage[\textit{\thecontentspage}]%
+    }%FALSE end
+}% rule and page of all chapter
+[%
+% \needspace{1000pt}%
+]%below spacing
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% section toc content
+\titlecontents{section}%
+[3.8em] % ie, 1.5em (chapter) + 2.3em
+{}%
+{\contentslabel{2.3em}}%
+{\hspace*{-2.3em}}%
+{\hspace*{1ex}\MainTocDottedRule\contentspage[\textit{\thecontentspage}]}%
+[\vspace{1pt}]%below spacing
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% subsection toc content
+\titlecontents{subsection}%
+[7.1em] % ie, 1.5em (chapter) + 2.3em + 3.3em
+{}%
+{\contentslabel{3.3em}}%
+{\hspace*{-2.3em}}%
+{\hspace*{1ex}\MainTocDottedRule\contentspage[\textit{\thecontentspage}]}%
+[\vspace{1pt}]%below spacing
+
+
+
+
+%\renewcommand{\contentsname}{\protect\hypertarget{toctitle}{Table of contents}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Partial Toc (titletoc package)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\chapterPartialTocDottedRule}{%
+{\titlerule*[8pt]{.}}%
+}
+
+\titlecontents{lsection}%
+[3em] % ie, 1.5em (chapter) + 2.3em
+{}%
+{\contentslabel{2em}}%
+{}%
+{\hspace*{1ex}\chapterPartialTocDottedRule\contentspage[\textit{\thecontentspage}]}%
+[\vspace{1pt}]%below spacing
+
+% \makebox[2em][l]{\arabic{section}}
+\titlecontents{lsubsection}%
+[6em] % ie, 1.5em (chapter) + 2.3em + 3.3em
+{}%
+{\contentslabel{3em}}%
+{}%
+{\hspace*{1ex}\chapterPartialTocDottedRule\contentspage[\textit{\thecontentspage}]}%
+[\vspace{1pt}]%below spacing
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% partial toc
+
+% \newcommand\PartialTocName{\contentsname}
+
+\newcommand{\chapterPartialTocRule}{%
+{\color{A4}\titlerule[2.5pt]}%
+}
+
+\def\chapterPartialTocDepth{1}
+
+\newcommand{\chapterPartialToc}{%
+{%
+\setlength{\parskip}{\oldparskip}
+% \vspace*{0.5pc}%
+\vbox{\centering\Large \textit{Som\hspace{-0.7pt}maire du chapitre}}%
+\vspace*{3pt}%
+\chapterPartialTocRule
+\vspace*{3pt}%
+\printcontents{l}{1}[\chapterPartialTocDepth]{}}%
+\vspace*{3pt}%
+\chapterPartialTocRule
+\vspace*{1pc}%
+\setlength{\parskip}{\newparskip}
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Titles customisation (titlesec package)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% chapter format
+
+
+\def\thickhrulefill{\leavevmode \leaders \hrule height 10pt depth -4pt \hfill \kern \z@}
+
+% \newcommand{\chapterbreak}{\cleardoublepage}
+\newcommand{\chapterbreak}{}
+
+% \titleformat{\chapter}%
+% [display]% shape
+% {\huge\thispagestyle{empty}}% format
+% {
+% \filright\textsc{\chaptertitlename\ \thechapter}
+% }% label
+% {10pt}% sep between label and title
+% {\filright\Huge\upshape\bfseries{#1}}%
+% [\startcontents]% after code
+
+\titleformat{\chapter}%
+[display]% shape
+{\huge\thispagestyle{empty}}% format
+{% label
+\centering \reset@font
+\thickhrulefill\quad\scshape\chaptertitlename{} \thechapter\quad \thickhrulefill
+}% label
+{10pt}% sep between label and title
+{\centering \vspace{10pt}%
+% \hrule\vspace{2pt}%
+% \Huge\upshape\bfseries{#1}%
+\hrule
+\vskip 2pt%
+\Huge \bfseries #1
+}%
+[% after code
+\vskip 5pt%
+\hrule%
+\startcontents]
+
+\titlespacing*{\chapter}{0pt}{0pt}{30pt}
+
+
+%\titleformat{\chapter}[hang]{\bfseries\Large\color{Prune}}{\thechapter\ -}{.1ex}
+%{\vspace{0.1ex}
+%}
+%[\vspace{1ex}]
+%\titlespacing{\chapter}{0pc}{0ex}{0.5pc}
+
+
+\newcommand{\marginsecnumber}[1]{%
+\makebox[0pt][r]{%
+{#1}\hspace{8pt}%
+}%
+}
+% \makebox[3em][l]{\thesubsection}
+% \makebox[2em][r]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% section format
+\titleformat{\section}
+[hang]
+{\bfseries\LARGE}
+{\marginsecnumber{\arabic{section}}}
+{0em}
+{#1}
+[]
+
+\titlespacing*{\section}{0pt}{*3}{*2}
+% \newcommand{\sectionbreak}{\clearpage}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% subsection format
+\titleformat{\subsection}[hang]%shape
+{\bfseries\Large}%format
+{\marginsecnumber{\arabic{section}.\arabic{subsection}}}%label
+{0em}%sep
+{#1}%before code
+[]%after code
+
+\titlespacing*{\subsection}{0pt}{*3}{*2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% subsubsection format
+\titleformat{\subsubsection}[hang]%shape
+{\bfseries\large}%format
+{\marginsecnumber{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}}%label
+{0em}%sep
+{#1}%before code
+[]%after code
+
+\titlespacing*{\subsubsection}{0pt}{*3}{*2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% paragraph format
+% \titleformat{\paragraph}[runin]
+% {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}[.]
+\titleformat{\paragraph}[hang]%
+{\bfseries\normalsize}%format
+{\marginsecnumber{\thesubsubsection}}%label
+{0em}%sep
+{#1}%before code
+[]%after code
+
+\titlespacing*{\paragraph}{0pt}{*3}{*2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% subparagraph format
+\titleformat{\subparagraph}[runin]
+{\normalfont\normalsize\bfseries}{\thesubparagraph}{1em}{#1}[.]
+
+\renewcommand{\dotfill}{%
+  \leavevmode\cleaders\hbox to 0.25em{\hss .\hss }\hfill\kern0pt }
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Headers customisation (fancyhdr package)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fancypagestyle{plain}{}
+\renewcommand{\chaptermark}[1]{\markboth{\emph{CHAPITRE \thechapter{} - #1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\emph{Section \arabic{section}. #1}}}
+\fancyhead[ER]{\leftmark}
+\fancyhead[EL]{\thepage}
+
+\fancyhead[OR]{\thepage}
+\fancyhead[OL]{\rightmark}
+
+\fancyfoot{}
+
+% \renewcommand{\headrulewidth}{0pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Biblio (biblatex)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\AfterPackage{biblatex}{%
+\renewcommand*{\bibfont}{\normalfont\footnotesize}%
+}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% list custom  (enumitem package) (just me having some fun)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlist[itemize,1]{label={\color{Prune}{\scriptsize\ding{110}}}}
+\setlist[itemize,2]{label={\color{Prune}{\scriptsize\ding{108}}}}
+\setlist[itemize,2]{label={\color{Prune}{\scriptsize\ding{228}}}}
+
+\setlist[itemize,1]{label={\color{Prune}{\scriptsize\decothreeright}}}
+\setlist[itemize,2]{label={\color{Prune}{\scriptsize\decofourright}}}
+% \setlist[itemize,2]{label={\color{Prune}{\scriptsize\ding{228}}}}
+
+\usetikzlibrary{shadings}
+\usetikzlibrary{shapes.geometric}
+
+\def\sphericalbullet{%
+\begin{tikzpicture}[scale=0.7]
+  \shade[ball color = Prune!60,   opacity=0.9] (0,0) circle (5pt);
+\end{tikzpicture}
+}
+
+\def\conicalbullet{%
+\begin{tikzpicture}[scale=0.06,rotate=-90,transform shape]
+    \shade[ball color = Prune!60,   opacity=0.9] (2,0) -- (0,6) -- (-2,0) arc (180:360:2cm and 0.5cm);
+\end{tikzpicture}%
+}
+
+
+% \setlist[itemize,1]{label={{\sphericalbullet}}}
+% \setlist[itemize,2]{label={{\conicalbullet}}}
+
+
+\newcommand{\drawpolygon}[1]{%
+\begin{tikzpicture}[]
+\node[draw,minimum size=10pt,regular polygon,regular polygon sides=#1,inner sep=0] (a) {};
+\end{tikzpicture}
+}
+% \setlist[itemize,1]{label={\drawpolygon{3}}}
+% \setlist[itemize,2]{label={\drawpolygon{4}}}
+% \setlist[itemize,3]{label={\drawpolygon{5}}}
+
+\makeatother

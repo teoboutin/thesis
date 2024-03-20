@@ -1,0 +1,514 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[report]{Thesis}
+#  \DeclareCategory{Thesis}
+
+
+# pdftops -eps -f 1 -l 1 $$i $$o
+# inkscape $$i --export-filename=$$o
+# gs -q -dNOCACHE -dNOPAUSE -dBATCH -dSAFER -sDEVICE=eps2write -sOutputFile=$$o $$i
+# convert $$i $$o
+Format 66
+Input stdclass.inc
+Input numreport.inc
+# Input minitoc.module
+# ProvidesModule minitoc
+Provides hyperref 1
+Provides listings 1
+Provides caption 1
+# Provides babel 1
+
+PageStyle "fancy|plain"
+
+#LeftMargin "MMMMMM"
+
+ClassOptions
+   Other "12pt"
+   Other "a4paper"
+   Other "noindentafter"
+   Other "openright"
+   Other "twoside"
+
+End
+
+SecNumDepth      4
+#PackageOptions geometry "lmargin=1.25in"
+#PackageOptions geometry "rmargin=1.25in"
+#Requires geometry
+
+AddToPreamble
+
+\usepackage{csquotes}
+
+
+
+\usepackage{calc}
+\usepackage{xfp}
+\newlength{\myTextHeight}
+\setlength{\myTextHeight}{\paperheight*\real{0.8}}
+
+\newlength{\myTextWidth}
+\setlength{\myTextWidth}{\paperwidth*\real{0.62}}
+
+\newlength{\myVmargin}
+
+\setlength{\myVmargin}{\paperheight-\myTextHeight}
+
+\newlength{\myHmargin}
+
+\setlength{\myHmargin}{\paperwidth-\myTextWidth}
+
+
+
+\newlength{\myTopmargin}
+\newlength{\myBotmargin}
+\setlength{\myTopmargin}{\myVmargin*\real{0.5}}
+\setlength{\myBotmargin}{\myVmargin*\real{0.5}}
+
+\newlength{\myOuterMargin}
+\newlength{\myInnerMargin}
+
+\setlength{\myOuterMargin}{\myHmargin*\real{0.4}}
+\setlength{\myInnerMargin}{\myHmargin*\real{0.6}}
+
+\usepackage[]{geometry}
+\geometry{verbose,top=\myTopmargin,bottom=\myBotmargin,outer=2cm,inner=2.6cm, marginparsep=0.1cm, marginparwidth=1.9cm, headheight=28pt}
+\savegeometry{figure}
+\geometry{verbose,top=\myTopmargin,bottom=\myBotmargin,outer=2.2cm,inner=2.8cm, marginparsep=0.1cm, marginparwidth=1.9cm, headheight=28pt}
+\savegeometry{default}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% calc char count per line
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\edef\charcount{\fpeval{\myTextWidth/1ex}} % line length divided by char length for total chars
+\edef\spaces{\fpeval{(\charcount+1)/(4.8+1)}} % calc spaces between words using average word length (4.8 in french)
+\edef\wordchars{\fpeval{\charcount-\spaces}} % average letters per line. should not be higher than 80
+
+
+\newenvironment{dummyenv}[0]{}{}
+\newcommand{\dummycmd}[1]{} 
+\input{UPSthesis_preamble.tex}
+
+
+
+
+\AfterPackage{refstyle}{%
+\IfPackageLoadedTF{refstyle}{%
+\newref{sec}{name = \RSsectxt}%
+}{}
+}
+
+\AfterPackage{babel}{%
+\usepackage{listings}
+\lstset{frameround=fttt,language=C++,numbers=left,breaklines=true}
+\usepackage[font=small]{caption}
+
+\captionsetup{width=.9\textwidth}
+}
+
+EndPreamble
+
+
+Style "InPreamble"
+    LatexType   paragraph
+    Align       Left
+    LabelType   Above
+    LabelString "In Preamble:"
+    PassThru    1
+    Category    FrontMatter
+    InPreamble  1
+    ForceLocal  -1
+    Font
+        Family Typewriter
+        Color brown
+    EndFont
+    LabelFont
+        Family Roman
+        Color black
+        Series Bold
+    EndFont
+End
+
+Style Subsubsection
+    NextNoIndent 1
+End
+Style Subsection
+    NextNoIndent 1
+End
+Style Standard
+    ParIndent ""
+    NextNoIndent 1
+    ParSep 0.6
+End
+
+
+
+Style "SetTitle"
+    CopyStyle   Standard
+    LatexType   Command
+    LatexName   settitle
+    LabelType   Centered
+#  EndLabeltype Static
+#  EndLabelString "e"
+    ParIndent ""
+    LabelString "Thesis Title:"
+    BottomSep 0.5
+    TopSep 0.5
+    Margin first_dynamic
+    LabelFont
+        Color blue
+        Series Bold
+        Size large
+    EndFont
+    Category    ThesisFrontMatter
+    InPreamble 1
+    Argument 1
+        LabelString     "English"
+        Tooltip         "Translation of the title"
+        Mandatory       1
+        LeftDelim       {
+        RightDelim      }
+        AutoInsert      1
+    EndArgument
+    
+    Preamble
+        \newcommand{\settitle}[2]{\def\thesistitre{#2}\def\thesistitle{#1}}
+    EndPreamble
+End
+
+Style "SetAbstract"
+    CopyStyle   SetTitle
+#     LatexName   AfterPackage{babel}{\setresume
+    LatexName  setresume
+    LabelString "Thesis Abstract"
+    DependsOn               SetTitle
+#     LeftDelim \AfterPackage{babel}{
+#     RightDelim }
+    Preamble
+        \newcommand{\setresume}[2]{\def\thesisresume{#2}\def\thesisabstract{#1}}
+    EndPreamble
+End
+Style "SetKeywords"
+    CopyStyle   SetTitle
+    LatexName   setkeywords
+    LabelString "Thesis Keywords"
+    DependsOn               SetAbstract
+    Preamble
+        \newcommand{\setkeywords}[2]{\def\thesismotscles{#2}\def\thesiskeywords{#1}}
+    EndPreamble
+End
+
+
+
+Style "ThesisTitlePage"
+    CopyStyle   SetTitle
+    InPreamble 0
+    ResetArgs 1
+    LabelString             ThesisTitlePage
+    LabelType               Centered
+    LatexType               command
+    LatexName               makeThesisTitlePage
+    Category                ThesisFrontMatter
+    KeepEmpty 1
+    DependsOn               SetKeywords
+    Preamble
+        \input{UPSthesis_titlepage.tex}
+    EndPreamble
+End
+
+
+
+InsetLayout Flex:macros
+  LyxType               custom
+  Decoration            Classic
+  LabelString           macros
+  LatexType             environment
+  LatexName             dummyenv
+  ParbreakIsNewline     1
+End
+InsetLayout Flex:titlecontent
+  LyxType               custom
+  Decoration            Classic
+  LabelString           titlecontent
+  LatexType             environment
+  LatexName             dummyenv
+  ParbreakIsNewline     1
+End
+
+
+OutlinerName subequations        "subequations"
+
+InsetLayout Flex:Subequations
+  LyxType               custom
+  Decoration            classic
+  LabelString           Subequations
+  LatexType             Environment
+
+  LatexName             subequations
+  MultiPar              true
+  Requires              amsmath
+  ResetsFont            true
+  Display 1
+  AddToToc "subequations"
+End
+
+# Counter "equation"
+#     PrettyFormat         "Equation ##"
+#     Within "subeq"
+# End
+
+Counter subeq
+    LabelString "\arabic{subeq}"
+#     Within "equation"
+End
+Style "Subeqs"
+    CopyStyle "Standard"
+    Category              Math
+#     LeftMargin "MM"
+#     Margin Dynamic
+    ParbreakIsNewline 1
+    LabelString           Subequations
+    LatexType             Environment
+    LatexName             subequations
+    Requires              amsmath
+    EndLabelString "SE"
+    LabelCounter "subeq"
+#     StepMasterCounter 1
+    AddToToc "subequations"
+    IsTocCaption 0
+    LabelString "SE \arabic{subeq}.\arabic{equation}"
+#     LabelBottomsep 4
+    LabelType Static
+    EndLabeltype Static
+    LabelFont
+        Color   orange
+        Family  Typewriter
+        Series  Bold
+        Size    larger
+    EndFont
+
+End
+
+
+
+InsetLayout Flex:multicolumn
+    LyxType               custom
+    Decoration            Classic
+    LabelString           multicolumn
+    LatexType             environment
+    LatexName             multicols
+    Requires              multicol
+    MultiPar              1
+  Argument 1
+    LabelString     "colnum"
+    Tooltip         "colnum"
+    Mandatory       1
+    LeftDelim       {
+    RightDelim      }
+    AutoInsert      1
+  EndArgument
+  Argument 2
+    LabelString     "pretext"
+    Tooltip         "pretext"
+    LeftDelim       [
+    RightDelim      ]
+    PassThru               1
+  EndArgument
+  Argument 3
+    LabelString     "pretext length"
+    Tooltip         "pretext length"
+    LeftDelim       [
+    RightDelim      ]
+    PassThru               1
+    Requires               2
+  EndArgument
+End
+
+
+InsetLayout Flex:URL-footnote
+    LyxType     custom
+    LabelString           "URL in footnote"
+    Decoration  classic
+    LatexType   command
+    LatexName   urlfootnote
+    Argument 1
+        LabelString "url"
+        MenuString  "url|u"
+        Tooltip     "url that will be shown in footnote"
+        Mandatory 1
+        AutoInsert 1
+    EndArgument
+    Preamble
+\newcommand{\urlfootnote}[2]{#2\footnote{\url{#1}}}
+    EndPreamble
+End
+
+InsetLayout Flex:biblatex/refsection
+  LyxType               custom
+  Decoration            classic
+  LabelString           refsection
+  LatexType             Environment
+  LatexName             refsection
+End
+InsetLayout Flex:biblatex/refsegment
+  LyxType               custom
+  Decoration            classic
+  LabelString           refsegment
+  LatexType             Environment
+  LatexName             refsegment
+End
+
+
+
+AddToPreamble
+\usepackage{changepage}
+\newlength{\offsetpage}
+\setlength{\offsetpage}{1.25in}
+\newenvironment{widepage}{%
+\begin{adjustwidth}{-\offsetpage}{-\offsetpage}%
+\addtolength{\textwidth}{2\offsetpage}%
+\begin{center}%
+}%
+{%
+\end{center}%
+\end{adjustwidth}%
+}
+EndPreamble
+InsetLayout Flex:figure/force-centered
+  LyxType               custom
+  Decoration            classic
+  LabelString           "Force centered"
+  LatexType             environment
+  LatexName             widepage
+  Requires changepage
+
+End
+
+
+#######################
+####     fixme
+#######################
+
+AddToPreamble
+\usepackage{fixme}
+%\fxloadlayouts{inline}
+\fxloadlayouts{marginnote}
+\fxloadlayouts{pdfmargin}
+\fxloadlayouts{pdfnote}
+\fxsetup{author=,nomargin,marginnote,pdfmargin,innerlayout=inline,envlayout=color}
+\AtEndDocument{\listoffixmes\addcontentsline{toc}{chapter}{Fix me list}}
+\fxsetface{margin}{\tiny}
+%\newcommand{\fxnotehyphen}[2][]{{\fxnote[#1]{#2}}}
+EndPreamble
+OutlinerName FIXME "FIXME"
+PackageOptions fixme "draft"
+
+Counter fixme
+    LabelString "\arabic{fixme}"
+#     Within "equation"
+End
+# Style Chapter
+#     AddToToc      FIXME
+# End
+
+InsetLayout Branch:FIXME
+    Decoration  classic
+    Font
+        Color   black
+    EndFont
+    LabelFont
+        Color   blue
+        Family  Sans
+#         Size    large
+    EndFont
+    MultiPar    true
+    LatexType   command
+    LatexName   fxnote
+    AddToToc      FIXME
+    IsTocCaption  1
+    LabelString "FIXMEaa\roman{chapter} \arabic{fixme}"
+    Requires fixme
+    LabelCounter "fixme"
+    Argument 1
+        LabelString "Options"
+        MenuString  "fixme options|s"
+        Tooltip     "See the fixme package documentation for possible options. Default is marginnote. Change appearance with inline/footnote/margin/index/marginclue. Use nomarginnote to remove default. Author can be specified with author=..."
+    EndArgument
+
+End
+InsetLayout Branch:FIXME-ENV
+    Decoration  classic
+    BgColor green
+#     Font
+#         Color   green
+#     EndFont
+    LabelFont
+        Color   blue
+        Family  Sans
+        Size    large
+    EndFont
+    MultiPar    true
+    LatexType   environment
+    LatexName   anfxnote
+    AddToToc      FIXME
+    IsTocCaption  1
+
+    Requires fixme
+
+    Argument 1
+        LabelString "Options"
+        MenuString  "fixme options|s"
+        Tooltip     "See the fixme package documentation for possible options. Default is marginnote. Change appearance with inline/footnote/margin/index/marginclue. Use nomarginnote to remove default. Author can be specified with author=..."
+    EndArgument
+    Argument 2
+        LabelString "summary"
+        MenuString  "fixme env summary|s"
+        Tooltip     ""
+        Mandatory 1
+        AutoInsert 1
+        IsTocCaption 1 
+    EndArgument
+End
+
+
+
+##############
+## Index entry fix for bracket passthru
+###
+InsetLayout Index
+    CopyStyle           Index
+#     LabelString           Idx
+#     Decoration            classic
+#     Font
+#       Size                Small
+#     EndFont
+#     LabelFont
+#       Color               indexlabel
+#       Size                Small
+#     EndFont
+#     MultiPar              false
+#     CustomPars            false
+#     ForcePlain            true
+#     ContentAsLabel        true
+    PassThruChars         @|!{}
+    Spellcheck 0
+End
+
+InsetLayout Flex:chemformula/ch
+  LyxType               custom
+  Decoration            classic
+  LabelString           "CH"
+  LatexType             command
+  LatexName             ch
+  PassThru              1
+  Preamble
+  \usepackage{chemformula}
+  EndPreamble
+    Argument 1
+        LabelString "Options"
+        MenuString  "ch options|s"
+        PassThru 1
+    EndArgument
+End
+

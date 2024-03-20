@@ -1,0 +1,4664 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass mythesis
+\use_default_options true
+\master ../main.lyx
+\maintain_unincluded_children false
+\language french
+\language_package default
+\inputencoding utf8-plain
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\pdf_bookmarks true
+\pdf_bookmarksnumbered true
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 5
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine biblatex
+\cite_engine_type numerical
+\biblio_style unsrtnat
+\biblio_options sorting=none,backref=true,url=false
+\biblatex_bibstyle numeric
+\biblatex_citestyle numeric
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\branch todos
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch chapter1only
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch FIXME-ENV
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\branch figures-graphics
+\selected 1
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.25in
+\topmargin 1in
+\rightmargin 1.25in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{chapter}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Introduction
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:introduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+chapterPartialToc
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dans cette thèse, nous nous sommes intéressés à la modélisation et à la
+ simulation de la dissolution du verre en milieu aqueux.
+ L'altération du verre est une question d’intérêt majeur dans plusieurs
+ secteurs industriels, en particulier les industries pharmaceutiques et
+ agroalimentaires 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+ Elle intervient également dans des situations naturelles, comme la composition
+ des océans qui est influencée par la dissolution des verres basaltiques
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Prause2022"
+literal "false"
+
+\end_inset
+
+.
+ Pour cette thèse, réalisée au Commissariat à l'énergie atomique et aux
+ énergies alternatives (CEA), cette recherche est motivée par la problématique
+ du stockage des déchets radioactifs de haute activité, qui sont conditionnés
+ sous forme de colis de verre.
+ La solution retenue par la France pour la gestion des déchets radioactifs
+ de haute activité est le stockage souterrain profond.
+ La durée de vie de ces déchets étant très grande, ils seront exposés à
+ l'altération par l'eau pendant une très longue durée.
+ La quantification de la résistance du verre à l'eau est donc une question
+ cruciale pour assurer la sécurité du stockage.
+\end_layout
+
+\begin_layout Standard
+Afin de présenter le contexte de cette thèse, nous allons commencer par
+ une courte introduction à la problématique du stockage des déchets radioactifs
+ en France (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:stockage"
+
+\end_inset
+
+), puis nous présenterons l'état des connaissances liées à l'altération
+ des verres de stockage (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:pheno_verre"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Nous finirons ce chapitre introductif en présentant les objectifs de la
+ thèse (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Objectifs"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Déchets radioactifs en France: problématique du stockage
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:stockage"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La notion de déchet radioactif est définie dans l'article L.542-1-1 du code
+ de l’environnement, comme les 
+\begin_inset Quotes fld
+\end_inset
+
+substances radioactives pour lesquelles aucune utilisation ultérieure n'est
+ prévue [...]
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Une substance radioactive est 
+\begin_inset Quotes fld
+\end_inset
+
+une substance [...] dont l'activité justifie un contrôle de radioprotection
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Une autre classification est définie, les déchets radioactifs ultimes,
+ pour lesquels les conditions techniques et économiques ne permettent pas
+ de traitement de valorisation ou de réduction de radioactivité.
+ 
+\end_layout
+
+\begin_layout Standard
+Ces déchets ultimes n'ont donc pas d'autre possibilité que d'être stockés,
+ et comme le stipule le code de l'environnement, ce stockage doit être réalisé
+ dans 
+\begin_inset Quotes fld
+\end_inset
+
+le respect de la protection de la santé des personnes, de la sécurité et
+ de l’environnement
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Les substances radioactives voient leur activité diminuer avec le temps,
+ ce qui rend la solution du stockage viable pour éliminer les déchets radioactif
+s.
+ La durée de vie de certains déchets peut cependant être très longue, jusqu'à
+ plusieurs centaines de milliers d'années.
+ Ainsi, le stockage doit permettre de contenir les déchets sur de très longues
+ périodes.
+\end_layout
+
+\begin_layout Standard
+Ces déchets sont produits par les activités humaines utilisant des substances
+ radioactives, réparties dans les secteurs économiques suivants:
+\end_layout
+
+\begin_layout Itemize
+Le secteur électronucléaire, qui inclut toute la chaîne de production, de
+ l'extraction au recyclage en passant par la fabrication du combustible.
+\end_layout
+
+\begin_layout Itemize
+Le secteur de la défense.
+\end_layout
+
+\begin_layout Itemize
+Le secteur médical.
+\end_layout
+
+\begin_layout Itemize
+Quelques activités dans le secteur de l'industrie non-électronucléaire.
+\end_layout
+
+\begin_layout Itemize
+La recherche, en lien avec tous les secteurs précédents.
+\end_layout
+
+\begin_layout Standard
+En France, la majorité des déchets est issue du secteur électronucléaire,
+ suivi des secteurs de la défense et de la recherche.
+ Ces déchets sont classés dans différentes catégories selon leur niveau
+ de radioactivité et leur durée de vie.
+ La section suivante présente les catégories et stocks de déchets radioactifs
+ en France.
+\end_layout
+
+\begin_layout Subsection
+Les déchets produits en France
+\end_layout
+
+\begin_layout Standard
+L'Andra (Agence Nationale pour la gestion des Déchets Radioactifs) réalise
+ depuis 2004 l'
+\begin_inset Quotes fld
+\end_inset
+
+Inventaire national des matières et déchets radioactifs
+\begin_inset Quotes frd
+\end_inset
+
+, publié sur le site de l'Andra 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ANDRAdocs"
+literal "false"
+
+\end_inset
+
+.
+ Le dernier rapport date de 2023, concernant l'inventaire des déchets à
+ fin 2021 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ANDRA2023"
+literal "false"
+
+\end_inset
+
+.
+ Cet inventaire distingue plusieurs catégories de déchets selon leur niveau
+ d'activité et leur durée de vie, qui vont imposer des contraintes différentes
+ sur la gestion des déchets.
+\end_layout
+
+\begin_layout Standard
+On distingue différentes catégories de radionucléides:
+\end_layout
+
+\begin_layout Itemize
+Selon l’activité, les radionucléides de:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+très faible activité (TFA): activité inférieure à 100 becquerels par gramme;
+\end_layout
+
+\begin_layout Itemize
+faible activité (FA): activité entre 100 Bq/g et 1 000 000 Bq/g
+\end_layout
+
+\begin_layout Itemize
+moyenne activité (MA): activité entre 1 000 000 Bq/g et 1 000 000 000 Bq/g
+\end_layout
+
+\begin_layout Itemize
+haute activité (HA): activité supérieure à 1 000 000 000 Bq/g
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Selon la durée de vie, les radionucléides à:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+vie très courte (VTC): période inférieure à 100 jours;
+\end_layout
+
+\begin_layout Itemize
+vie courte (VC): période inférieure à 31 ans;
+\end_layout
+
+\begin_layout Itemize
+vie longue (VL): période supérieure à 31 ans;
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+La durée de vie des déchets est mesurée par la période de demi-vie des radionucl
+éides qu'il contient, qui correspond à la durée au bout de laquelle la moitié
+ des radionucléides se sont désintégrés.
+ Après une période, la radioactivité liée à ce radionucléide est divisée
+ par 2, et après 10 périodes, elle est divisée par 1000.
+\end_layout
+
+\begin_layout Standard
+En pratique, les déchets ne sont pas constitués de radionucléides isolés,
+ mais de mélanges complexes qui dépendent de l'origine et des procédés de
+ traitement et de conditionnement.
+ En fonction du mélange de radionucléides contenus, les déchets sont donc
+ classés dans des catégories.
+ La classification diffère selon les pays.
+ En France, à ce jour, les catégories sont: haute activité (HA), moyenne
+ activité à vie longue (MA-VL), faible activité à vie longue (FA-VL), faible
+ et moyenne activité à vie courte (FMA-VC), très faible activité (TFA) et
+ vie très courte (VTC).
+ Le Tableau 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:intro_qtt_dechets"
+
+\end_inset
+
+ indique les volumes et niveaux de radioactivité que chacune de ces catégories
+ représente.
+ Des informations plus détaillées relatives à ces catégories de déchets
+ (origines, modes de gestion\SpecialChar ldots
+) peuvent être trouvées dans le rapport de synthèse
+ de l'Andra 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ANDRA2023"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="7">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Catégorie
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Volume (
+\begin_inset Formula $m^{3}$
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Activité (TBq)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+HA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4320
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.2 %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+220 000 000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+97.2 %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA-VL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+39 500
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.3 %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6 060 000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.67 %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FA-VL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+103 000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.9 %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20 200
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01 %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FMA-VC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+981 000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+55.7 %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+281 000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.12 %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TFA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+633 000
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+35.9 %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+968
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.0004 %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:intro_qtt_dechets"
+
+\end_inset
+
+Inventaire des déchets radioactifs à fin 2021 (source 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "ANDRA2023"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Float table
+placement p
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="5">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Durée de vie
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VTC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+VL
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Activité
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TFA
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+VTC
+\begin_inset Newline newline
+\end_inset
+
+Sources: médical, recherche
+\begin_inset Newline newline
+\end_inset
+
+Gestion: décroissance radioactive
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+TFA
+\begin_inset Newline newline
+\end_inset
+
+Sources:démantèlement (bétons, gravas...)
+\begin_inset Newline newline
+\end_inset
+
+Gestion: stockage de surface (cires)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+FA
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+FMA-VC
+\begin_inset Newline newline
+\end_inset
+
+Sources: maintenance (vêtement, outils...), traitements d'effluents liquides
+\begin_inset Newline newline
+\end_inset
+
+Gestion: stockage de surface (centres de stockage de l’Aube et de la Manche)
+\begin_inset Newline newline
+\end_inset
+
+Durée de vie: 
+\begin_inset Formula $\sim$
+\end_inset
+
+300 ans (10 périodes)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+FA-VL
+\begin_inset Newline newline
+\end_inset
+
+Sources: sites pollués au radium, graphite des anciens réacteurs UNGG...
+\begin_inset Newline newline
+\end_inset
+
+Gestion: stockage à faible profondeur à l’étude
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MA
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "20col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+MA-VL
+\begin_inset Newline newline
+\end_inset
+
+Sources: recyclage des combustibles usés, usines de retraitement (déchets
+ de structure des assemblages combustibles ou du réacteur)
+\begin_inset Newline newline
+\end_inset
+
+Gestion: stockage géologique profond en projet (projet Cigéo)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+HA
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "40col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+HA
+\begin_inset Newline newline
+\end_inset
+
+Sources: recyclage des combustibles usés
+\begin_inset Newline newline
+\end_inset
+
+Gestion: stockage géologique profond en projet (projet Cigéo)
+\begin_inset Newline newline
+\end_inset
+
+Durée de vie: période jusqu'à plusieurs milliers d'année (neptunium 237),
+ >20 périodes pour réduire l'activité.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Classification des déchets radioactifs en France
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:intro_classif_dechets"
+
+\end_inset
+
+Classification des déchets radioactifs en France.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Le conditionnement des déchets HA
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:conditionnement_dechets"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Les déchets radioactifs de haute activité sont issus du retraitement des
+ combustibles nucléaires usés.
+ Les combustibles usés contiennent du plutonium et de l'uranium valorisable.
+ En les mélangeant, on obtient le combustible MOX 
+\emph on
+\lang english
+(Mixed Oxides)
+\emph default
+\lang french
+ qui peut à nouveau servir à produire de l'énergie.
+ 
+\end_layout
+
+\begin_layout Standard
+Après extraction du plutonium et de l'uranium, il ne reste que des composants
+ non valorisables, qui deviennent donc des déchets radioactifs ultimes.
+ Il s'agit des produits de fission et les actinides mineurs créés dans le
+ réacteur lors de la fission du combustible.
+ Ils se trouvent initialement sous la forme d'une solution liquide extrêmement
+ radioactive et à forte puissance thermique, qui doit être continuellement
+ refroidie.
+\end_layout
+
+\begin_layout Standard
+Cette solution est, dans un premier temps, stockée dans des réservoirs avec
+ agitateurs et systèmes de refroidissement actifs, qui doivent être constamment
+ surveillés.
+ Le transport sous cette forme est également difficile et dangereux.
+ Pour faciliter la gestion de ces colis, il faut les immobiliser dans une
+ matrice solide.
+ Les déchets pourront alors être stockés sous forme de colis de petite taille,
+ faciles à contrôler thermiquement et ne présentant pas de risque de dispersion
+ rapide dans l'environnement.
+ La manutention sera également simplifiée.
+\end_layout
+
+\begin_layout Subsubsection
+Processus d'immobilisation
+\end_layout
+
+\begin_layout Standard
+En France, les recherches pour l'immobilisation de ces déchets commence
+ au CEA au début des années 50.
+ La solution retenue est l'immobilisation dans une matrice de verre et les
+ recherches aboutissent vers la fin des années 60 à un processus semi-industriel
+ de vitrification mis en place sur le site de Marcoule 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Vernaz2014"
+literal "false"
+
+\end_inset
+
+.
+ Ce processus est ensuite industrialisé pour répondre aux besoins de l'industrie
+ nucléaire, ce qui conduit à la création de l'usine de vitrification de
+ déchet de La Hague au début des années 90.
+\end_layout
+
+\begin_layout Standard
+Aujourd'hui, les déchets radioactifs ultimes de haute activité issus de
+ l'industrie nucléaire sont vitrifiés dans les ateliers R7 et T7 de l'usine
+ de La Hague.
+ Le processus consiste à traiter la solution contenant les produits de fission
+ par calcination à 400 °C (pour obtenir un résidu sec), puis à les mélanger
+ avec de la fritte de verre dans un four à induction, qui chauffe le mélange
+ à une température de 1100 °C.
+ Les déchets se mélangent au verre liquide.
+ Le mélange en fusion est ensuite versé dans un conteneur en acier.
+ Avec le refroidissement, le mélange forme un verre solide par transition
+ vitreuse.
+ Avec cette méthode, la majorité des éléments radioactifs se retrouve intégré
+ dans la structure moléculaire du verre, ce qui rend l'immobilisation très
+ performante.
+\end_layout
+
+\begin_layout Standard
+La Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:colis-CSD-V"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ montre un colis résultant de ce processus.
+ Le colis final pèse 480 kg pour 400 kg de déchets vitrifiés (matrice de
+ verre + déchets), et occupe un volume de 180 litres.
+ L'activité du colis CSD-V est de l'ordre de 
+\begin_inset Formula $10^{10}$
+\end_inset
+
+ Bq/g.
+ La dissipation de cette radioactivité dans le déchet représente une source
+ thermique d'environ 2500 W.
+ Cette puissance thermique persiste pendant plusieurs dizaines d'années.
+ Pendant cette durée, la température interne du verre diminuera petit à
+ petit de 
+\begin_inset Formula $400°C$
+\end_inset
+
+ à moins de 
+\begin_inset Formula $100°C$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vernaz2012"
+literal "false"
+
+\end_inset
+
+.
+ Durant cette période, ces colis sont stockés dans des puits verticaux souterrai
+ns et sont ventilés afin de dissiper la puissance thermique.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Branch figures-graphics
+inverted 0
+status open
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Figures/Images/CSD-V_maquette.jpg
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:colis-CSD-V"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Maquette d'un colis de déchet CSD-V pour le confinement des déchets de haute
+ activité (HA)
+\end_layout
+
+\end_inset
+
+Maquette d'un colis de déchet CSD-V pour le confinement des déchets de haute
+ activité (HA).
+ Source: 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DechetCSDV"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Voici quelques chiffres clés supplémentaires concernant ce type de colis:
+\end_layout
+
+\begin_layout Itemize
+1 colis CSD-V correspond à l'utilisation d'environ 10 tonnes d'uranium naturel
+ initial, transformé en combustible puis utiliser dans une centrale nucléaire
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "site:radiotoxique,Gin2005"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+10 000 ans sont nécessaires pour que la radiotoxicité d'un colis CSD-V descende
+ en dessous de la radiotoxicité de l'uranium naturel initial 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "site:radiotoxique"
+literal "false"
+
+\end_inset
+
+.
+ Pour le plutonium extrait du combustible, cela prendra 100 000 ans s'il
+ n'est pas réutilisé.
+\end_layout
+
+\begin_layout Itemize
+1 colis CSD-V correspond à la production d’électricité utilisée par 50 000
+ à 100 000 personnes pendant 1 an.
+\end_layout
+
+\begin_layout Standard
+D'autres types de déchets, comme certains de moyenne activité, sont conditionnés
+ par le même processus, ce qui donne des colis similaires, avec une radioactivit
+é plus faible, comme les colis CSD-B 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "DechetCSDB"
+literal "false"
+
+\end_inset
+
+ par exemple (
+\begin_inset Formula $\sim10^{8}$
+\end_inset
+
+ Bq/g).
+\end_layout
+
+\begin_layout Subsubsection
+Matériau pour l'immobilisation
+\end_layout
+
+\begin_layout Standard
+Le choix du matériau d'immobilisation des déchets est crucial pour garantir
+ le confinement des déchets jusqu'à dissipation de la radioactivité.
+ Le verre a été choisi comme matrice.
+\end_layout
+
+\begin_layout Standard
+La composition du verre utilisé pour immobiliser les produits de fission
+ a également fait l'objet de recherches approfondies, dans le but de maximiser
+ certaines propriétés importantes du verre.
+\end_layout
+
+\begin_layout Standard
+Pour commencer, il est important de définir ce qu'est un 
+\begin_inset Quotes fld
+\end_inset
+
+verre
+\begin_inset Quotes frd
+\end_inset
+
+.
+ Ce terme est utilisé pour qualifier un matériau ayant un comportement solide,
+ et dont la structure moléculaire ne présente pas d'ordre au-delà de quelques
+ nanomètres.
+ Cette structure amorphe est caractérisée par une large distribution des
+ angles de liaisons entre les éléments constitutifs du verre 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+ Ce type de structure, qualifiée de vitreuse ou amorphe, s'oppose aux matériaux
+ cristallins, dont la structure moléculaire est bien ordonnée et constituée
+ de motifs moléculaires qui se répètent de manière périodique.
+ Le verre peut aussi être défini par le comportement de transition vitreuse,
+ caractérisé par un changement dans la dépendance à la température des propriété
+s du verre (le volume spécifique par exemple) qui s'effectue à une température
+ de transition vitreuse 
+\begin_inset Formula $T_{g}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vernaz2012"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Les matériaux vitreux peuvent être formés par des méthodes variées 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ojovan2014_17"
+literal "false"
+
+\end_inset
+
+: trempe, dépôt de vapeur (PVD, 
+\emph on
+\lang english
+Physical Vapor Deposition
+\emph default
+\lang french
+), procédés sol-gel...
+ La méthode la plus courante consiste à refroidir un matériau fondu en dessous
+ de sa température de transition vitreuse 
+\begin_inset Formula $T_{g}$
+\end_inset
+
+ assez rapidement pour ne pas laisser le temps à une phase cristalline de
+ se former.
+ Le refroidissement rapide abaisse fortement la viscosité du liquide, ce
+ qui permet d'immobiliser la structure moléculaire du matériau dans un état
+ amorphe et désordonné, proche de celle d'un liquide.
+ Tous les matériaux peuvent ainsi prendre la forme d'une phase vitreuse.
+ Cependant certains nécessitent un refroidissement extrêmement rapide pour
+ éviter les transitions cristallines (les métaux par exemple).
+ Les verres à base de silice quant à eux se forment beaucoup plus facilement,
+ à des températures plus proches de la température de fusion et avec un
+ refroidissement lent 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ojovan2014_17"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Les verres sont donc par définition des matériaux métastables, qui ont été
+ immobilisés sous cette forme par des effets cinétiques.
+ En conséquence, ils tendent à évoluer vers une structure cristalline plus
+ stable.
+ En pratique, la cinétique de cette réorganisation est contrôlée par la
+ viscosité extrêmement élevée du matériau vitreux, ce qui conduit à des
+ temps caractéristiques très longs, bien supérieurs au millier d'années.
+ Ce caractère métastable de la phase vitreuse est crucial lors de l'altération
+ des verres, puisqu'il s'applique également à la stabilité des verres en
+ phase aqueuse.
+ En effet, la phase vitreuse ne présente pas d'équilibre thermodynamique
+ possible avec la phase aqueuse.
+ De ce fait, son altération est uniquement contrôlée par des effets cinétiques,
+ liés à la réaction ou au transport 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vernaz2001"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Les éléments permettant de former des verres relativement simplement à eux
+ seuls (avec des atomes d'oxygène) sont qualifiés de cations formateurs.
+ On trouve par exemple le silicium (
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+SiO2
+\end_layout
+
+\end_inset
+
+), le bore (
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+B2O3
+\end_layout
+
+\end_inset
+
+) ou le phosphore (
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+P2O5
+\end_layout
+
+\end_inset
+
+).
+ Des éléments dits modificateurs sont généralement ajoutés pour contrôler
+ les propriétés du verre.
+ On peut ainsi abaisser la température de fusion (fondants) ou réduire sa
+ viscosité à basse température 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+ Ces modifications des propriétés facilitent l'élaboration du verre, en
+ favorisant la transition vitreuse lors de la diminution de la température.
+ Ces éléments agissent en modifiant la structure moléculaire du verre, en
+ particulier en introduisant des atomes d'oxygène 
+\begin_inset Quotes fld
+\end_inset
+
+non pontants
+\begin_inset Quotes frd
+\end_inset
+
+, c'est-à-dire reliés à un unique élément.
+\end_layout
+
+\begin_layout Standard
+La composition du verre peut ainsi être optimisée en ajoutant des cations
+ formateurs ou modificateurs en proportions adaptées pour maximiser les
+ propriétés recherchées dans un verre.
+\end_layout
+
+\begin_layout Standard
+Pour l'immobilisation des déchets radioactifs, les principales propriétés
+ utiles sont 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vernaz2012,Ojovan2014_17"
+literal "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Itemize
+La solubilité des éléments radioactifs dans la matrice vitreuse.
+ Il est important que ces éléments soient incorporés à la structure moléculaire
+ du verre pour un meilleur confinement, par opposition à un simple piégeage
+ mécanique dans le verre.
+ Une solubilité plus élevée permet également de réduire le volume de déchet.
+\end_layout
+
+\begin_layout Itemize
+La température d'élaboration.
+ Une température d'élaboration plus faible permet de réduire les besoins
+ en maintenance de la chaîne de production et donc de réduire le volume
+ de déchets collatéraux.
+\end_layout
+
+\begin_layout Itemize
+La durabilité physique, pour éviter la fissuration du colis.
+\end_layout
+
+\begin_layout Itemize
+La durabilité chimique, pour assurer un stockage efficace à long terme,
+ dans des conditions qui sont difficiles à garantir.
+ 
+\end_layout
+
+\begin_layout Itemize
+La résistance à la radioactivité: la présence d'éléments à radioactivité
+ élevée à plusieurs effets sur le verre.
+ Les rayonnements alpha et bêta émis peuvent endommager la structure du
+ verre.
+ De plus, la radioactivité provoque également un échauffement du verre,
+ ce qui peut accélérer la cinétique de relaxation de la structure amorphe.
+\end_layout
+
+\begin_layout Standard
+En France et dans la plupart des pays concernés par le nucléaire, le choix
+ s'est fixé sur une base de verre borosilicaté.
+ Cette base permet d'obtenir un bon compromis entre tous ces critères, mais
+ n'est pas l'unique possibilité.
+ En Russie, certains déchets sont immobilisés dans des verres composés principal
+ement de phosphate, sodium et aluminium par exemple (aluminophosphates).
+ 
+\end_layout
+
+\begin_layout Standard
+La base borosilicatée est privilégiée pour deux raisons: la facilité d'élaborati
+on et la résistance chimique.
+ Les verres borosilicatés sont habituellement utilisés pour la verrerie
+ d'instrumentation en chimie de par leur résistance chimique et thermique.
+ L'ajout de bore dans le verre de silice permet de réduire significativement
+ la température de transition vitreuse du verre, ce qui facilite l'élaboration
+ du verre.
+ La zone de transition vitreuse devient également plus raide, ce qui augmente
+ la résistance aux chocs thermiques et améliore la stabilité de la structure
+ vitreuse à base température.
+ Cela permet d'éviter la cristallisation du verre sous l'effet thermique
+ de la radioactivité.
+ En partant de cette base, la composition a ensuite été optimisée pour maximiser
+ les propriétés listées ci-dessus, en particulier la solubilité des éléments
+ radioactifs.
+ Les recherches ont ainsi abouti à la composition du verre R7T7, qui est
+ utilisé industriellement à l'usine de La Hague pour confiner les déchets
+ de haute activité.
+ Le verre R7T7 permet d'incorporer environ 28% massique d'éléments radioactifs.
+\end_layout
+
+\begin_layout Subsection
+Le stockage géologique
+\end_layout
+
+\begin_layout Standard
+Les colis de déchets issus du processus d'immobilisation décrit ci-dessus
+ resteront fortement radioactifs pendant des durées très importantes (10
+ 000 à 100 000 ans), bien plus longues que l'existence de notre civilisation.
+ Il est nécessaire de trouver une solution pour isoler ces déchets de l'environn
+ement humain sur le long terme, dans un futur qu'il est difficile de maîtriser
+ et même de prévoir.
+ Pour isoler les déchets, plusieurs méthodes ont été envisagées par le passé.
+ La solution retenue comme viable par tous les pays utilisant l'énergie
+ nucléaire est le stockage géologique.
+ Il s'agit de stocker les colis de déchets en profondeur (environ 500 mètres)
+ dans des couches géologiques stables depuis plusieurs millions d'années,
+ qui formeront une barrière naturelle empêchant la radioactivité de contaminer
+ la surface, tout en rendant les matières radioactives inaccessibles aux
+ générations futures.
+\end_layout
+
+\begin_layout Standard
+En France, la décision a été prise de mettre en place un centre de stockage
+ dans une couche souterraine d'argile située à Bure dans la Meuse (55).
+ Cette couche d'argile est restée stable depuis sa formation il y a plus
+ de 150 millions d'années, ce qui assure une stabilité du milieu suffisante
+ pour abriter un centre de stockage pendant une centaine de milliers d'années.
+ 
+\end_layout
+
+\begin_layout Standard
+Le centre de stockage, appelé Cigéo, sera construit à 500 m de profondeur.
+ La Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cigeo"
+
+\end_inset
+
+ montre une vue d'ensemble de ce projet.
+ Il permettra de stocker l'ensemble des déchets HA existants et issus de
+ la production des centrales actuellement en activité, ainsi qu'une partie
+ des déchets de la classe MA-VL, comme des effluents issus du retraitement
+ par exemple.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Images/cigéo/NEWCommentfonctionnera-oupe_horizontale-andra.jpg
+	lyxscale 20
+	width 80text%
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cigeo"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Vue d'ensemble du projet Cigéo
+\end_layout
+
+\end_inset
+
+Vue d'ensemble du projet Cigéo.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le stockage des colis de déchets HA se fera dans des alvéoles horizontales
+ telles que représentées en Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cigeo_alveole_ha"
+
+\end_inset
+
+.
+ Les colis de déchets vitrifiés (colis primaires) seront placés dans des
+ conteneurs de stockage adaptés aux alvéoles, afin de faciliter la manutention.
+ Les déchets seront transportés depuis la surface jusqu'à leur emplacement
+ de manière automatisée, sans intervention humaine.
+ Les alvéoles et les conteneurs de stockages sont conçus pour permettre
+ le retrait des colis.
+ La réversibilité du stockage est requise par le projet, pour permettre
+ de retrait des colis si une meilleure solution de traitement est développée,
+ ou en cas de remise en cause de la fiabilité du centre Cigéo.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Images/cigéo/DAC0_alveole_HA.jpg
+	lyxscale 50
+	width 80text%
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cigeo_alveole_ha"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Schéma d'une alvéole de stockage de colis HA dans le centre de stockage
+ Cigéo
+\end_layout
+
+\end_inset
+
+Schéma d'une alvéole de stockage de colis HA dans le centre de stockage
+ Cigéo.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Les colis seront transportés depuis l'entrée du centre en surface aux alvéoles
+ souterraines de manière totalement automatisée.
+ Les alvéoles et les surconteneurs sont conçus pour permettre la réversibilité
+ du stockage, c'est-à-dire le retrait des déchets, sur une période de 100
+ ans environ.
+ Cela nécessite en particulier de garantir l'intégrité de la structure des
+ alvéoles et de limiter l'altération des matériaux internes (chemisage,
+ surconteneur) pour que la manutention automatisée reste fonctionnelle.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dans ces conditions de stockage, les couches de protection artificielles
+ (béton, acier, verre) seront progressivement attaquées puis franchies par
+ l'eau du milieu souterrain.
+ Ce processus est dû à la dissolution des barrières par l'eau.
+ Il est contraint par la capacité des espèces dissoutes à se diffuser dans
+ l'environnement au sein du milieu argileux.
+ La faible mobilité de l'eau dans cette argile permet de ralentir significativem
+ent ces processus, en plus de ralentir la diffusion des éléments radioactifs
+ vers la surface après leur libération du colis.
+ Les prédictions actuelles estiment à 6000 ans la durée de vie des couches
+ de protection externes (avant d'atteindre le verre) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2005"
+literal "false"
+
+\end_inset
+
+.
+ Pour les déchets HA (hors plutonium), la radioactivité prendra environ
+ 10 000 ans avant de descendre à un seuil acceptable (radioactivité de l'uranium
+ naturel).
+ Le verre devra donc contenir les déchets pendant environ 4 000 ans, si
+ l'on ne prend pas en compte la barrière géologique qui limite significativement
+ la dispersion des radionucléides dans l'environnement.
+ Il est nécessaire de qualifier la dernière barrière de protection artificielle
+ pour s'assurer de la sécurité du stockage.
+ C'est pourquoi on s'intéresse à caractériser la résistance chimique à l'eau
+ des colis vitrifiés.
+ La section suivante présente les études menées sur ce sujet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+stockage 500m sous terre, dans une couche d'argile qui n'a pas bougé pendant
+ des millions d'années
+\end_layout
+
+\begin_layout Plain Layout
+centre réversible pour transmutation si possible, ou en cas de pbm
+\end_layout
+
+\begin_layout Plain Layout
+stockage prévu pour les déchets existants ou issus des moyens de prod existants.
+\end_layout
+
+\begin_layout Plain Layout
+refs? andra...
+\end_layout
+
+\begin_layout Plain Layout
+l'eau atteint le colis après 6000 ans 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2005"
+literal "false"
+
+\end_inset
+
+, on rappelle 10 000 avant baisse de radioactivité suffisante
+\end_layout
+
+\begin_layout Plain Layout
+transition: voila les conditions de stockages des déchets HA.
+ Le verre des colis se retrouvera en présence d'eau au cours du stockage
+ après dissolution des couches précédentes: béton (6000 ans), acier inoxydable
+ (qq années ?).
+ Le verre devra donc contenir les déchets pendants environ 4000 ans (si
+ l'on ne compte pas la barrière géologique) avant diminution de la radioactivité
+ (pour les déchets considérés actuellement).
+ S'il est décidé de stocker le plutonium dans cigéo, la durée nécessaire
+ sera plus longue.
+ Il faut 
+\begin_inset Formula $\sim$
+\end_inset
+
+100 000 ans pour que l'activité du plutonium retourne à un niveau naturel.
+ La barrière géologique contribue également au confinement de la radioactivité
+\end_layout
+
+\begin_layout Plain Layout
+Dans le scénario de non-renouvellement de la production électronucléaire
+ (pris en compte par l'Andra pour la prévision du volume de déchets à stockés
+ dans Cigéo, dans le cadre du débat public de 2013 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Andra2013_debat_cigeo_dechets"
+literal "false"
+
+\end_inset
+
+), il sera nécessaire de stocker des déchets contenant du plutonium dans
+ le centre Cigéo (combustible MOX usé, sous forme d'assemblages non vitrifiés
+ (faible volume))
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Phénoménologie et modélisation de l'altération des verres de stockage
+\end_layout
+
+\end_inset
+
+État de la recherche sur la phénoménologie et la modélisation de l'altération
+ des verres de stockage
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:recherche_alteration"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cette section s'attache à présenter l'état des connaissances concernant
+ le comportement du verre lors de son altération en milieu aqueux, ainsi
+ que les efforts de modélisation mis en œuvre pour en faciliter la compréhension.
+ Le terme altération utilisé ici fait référence à l'ensemble des phénomènes
+ physico-chimiques se produisant lors de l'interaction verre/eau.
+ Il se distingue en particulier de la dissolution du verre, qui s'applique
+ seulement à un de ces phénomènes: le passage des composants du verre en
+ solution aqueuse.
+\end_layout
+
+\begin_layout Standard
+La Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:pheno_verre"
+
+\end_inset
+
+ présentera les connaissances expérimentales actuelles de l'altération du
+ verre et les mécanismes physico-chimiques identifiés dans ce processus.
+ Ces connaissances ont été acquises par l'observation expérimentale sur
+ une large variété de verres.
+ Les expérimentations en laboratoires réalisées sur des verres modèles à
+ la composition contrôlée sont les plus significatives, en particulier pour
+ l'altération des verres de stockages nucléaires.
+ Quelques compositions de verre modèles sont indiquées dans le Tableau 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:compos_verres"
+
+\end_inset
+
+.
+ Cependant, ces expérimentations ne permettent pas de valider les prédictions
+ à très long terme (plusieurs milliers d'années).
+ On utilise pour cela des verres existant depuis plus longtemps 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2021"
+literal "false"
+
+\end_inset
+
+: des verres archéologiques (élaborés par l'homme au cours de l'histoire)
+ et des verres géologiques (formés naturellement, dans des roches volcaniques
+ par exemple).
+ L'altération en milieu naturel de ces verres plus âgés permet de valider
+ la compréhension issue du laboratoire.
+\end_layout
+
+\begin_layout Standard
+En Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:model_verre"
+
+\end_inset
+
+, les principaux modèles visant à décrire et prédire l'altération des verres
+ de stockage nucléaires seront présentés.
+ Ces modèles couvrent différentes échelles, de l'échelle atomique à l'échelle
+ du colis.
+ Les modèles à petites échelles ont généralement pour but d'améliorer la
+ compréhension des mécanismes d'altération et accompagnent donc généralement
+ les connaissances décrites dans la Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:pheno_verre"
+
+\end_inset
+
+.
+ Les modèles à plus grandes échelles auront pour but de quantifier le relâchemen
+t de radionucléides potentiel lors du stockage.
+ Pour le stockage géologique, des modèles à l'échelle géologique sont ensuite
+ utilisés pour quantifier la migration des radionucléides dans l'environnement.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="10">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+SiO2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+B2O3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Na2O
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Al2O3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+CaO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+ZrO2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Autres
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unité
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Source
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CJ1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+67.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+18
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mol%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+CJ2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64.9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mol%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ISG
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+60.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.8
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mol%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2013"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+SON68
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+52.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mol%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2018"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:compos_verres"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Compositions de quelques verres modèles servant à étudier expérimentalement
+ les mécanismes d'altération des verres de confinement
+\end_layout
+
+\end_inset
+
+Compositions de quelques verres modèles servant à étudier expérimentalement
+ les mécanismes d'altération des verres de confinement.
+ R7T7 est le verre réel dans lequel les déchets sont confinés, en sortie
+ de l'usine de retraitement de La Hague, contenant les produits de fission
+ et actinides.
+ Sa composition est variable dans un intervalle limité, dû aux conditions
+ industrielles variables.
+ SON68 est une version non radioactive du verre R7T7, dans laquelle les
+ éléments radioactifs sont simulés par des terres rares pour simplifier
+ l'étude expérimentale.
+ ISG (pour 
+\begin_inset Quotes fld
+\end_inset
+
+International Simple Glass
+\begin_inset Quotes frd
+\end_inset
+
+) est un verre simplifié représentatif des verres utilisés internationalement
+ pour le conditionnement des déchets nucléaires, mis au point lors d'une
+ collaboration internationale (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2013"
+literal "false"
+
+\end_inset
+
+) afin d'unifier l'effort de recherche.
+ Dans cette thèse, on s’intéressera à la simulation du verre modèle CJ2.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Phénoménologie des verres de stockages
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:pheno_verre"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'altération du verre en milieu aqueux fait l'objet d'études expérimentales
+ approfondies depuis plus de 40 ans.
+ Avec cet historique conséquent, les modes d'altération possibles pour les
+ différents verres sont majoritairement bien compris et les principaux mécanisme
+s à l’œuvre ont pu être identifiés.
+ Cette section vise à résumer les principales connaissances scientifiques
+ obtenues sur l’altération des verres lors de ces recherches.
+ La Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:alteration_regimes"
+
+\end_inset
+
+ présente le déroulement 
+\begin_inset Quotes fld
+\end_inset
+
+classique
+\begin_inset Quotes frd
+\end_inset
+
+ de l'altération d'un verre, observé expérimentalement sur la majorité des
+ verres.
+ En Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:mecanismes"
+
+\end_inset
+
+, on décrit les principaux mécanismes à l'origine de l'altération du verre.
+\end_layout
+
+\begin_layout Subsubsection
+Déroulement de l'altération
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:alteration_regimes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En général, pour la plupart des verres, l'altération se déroule en quatre
+ étapes, caractérisées par des vitesses d'altération différentes 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Depierre2012,Brunswic2022,Gin2021"
+literal "false"
+
+\end_inset
+
+.
+ Ces étapes correspondent à des cinétiques d'altération différentes, qui
+ sont représentées sur la Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:alteration_regimes"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Branch figures-graphics
+inverted 0
+status open
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Figures/Images/Brunswic2022-000.png
+	lyxscale 40
+	width 80col%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:alteration_regimes"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Représentation schématique des régimes d'altération du verre
+\end_layout
+
+\end_inset
+
+Représentation schématique des régimes d'altération du verre.
+ Repris de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brunswic2022"
+literal "false"
+
+\end_inset
+
+, sous licence CC-BY.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La première étape correspond à un régime d'altération rapide, à une vitesse
+ constante relativement élevée.
+ Cette étape est communément attribuée à une dissolution congruente des
+ composants du verre, dans une solution insaturée.
+ Cette dissolution est provoquée par l'hydrolyse du verre.
+ Elle est généralement de courte durée et correspond à la vitesse d'altération
+ maximale observable pour un verre donné.
+\end_layout
+
+\begin_layout Standard
+La seconde étape est appelée régime de chute de vitesse.
+ Lors de cette phase, la vitesse d'altération diminue graduellement, perdant
+ jusqu'à plusieurs ordres de grandeur.
+ Cette chute de vitesse est liée à la formation d'une couche d'altération
+ à la surface du verre, dont les propriétés diffèrent significativement
+ de celles du verre initial.
+ Il s'agit d'une pellicule poreuse et hydratée, qui sera appelée gel d'altératio
+n par la suite.
+ Cette couche va constituer une barrière à la diffusion des espèces entre
+ le verre non altéré et la solution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2015"
+literal "false"
+
+\end_inset
+
+.
+ Cette barrière cinétique permet d'expliquer la chute de vitesse apparente
+ lorsque la composition en solution augmente.
+ Cette chute de vitesse semble liée, 
+\emph on
+a priori
+\emph default
+, à un équilibre chimique (saturation en silicium) atteint entre la solution
+ et le verre, mais cette explication n'est pas compatible avec le caractère
+ métastable du verre.
+ Les expériences montrent de plus que la composition de saturation apparente
+ en silicium est dépendante des conditions expérimentales 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vernaz2001"
+literal "false"
+
+\end_inset
+
+ (le rapport surface de verre sur volume de solution S/V par exemple), ce
+ qui va dans le sens d'une barrière cinétique plutôt que thermodynamique.
+\end_layout
+
+\begin_layout Standard
+L'étape suivante de l'altération du verre, le régime de vitesse résiduelle,
+ est également en désaccord avec l'hypothèse de l'équilibre thermodynamique.
+ Après la chute de vitesse, la vitesse d'altération se stabilise à une valeur
+ constante, pouvant durer jusqu'à altération complète du verre.
+ Bien que très lente, l'altération résiduelle ne s'arrête jamais totalement,
+ car le verre n'atteint pas d'équilibre thermodynamique avec la solution
+ et la barrière diffusive constituée par le gel d'altération permet tout
+ de même la diffusion de certains éléments particulièrement mobiles.
+ Lors de cette étape, les concentrations des composants peu solubles du
+ verre en solution (
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Si
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Al
+\end_layout
+
+\end_inset
+
+\SpecialChar ldots
+) restent stationnaires, seuls les composants plus solubles continuent à
+ se dissoudre.
+ La vitesse résiduelle dépend d'un grand nombre de paramètres, dont la compositi
+on (du verre et de la solution) et les propriétés (topologie, composition\SpecialChar ldots
+)
+ du gel d'altération formé.
+ Les expériences ont pu montrer qu'elle n'est pas corrélée à la vitesse
+ initiale d'altération 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2018"
+literal "false"
+
+\end_inset
+
+.
+ Pour qualifier le comportement de différents verres à long terme, il sera
+ donc nécessaire de réaliser des expériences de longue durée.
+\end_layout
+
+\begin_layout Standard
+Enfin, une quatrième étape d'altération, facultative, peut avoir lieu.
+ Il s'agit d'une étape de reprise d'altération, qui se déclenche lorsque
+ que des phases secondaires commencent à précipiter massivement.
+ Cela peut être dû à une sursaturation de la solution vis-à-vis d'une phase
+ secondaire, atteinte après une longue période d'altération résiduelle.
+ Ce phénomène se produit principalement en milieu fortement basique (pH
+ > 11) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Depierre2012"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Mécanismes à l'origine de ces phénomènes
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:mecanismes"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Le déroulement global de l'altération d'un verre, présenté ci-dessus, est
+ dû à de nombreux mécanismes se produisant à l'échelle atomique.
+ Certains de ces mécanismes sont déjà bien identifiés grâce aux nombreuses
+ études expérimentales.
+ L'altération du verre est le résultat de ces différents mécanismes et de
+ leur interaction.
+ Certains mécanismes peuvent être plus ou moins prépondérants selon les
+ conditions expérimentales, ce qui influe sur la cinétique d'altération.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Hydratation
+\end_layout
+
+\begin_layout Standard
+Le premier mécanisme prenant place lors de l'altération du verre est l'hydratati
+on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020,Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+ En contact avec une solution aqueuse, les molécules d'eau réagissent avec
+ la surface du verre pour s'y adsorber, puis pénètrent dans le verre sur
+ une très faible profondeur.
+ L'adsorption se produit par la formation de silanols lorsque l'eau réagit
+ avec les liaisons entre atomes de silicium en surface du verre, par la
+ réaction 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Si-O-Si + H2O -> 2 Si-OH
+\end_layout
+
+\end_inset
+
+.
+ Par la suite, l'hydratation se produit par diffusion moléculaire dans les
+ interstices du verre 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bunker1994"
+literal "false"
+
+\end_inset
+
+ ou par hydrolyse des éléments modificateurs du verre 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2021"
+literal "false"
+
+\end_inset
+
+.
+ Cette hydrolyse est décrite par la réaction chimique 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+M-NBO + H2O -> M-OH + NBO-H 
+\end_layout
+
+\end_inset
+
+ où 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+M
+\end_layout
+
+\end_inset
+
+ est un cation modificateur (
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+B
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Na
+\end_layout
+
+\end_inset
+
+, etc.) et 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+NBO
+\end_layout
+
+\end_inset
+
+ un oxygène non-pontant.
+ Ces mécanismes permettent donc la migration d'eau vers la matrice de verre,
+ ce qui va activer les autres mécanismes décrits ci-dessous.
+\end_layout
+
+\begin_layout Paragraph
+Inter-diffusion
+\end_layout
+
+\begin_layout Standard
+L’inter-diffusion se produit dans le verre hydraté 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020,Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+ Elle est définie par l'échange entre un cation modificateur du verre et
+ un proton, apporté dans le verre par l'hydratation.
+ Ce mécanisme conduit à la diffusion des modificateurs dans le verre.
+ Cette diffusion va alors provoquer le transport des éléments en profondeur
+ du verre vers l’extérieur, facilitant la dissolution.
+ Elle permet également à l'eau de pénétrer plus profondément dans le verre.
+ Enfin, la consommation de protons liée à ce phénomène va induire une hausse
+ du pH de la solution, ce qui va faciliter le mécanisme suivant, l'hydrolyse
+ des liaisons formant le réseau vitreux 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Hydrolyse
+\end_layout
+
+\begin_layout Standard
+L'hydrolyse du réseau vitreux se produit en parallèle de l’inter-diffusion,
+ lorsque de l'eau ou ses ions associés se trouvent dans le réseau vitreux
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020,Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+ L'eau va casser par hydrolyse les liaisons pontantes entre les éléments
+ du verre par une réaction telle que 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+-Si-O-Si- + H2O -> 2 -Si-OH
+\end_layout
+
+\end_inset
+
+.
+ Ce mécanisme est similaire à la phase d'hydratation initiale décrite ci-dessus,
+ mais diffère par sa localisation: il se produit plus en profondeur dans
+ le verre.
+ L'hydrolyse du réseau peut conduire à différents effets.
+ Lorsque toutes les liaisons pontantes vers un élément formateur ont disparu,
+ on parle d'hydrolyse totale.
+ L’élément se retrouve alors dissous en solution aqueuse.
+ Le silicium par exemple se retrouve sous la forme de l'acide orthosilicique
+ 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Si(OH)4
+\end_layout
+
+\end_inset
+
+.
+ Si la porosité du réseau vitreux le permet, il va pouvoir diffuser vers
+ la solution externe au verre.
+ L'hydrolyse du verre est donc le principal mécanisme à l'origine de la
+ dissolution du verre.
+\end_layout
+
+\begin_layout Standard
+D'autre part, lorsque l'hydrolyse est partielle, les liaisons 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+-Si-OH
+\end_layout
+
+\end_inset
+
+ peuvent se recondenser en liaisons pontantes, ce qui induit une restructuration
+ in situ du réseau vitreux 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2018"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Précipitation de phases secondaires
+\end_layout
+
+\begin_layout Standard
+La précipitation de phases secondaires se produit à l'extérieur du verre,
+ dans la solution extérieure, proche de la surface du verre 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020,Brunswic2022"
+literal "false"
+
+\end_inset
+
+.
+ Lorsque les compositions de certains éléments du verre en solution atteignent
+ un certain seuil, on va observer la précipitation de phases solides plus
+ stables thermodynamiquement, par un processus de nucléation croissance.
+ L'influence du milieu environnant peut également être à l'origine du phénomène,
+ car les éléments présents dans la solution aqueuse vont parfois réagir
+ avec les éléments issus du verre pour former des phases solides.
+\end_layout
+
+\begin_layout Standard
+La précipitation de phases contenant du silicium en particulier va jouer
+ un rôle important sur la vitesse d'altération, en créant un puits de compositio
+n, accélérant ainsi la vitesse d'altération.
+\end_layout
+
+\begin_layout Standard
+Ces phases secondaires peuvent également jouer un rôle sur la formation
+ du gel en la perturbant par les puits de composition, ou en y contribuant
+ en formant une couche précipitée à la surface du verre.
+ La formation du gel d'altération peut par exemple être provoquée par la
+ nucléation puis coalescence de silicium amorphe dans la solution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Geisler2015"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Formation du gel
+\begin_inset CommandInset label
+LatexCommand label
+name "par:mécanismes_forma_gel"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La formation du gel passivant est un mécanisme à plus grande échelle qui
+ résulte de l'interaction des mécanismes atomistiques décrits ci-dessus.
+ Selon les conditions expérimentales, les mécanismes prépondérants changent,
+ ce qui influe sur le déroulement de la formation du gel d'altération.
+ Trois principaux mécanismes de formation et d'évolution du gel d'altération
+ ont été proposés dans la littérature, sur la base d'observations expérimentales
+:
+\end_layout
+
+\begin_layout Enumerate
+La formation du gel par dissolution du silicium puis reprécipitation sur
+ la surface du verre 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Geisler2015,Gin2020"
+literal "false"
+
+\end_inset
+
+.
+ Ce mécanisme est observé dans le verre CJ1 par exemple.
+ La Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gel_cj1"
+
+\end_inset
+
+ montre un gel d'altération dans un verre CJ1.
+\end_layout
+
+\begin_layout Enumerate
+La formation du gel par dissolution des éléments solubles, dont le bore,
+ laissant place à une porosité.
+ Ceci se produit dans le verre de type CJ2 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2022"
+literal "false"
+
+\end_inset
+
+.
+ Une image de gel dans un verre CJ2 est fournie en Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:gel_cj2"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+La formation du gel par départ des éléments solubles puis réorganisation
+ in situ du silicium (par hydrolyse partielle de liaisons 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Si-O-Si
+\end_layout
+
+\end_inset
+
+ en surface et recondensation).
+ On observe ce comportement dans les verres CJ2 et ISG 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2018,Gin2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Les mécanismes 2 et 3 sont distingués ici, car on peut observer le mécanisme
+ 2 sans la réorganisation du silicium qui conduit à l'évolution de la porosité.
+ Dans certains cas, l'altération ne conduit pas à la formation d'un gel
+ d'altération et la dissolution n'est pas ralentie, ou l'est pour d'autres
+ raisons.
+\end_layout
+
+\begin_layout Standard
+Les mécanismes conduisant à la formation et l'évolution du gel d'altération
+ ne sont encore que partiellement identifiés et constituent le principal
+ questionnement scientifique dans le cadre de l'étude de l'altération des
+ verres.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Images/gels/CJ1_out.png
+	lyxscale 30
+	width 9cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gel_cj1"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gel d'altération dans un verre de type CJ1
+\end_layout
+
+\end_inset
+
+Gel d'altération dans un verre de type CJ1.
+ Adapté avec permission de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020"
+literal "false"
+
+\end_inset
+
+.
+ Copyright 2020 
+\lang english
+American Chemical Society
+\lang french
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement p
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename Figures/Images/gels/CJ2_out.png
+	lyxscale 30
+	width 12cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:gel_cj2"
+
+\end_inset
+
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Gel d'altération dans un verre de type CJ2
+\end_layout
+
+\end_inset
+
+Gel d'altération dans un verre de type CJ2.
+ Adapté avec permission de 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020"
+literal "false"
+
+\end_inset
+
+.
+ Copyright 2020 
+\lang english
+American Chemical Society
+\lang french
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Effet de la radioactivité
+\end_layout
+
+\begin_layout Standard
+Le verre en condition de stockage sera également soumis aux radiations émises
+ par les radionucléides contenus.
+ Cette radioactivité affecte l'altération par plusieurs mécanismes 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Vienna2013"
+literal "false"
+
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Itemize
+Les rayonnements peuvent créer des défauts dans la structure du verre, facilitan
+t la diffusion de l'eau et des éléments mobiles (B, Na, etc.).
+\end_layout
+
+\begin_layout Itemize
+L'interaction des rayonnements avec la solution déclenche une radiolyse
+ de l'eau proche du verre qui peut modifier la composition et le pH.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand fullcite
+key "Vernaz2001"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+shortcomings of thermo/ chem affinity models: ralentissement = pas de cause
+ thermo, mais lié à la cinétique modifié par le gel.
+ Saturation dépend de S/V.
+ se produit sur verre sain dans solution saturée
+\end_layout
+
+\begin_layout Itemize
+la diffusion de l'eau et silicium dans gel contrôle l'altération
+\end_layout
+
+\begin_layout Itemize
+ccl: la cinétique, le transport dans le gel doivent être pris en compte.
+ La solubilité apparaente, virtuelle reste un paramètre clé
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand fullcite
+key "Vienna2013"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+x observ , meca= brunswic
+\end_layout
+
+\begin_layout Itemize
+erre instable, pas d'equilibre.
+ 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Si
+\end_layout
+
+\end_inset
+
+ dissous en 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+H4SiO4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+facteurs clés:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+composition, strucute: gel ou pas, heterogeneités...
+\end_layout
+
+\begin_layout Itemize
+compo de l 'env
+\end_layout
+
+\begin_layout Itemize
+radiation->défauts, radiolyse de la solution.
+\end_layout
+
+\begin_layout Itemize
+surface
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Geisler2015"
+literal "false"
+
+\end_inset
+
+: autre méca de formation de gel
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2018"
+literal "false"
+
+\end_inset
+
+: ISG
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+glass dissolves in Si saturated water, and forms gel
+\end_layout
+
+\begin_layout Itemize
+gel pas formé par precip, en evo constante par reorg in situ (hydrolyse
+ partielle + recondensation) (pas de Si de la solution dans le gel)
+\end_layout
+
+\begin_layout Itemize
+struct de gel peut etre pas liée à struct du verre initiale
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+CJ1: dissolution reprecip de sols de silice et de gel.
+ couche plus dense en surface du gel passivante, silice pure, coalescence
+ des sols de silice).
+\end_layout
+
+\begin_layout Itemize
+CJ2: hydrolyse partielle + condensation (favo par Al)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2021"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brunswic2022"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+mécanisme: hydratation, interdiffusion (ion exchange, IX), hydrolyse (corrosion)
+\end_layout
+
+\begin_layout Itemize
+phéno: disso congrueente, formation couche passivante -> ralentissement,
+ reprise si chgt de condition par précip 
+\begin_inset Formula $\phi$
+\end_inset
+
+secondaire...
+\end_layout
+
+\begin_layout Itemize
+def de verre
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modélisations existantes de l’altération des verres de stockages
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:model_verre"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Les travaux s'intéressant à la modélisation de l'altération du verre poursuivent
+ généralement un des deux objectifs suivants:
+\end_layout
+
+\begin_layout Itemize
+Proposer une modélisation prédictive permettant de quantifier le relâchement
+ de radionucléides dans l'environnement à long terme.
+\end_layout
+
+\begin_layout Itemize
+Améliorer la compréhension des mécanismes fondamentaux qui régissent l'altératio
+n du verre.
+\end_layout
+
+\begin_layout Standard
+Historiquement, les premiers modèles de l'interaction verre-eau 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Doremus1975,Boksay1968"
+literal "false"
+
+\end_inset
+
+ cherchaient à reproduire la vitesse d'altération et les profils de composition
+ de couche d'altération observés expérimentalement, avec des lois de cinétique
+ de réaction simples.
+ Ces modèles se sont révélés insuffisants pour les verres multicomposants,
+ en particulier sur la chute de vitesse d'altération.
+ Par la suite, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Grambow1984"
+literal "false"
+
+\end_inset
+
+ propose un modèle basé sur un équilibre thermodynamique du silicium avec
+ la solution qui permet de décrire la chute de vitesse d'altération.
+ Les travaux suivants se basent sur ce modèle pour proposer des modèles
+ prédictifs à l'échelle macroscopique (colis), ce qui abouti à deux modèles:
+ le modèle de Grambow 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grambow2001"
+literal "false"
+
+\end_inset
+
+ et le modèle 
+\begin_inset Formula $r\left(t\right)$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ribet2001"
+literal "false"
+
+\end_inset
+
+.
+ Ces modèles permettent d'obtenir des résultats qualitativement et quantitativem
+ent satisfaisants en étant représentatifs des mécanismes d'altération du
+ verre.
+ Cependant, ils contiennent des points d'incertitudes, notamment en ce qui
+ concerne la diffusion dans la couche d’altération, la saturation de la
+ solution en silicium et la vitesse résiduelle d'altération 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pierce2014"
+literal "false"
+
+\end_inset
+
+.
+ Pour adresser ces points et permettre une estimation précise du relâchement
+ de radionucléides, il est crucial de développer des modélisations aux échelles
+ microscopiques (atomique, moléculaire) et mésoscopiques (couche d'altération)
+ qui permettront de mieux comprendre les mécanismes d'altération du verre.
+\end_layout
+
+\begin_layout Standard
+Les principaux modèles activement développés aujourd'hui se décomposent
+ en trois catégories selon l'échelle considérée 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pierce2014"
+literal "false"
+
+\end_inset
+
+: macroscopique, mésoscopiques ou microscopiques.
+\end_layout
+
+\begin_layout Paragraph
+Modèles microscopiques
+\end_layout
+
+\begin_layout Standard
+Au niveau microscopique, on s’intéresse en particulier à décrire la structure
+ moléculaire du verre, son impact sur l'altération et son évolution provoquée
+ par les mécanismes physico-chimiques en jeu.
+ Les outils utilisés dans ces modèles comprennent les calculs 
+\begin_inset Quotes fld
+\end_inset
+
+ab initio
+\begin_inset Quotes frd
+\end_inset
+
+ et la dynamique moléculaire classique, entre autres 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Du2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Les calculs 
+\begin_inset Quotes fld
+\end_inset
+
+ab initio
+\begin_inset Quotes frd
+\end_inset
+
+ consistent à résoudre directement les équations de la mécanique quantique
+ pour décrire les interactions entre particules, ce qui permet d'estimer
+ les énergies d'activation associées aux réactions chimiques.
+ La principale méthode utilisée est la DFT (
+\emph on
+\lang english
+Density Functional Theory
+\emph default
+\lang french
+).
+ Pour la dissolution du verre, on étudie principalement l'énergie d'hydrolyse
+ des liaisons 
+\begin_inset Flex chemformula/ch
+status open
+
+\begin_layout Plain Layout
+
+Si-O-Si
+\end_layout
+
+\end_inset
+
+, qui constitue le principal processus limitant de l'altération du verre.
+ Les modèles plus récents permettent d'estimer les énergies d'hydrolyse
+ des différentes liaisons dans des verres multicomposants.
+ Ces énergies varient selon la composition du verre, la structure du réseau,
+ le pH de la solution, etc.
+ La connaissance de ces énergies permet ensuite d'estimer les cinétiques
+ de dissolution dans les modèles à plus grande échelle.
+ Les modèles 
+\emph on
+ab initio
+\emph default
+ aident également à l'identification des mécanismes microscopiques en jeu
+ lors de l'altération du verre.
+\end_layout
+
+\begin_layout Standard
+La complexité computationnelle des approches 
+\emph on
+ab initio
+\emph default
+ limite fortement la taille des systèmes qui peuvent être étudiés par ces
+ méthodes (en nombre de particules).
+ Pour modéliser des systèmes avec plus d'atomes, on utilise la dynamique
+ moléculaire classique.
+ Cette approche est basée sur l'utilisation de potentiels empiriques pour
+ décrire les interactions entre atomes.
+ On peut alors réaliser des simulations de systèmes bien plus grands (plusieurs
+ millions d'atomes).
+ Ces approches sont appliquées pour étudier la structure moléculaire du
+ verre.
+ Par exemple, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Taron2021"
+literal "false"
+
+\end_inset
+
+ étudie la structure poreuse formée par réorganisation moléculaire du verre
+ lorsque que l'on retire les éléments plus solubles (bore, sodium).
+ En utilisant des potentiels plus complexes, on peut également décrire les
+ réactions chimiques, ce qui permet d'étudier le comportement du verre en
+ présence d'eau (hydratation, dissolution).
+\end_layout
+
+\begin_layout Paragraph
+Modèles mésoscopiques
+\end_layout
+
+\begin_layout Standard
+Les modèles mésoscopiques visent à décrire la couche d'altération et les
+ phénomènes qui se produisent à l'intérieur.
+ Les modèles cherchant à décrire la couche d'altération à cette échelle
+ semblent tous suivre une approche de type Monte–Carlo, qui consiste à représent
+er le verre par un automate cellulaire probabiliste (
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Regnault2008"
+literal "false"
+
+\end_inset
+
+ pour une définition générique), dans lequel les cellules représentent des
+ atomes, qui vont changer d'état ou se déplacer selon les états des cellules
+ adjacentes.
+ Dans le but de comprendre l'impact de la couche d'altération sur la vitesse
+ de dissolution de verre, ces modèles se sont déclinés en plusieurs variantes.
+ Le modèle initial 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Aertsens1996"
+literal "false"
+
+\end_inset
+
+ datant des années 90, était limité par la diffusion des espèces en solution
+ traitée explicitement.
+ Des modèles alternatifs ont vu le jour par la suite pour améliorer les
+ performances et la cohérence avec les mécanismes chimiques 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ledieu2006,Delaye2024,Kerisit2012"
+literal "false"
+
+\end_inset
+
+.
+ Plus récemment, un modèle Monte-Carlo visant à considérer un réseau amorphe
+ plutôt qu'une grille régulière a été développé 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kerisit2019"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Par leur principe, ces modèles Monte-Carlo peuvent être considérés comme
+ relevant de l'échelle microscopique, moléculaire, car la modélisation se
+ base sur la description de la position des atomes et de leurs déplacements
+ ou changement d'état (hydrolyse d'une liaison par exemple).
+ Cependant, en opposition aux modèles de dynamique moléculaire, ces approches
+ Monte-Carlo recherchent des performances plus élevées en simplifiant les
+ mécanismes physiques, dans le but de simuler un système considérablement
+ plus grand.
+ En ce sens, ces approches Monte-Carlo ont donc une portée mésoscopique,
+ à l’échelle de la couche d'altération (système allant de 100 
+\begin_inset Formula $nm$
+\end_inset
+
+ à 1 
+\begin_inset Formula $\mu m$
+\end_inset
+
+).
+ De plus, les approches de type Monte-Carlo fournissent généralement une
+ manière alternative de résoudre des problèmes macroscopiques de type EDP
+ ou optimisation, via les propriétés des chaînes de Markov 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Regnault2008"
+literal "false"
+
+\end_inset
+
+.
+ Ce point de vue nous motive également à considérer les approches Monte-Carlo
+ comme des méthodes mésoscopiques.
+\end_layout
+
+\begin_layout Paragraph
+Modèles macroscopiques
+\end_layout
+
+\begin_layout Standard
+Ces modèles ont pour objectif de modéliser la dissolution du verre à l'échelle
+ du colis.
+ Ils participent au premier objectif cité ci-dessus, à savoir quantifier
+ le relâchement de radionucléides dû à l'altération du colis.
+ Pour les études de sûreté, les résultats de ces modèles à l'échelle colis
+ sont ensuite utilisés dans des modèles géologiques, qui modélisent le transport
+ des radionucléides dans l'environnement en partant du centre de stockage
+ souterrain.
+\end_layout
+
+\begin_layout Standard
+Parmi ces modèles, on trouve les anciens modèles de Grambow 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Grambow2001"
+literal "false"
+
+\end_inset
+
+ et 
+\begin_inset Formula $r\left(t\right)$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ribet2001"
+literal "false"
+
+\end_inset
+
+.
+ Plus récemment, le modèle GRAAL 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Frugier2008"
+literal "false"
+
+\end_inset
+
+ a été développé dans le but d'introduire les propriétés passivantes de
+ la couche d'altération.
+ Ce modèle se base sur la modélisation de 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "Grambow2001"
+literal "false"
+
+\end_inset
+
+ pour définir une loi de dissolution basée sur un principe thermodynamique.
+ Il y ajoute une barrière diffusive en considérant une couche d'altération
+ protectrice (PRI, 
+\emph on
+\lang english
+Passivating Reactive Interphase
+\emph default
+\lang french
+), d'épaisseur variable au cours du temps.
+ L'épaisseur de cette couche d'altération est influencée par les réactions
+ chimiques prises en compte et influe en retour sur la diffusion des composants
+ depuis le verre vers la solution.
+ 
+\end_layout
+
+\begin_layout Standard
+Ce modèle a permis d'obtenir de nombreux résultats quantitatifs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pierce2014"
+literal "false"
+
+\end_inset
+
+ et d'améliorer significativement les estimations d'altération du verre.
+ Cependant, sa faiblesse réside dans la prise en compte de la passivation
+ par la couche d'altération.
+ Les propriétés associées à cette couche d'altération dans GRAAL sont purement
+ empiriques et leur dépendance à la composition est très limitée.
+ Des modélisations à l'échelle de la couche d'altération sont nécessaires
+ pour fournir les informations nécessaires au modèle GRAAL.
+\end_layout
+
+\begin_layout Section
+Objectifs de cette thèse
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Objectifs"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ce sujet de thèse est motivé et soutenu par le projet VESTA du CEA.
+ Ce projet a pour but d'étudier l'altération à long terme des verres de
+ confinement de déchets radioactifs.
+ Il vise à réunir les travaux expérimentaux et de modélisation aux différentes
+ échelles introduites et décrites ci-dessus, afin d'obtenir une méthode
+ générale permettant de prédire l'altération à long terme d'un verre selon
+ sa composition et son environnement.
+ Cet outil permettra ainsi d'estimer le relâchement de radionucléides possible
+ lors du stockage des déchets radioactifs HA au sein du centre Cigéo.
+ 
+\end_layout
+
+\begin_layout Standard
+Le calcul de l'altération globale du verre à long terme est assuré par des
+ modèles macroscopiques du verre (échelle colis).
+ Ces modèles décrivent la vitesse de dissolution du verre en prenant en
+ compte de manière simplifiée les phénomènes se produisant lors de l'altération
+ du verre.
+ Dans le cadre du projet VESTA, il s'agit du modèle GRAAL, développé au
+ CEA de Marcoule.
+ Dans le modèle GRAAL, le gel d'altération est considéré comme une couche
+ d'épaisseur variable et qui agit comme une barrière diffusive en lui attribuant
+ des coefficients de diffusion plus faible.
+ La cinétique de diffusion dans le gel d'altération est un paramètre primordial
+ dans ce modèle.
+ L'évolution des propriétés du gel affectant la diffusion n'est cependant
+ pas prise en compte, car ces propriétés ne sont pas facilement accessibles
+ expérimentalement et aucun modèle existant n'est adapté à la simulation
+ de l'évolution du gel d'altération.
+ 
+\end_layout
+
+\begin_layout Standard
+Pour développer les connaissances concernant l'évolution du gel d'altération,
+ le projet VESTA a donc souhaité le développement d'un modèle mésoscopique
+ du gel d'altération.
+ Les principaux points d’intérêt, attendus en tant que résultats du modèle,
+ sont les suivants:
+\end_layout
+
+\begin_layout Itemize
+La cinétique de formation de porosité dans un verre sain conduisant au gel
+ d'altération.
+\end_layout
+
+\begin_layout Itemize
+L'évolution de la topologie du gel, qui affecte la diffusion.
+ Quantitativement, cela se décrit par des propriétés telles que la distribution
+ de taille des pores, la connectivité des pores, la tortuosité, etc.
+\end_layout
+
+\begin_layout Itemize
+L'impact de cette topologie sur la mobilité des éléments dans la couche
+ de gel.
+\end_layout
+
+\begin_layout Standard
+L’approche des méthodes à champ de phase a été choisie pour le développement
+ de ce nouveau modèle mésoscopique.
+ Ce choix a été motivé par plusieurs raisons.
+ En premier lieu, les méthodes à champ de phase sont particulièrement adaptées
+ pour la simulation à l'échelle mésoscopique de matériaux présentant une
+ microstructure, telle que la porosité du gel d'altération.
+ Il s'agit d'une méthode performante pour la modélisation d'interfaces libres
+ complexes et le couplage avec des effets thermodynamiques et chimiques.
+ Le mûrissement d'Ostwald dû à la tension de surface, qui entraîne l'évolution
+ de la topologie du gel 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gin2020"
+literal "false"
+
+\end_inset
+
+, est pris en compte automatiquement dans les modèles à champ de phase.
+ La méthode est donc 
+\emph on
+a priori
+\emph default
+ bien adaptée au problème.
+ Cependant, la modélisation de dissolution par des méthodes à champ de phase
+ ne fait pas l'objet de beaucoup de travaux de recherche dans la littérature,
+ il s'agit d'un sujet relativement peu exploré.
+ De plus, il s'agit d'une approche 
+\begin_inset Quotes fld
+\end_inset
+
+milieu continu
+\begin_inset Quotes frd
+\end_inset
+
+, ce qui la différencie fortement des modélisations existantes à cette échelle
+ mésoscopique.
+\end_layout
+
+\begin_layout Standard
+En résumé, on peut définir l'objectif principal de cette thèse par:
+\end_layout
+
+\begin_layout Itemize
+Proposer un modèle à champ de phase applicable à la dissolution d'un solide,
+ qui pourra être utilisé pour simuler l'évolution des gels d'altération
+ des verres.
+\end_layout
+
+\begin_layout Standard
+Afin de justifier l'applicabilité du modèle à la simulation des gels d'altératio
+n, nous avons décidé de respecter deux conditions:
+\end_layout
+
+\begin_layout Itemize
+Les hypothèses sous-jacentes à la méthode de modélisation doivent être cohérente
+s avec les mécanismes moléculaires de l'altération du verre.
+ 
+\end_layout
+
+\begin_layout Itemize
+Le modèle doit permettre de simuler la formation du gel d'altération dans
+ un verre initialement sain.
+ Plus largement, on a souhaité pouvoir simuler la formation de porosité
+ par dissolution avec notre modèle.
+\end_layout
+
+\begin_layout Standard
+Ces points permettront en particulier d'appuyer le caractère prédictif de
+ la modélisation, qui a pour but ultime d'être appliquée dans des simulations
+ à long terme prédictives.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Itemize
+initié par vesta
+\end_layout
+
+\begin_layout Itemize
+compréhension méso du gel pour alimenter modèles macro (graal).
+ Besoin de mieux décrire le transport dans le gel
+\end_layout
+
+\begin_layout Itemize
+les points d'interets pcipaux: evol de la topo du gel (effet de tension
+ de surface soupconné, ostwald).
+ formation de la porosité.
+ taille des pores, connectivité...
+\end_layout
+
+\begin_layout Itemize
+pk le champ de phase: souvent appliqué pour simu méso de microstructure.
+ bien pour ostwald, tension de surface.
+ appli à des projets cea communs (sivit, élaboration des verres) qui a donné
+ lieu à ce projet transverse.
+\end_layout
+
+\begin_layout Itemize
+challenge du champ de phase = peu d'appli en dissolution
+\end_layout
+
+\begin_layout Itemize
+Dans ces conditions, on défini les objectifs de la thèse:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+proposer un modèle à champ de phase applicable à la dissolution d'un solide,
+ pour simuler le gel d'altération des verres.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ce modèle doit remplir plusieurs critères:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+cohérent avec les mécanismes observés lors de l'altération du verre (pour
+ justifier du caractère prédictif du modèle).
+\end_layout
+
+\begin_layout Itemize
+permettre la formation de porosité dans un verre initialement sain (validera
+ la cohérence phénoménologique du modèle)
+\end_layout
+
+\end_deeper
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "thesis"
+biblatexopts "segment=\\therefsegment,title=Références du chapitre,heading=subbibintoc"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

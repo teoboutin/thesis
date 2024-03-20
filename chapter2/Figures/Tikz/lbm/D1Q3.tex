@@ -1,0 +1,29 @@
+
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}
+%styledesnœuds
+\tikzstyle{textLine}=[rectangle, text=black, scale=0.5]
+\tikzstyle{textw}=[rectangle, text=black]
+\tikzstyle{pointEi}=[circle, draw, scale=0.25]
+%figure
+
+
+\node[pointEi, fill] (e0) at (0,0) {};
+\node[pointEi] (e1) at   (1,0)  {};
+\node[pointEi] (e2) at   (-1,0)  {};
+%text
+\node[textLine] (e0T) at ($(e0)+(0,0.2)$) {$e_0$ };
+\node[textLine] (e1T) at ($(e1)+(0,0.2)$) {$e_1$ };
+\node[textLine] (e2T) at ($(e2)+(0,0.2)$) {$e_2$ };
+
+\node[textLine] (title) at (0,1) {D1Q3};
+\node[textLine] (buffp) at (0,1.2) { };
+\node[textLine] (buffm) at (0,-1.2) { };
+%vecteur
+\tikzstyle{vector}=[-Stealth,thin,rounded corners=4pt]
+\tikzstyle{vectorQ9}=[-Stealth,thin,rounded corners=4pt, color=blue]
+\draw[vector] (e0) -- (e1);
+\draw[vector] (e0) -- (e2);
+\end{tikzpicture}

@@ -1,0 +1,60 @@
+%RequirePackage amsmath
+
+
+
+
+\def\stefanLength{5}%
+\def\stefanHeight{1}%
+\def\stefanProlong{5/3}%
+
+\begin{tikzpicture}[]
+%styledesnœuds
+\tikzstyle{textLine}=[text=black]
+\tikzstyle{arrow}=[-stealth]
+\tikzstyle{prolong}=[dotted]
+
+%figure
+\draw (-\stefanLength,-\stefanHeight) -- (\stefanLength,-\stefanHeight);
+\draw[prolong] (-\stefanLength,-\stefanHeight) -- (-\stefanProlong*\stefanLength,-\stefanHeight);
+\draw[prolong] (-\stefanLength,-\stefanHeight) -- (-\stefanProlong*\stefanLength,-\stefanHeight);
+\draw[prolong] (\stefanLength,-\stefanHeight) -- (\stefanProlong*\stefanLength,-\stefanHeight);
+
+\draw (-\stefanLength,\stefanHeight) -- (\stefanLength,\stefanHeight);
+\draw[prolong] (\stefanLength,\stefanHeight) -- (\stefanProlong*\stefanLength,\stefanHeight);
+\draw[prolong] (-\stefanLength,\stefanHeight) -- (-\stefanProlong*\stefanLength,\stefanHeight);
+
+
+\draw (-2/3*\stefanLength,\stefanHeight) -- (-2/3*\stefanLength,-\stefanHeight);
+\draw (0,\stefanHeight) -- (0,-\stefanHeight);
+\draw (2/3*\stefanLength,\stefanHeight) -- (2/3*\stefanLength,-\stefanHeight);
+
+
+
+\node[textLine] at (-2/3*\stefanLength,-\stefanHeight-0.3) {$x_{1/2}(t)$};
+\node[textLine] at (-2/3*\stefanLength,-\stefanHeight-0.8) {$\mu_\alpha^{1/2}$};
+
+\node[textLine] at (0,-\stefanHeight-0.3) {$x_{2/3}(t)$};
+\node[textLine] at (0,-\stefanHeight-0.8) {$\mu_\alpha^{2/3}$};
+
+\node[textLine] at (2/3*\stefanLength,-\stefanHeight-0.3) {$x_{3/4}(t)$};
+\node[textLine] at (2/3*\stefanLength,-\stefanHeight-0.8) {$\mu_\alpha^{3/4}$};
+
+
+
+
+\node[textLine] at (-\stefanLength,\stefanHeight-0.3) {$\Phi=s$};
+\node[textLine] at (-\stefanLength,\stefanHeight-0.8) {$p=1$};
+
+\node[textLine] at (-1/3*\stefanLength,\stefanHeight-0.3) {$\Phi=l$};
+\node[textLine] at (-1/3*\stefanLength,\stefanHeight-0.8) {$p=2$};
+
+\node[textLine] at (1/3*\stefanLength,\stefanHeight-0.3) {$\Phi=s$};
+\node[textLine] at (1/3*\stefanLength,\stefanHeight-0.8) {$p=3$};
+
+\node[textLine] at (\stefanLength,\stefanHeight-0.3) {$\Phi=l$};
+\node[textLine] at (\stefanLength,\stefanHeight-0.8) {$p=4$};
+
+
+\node[textLine,anchor=east] at (-4/3*\stefanLength,0) {$\boldsymbol{C}=({C}_1^{s,\infty}, {C}_2^{s,\infty})$};
+\node[textLine,anchor=west] at (4/3*\stefanLength,0) {$\boldsymbol{C}=({C}_1^{l,\infty}, {C}_2^{l,\infty})$};
+\end{tikzpicture}
