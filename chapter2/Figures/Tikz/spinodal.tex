@@ -1,0 +1,169 @@
+
+
+
+\def\valA{15}
+\def\valCA{0.4}
+\def\valCB{0.7}
+\def\valEA{1}
+\newcommand{\freeEnergy}[5]{#1*((x-#2)^2 * (x-#3)^2) + (x-#2)*(x-#3)*(#4) + (#5)*x}
+\newcommand{\freeEnergyP}[5]{(2*(#1)*((x-#2)^2*(x-#3) + (x-#2)*(x-#3)^2)  +(2 * x - (#2) - (#3)) * (#4) +  (#5))}
+\newcommand{\freeEnergyPP}[5]{12*(#1) * x^2 - 12 * (#1) * x * (#2+#3) + 8 * (#1) * #2 * #3 + 2 * (#1) * (#2^2+#3^2) - 2 * (#4)}
+
+\newcommand{\criticalTemp}[3]{(0.5*(#1)*((#2)-(#3))^2)}
+\newcommand{\criticalTempd}[3]{((#1)*(0.125*((#2)-(#3)^2))}
+\newcommand{\Tspinodal}[4]{#1 * (0.5*(#2-#3)^2 - 6 * (#4-0.5*(#2+#3))^2)}
+\newcommand{\Tbinodal}[4]{#1 * (0.5*(#2-#3)^2 - 6/3 * (#4-0.5*(#2+#3))^2)} % empirical
+% \newcommand{\Tminus}[3]{0.5*#1*(#2-#3)^2}
+
+
+\pgfmathsetmacro{\Tmin}{\Tspinodal{\valA}{\valCA}{\valCB}{0}}
+\def\valDTa{-0.1*\Tmin}
+\def\valDTb{0}
+\def\valDTc{0.2*\Tmin}
+\def\valDTd{-10}
+
+\begin{tikzpicture}
+\begin{axis}[
+%axis lines = left,
+xlabel = \(c\),
+ylabel = {\(F(c,T)\)},
+xmajorgrids=true,
+ymajorgrids=true,
+scaled ticks=false,
+% xticklabel=\empty,
+yticklabel=\empty,
+grid style=dashed,
+% xmin=0.3,
+% xmax=0.98,
+% ymax=0.06,
+] % end axis options
+
+
+
+\def\valT{(\criticalTemp{\valA}{\valCA}{\valCB}+\valDTa)}
+\addplot[
+domain=0:1,
+samples=100,
+color=red, 
+]% end plot options
+{\freeEnergy{\valA}{\valCA}{\valCB}{\valT}{\valEA}}; % end plot func
+
+\def\valT{\criticalTemp{\valA}{\valCA}{\valCB}+\valDTb}
+\addplot[
+domain=0:1,
+samples=100,
+color=green, 
+]% end plot options
+{\freeEnergy{\valA}{\valCA}{\valCB}{\valT}{\valEA}}; % end plot func
+
+\def\valT{\criticalTemp{\valA}{\valCA}{\valCB}+\valDTc}
+\addplot[
+domain=0:1,
+samples=100,
+color=blue, 
+]% end plot options
+{\freeEnergy{\valA}{\valCA}{\valCB}{\valT}{\valEA}}; % end plot func
+
+
+
+
+
+\end{axis}
+\begin{scope}[xshift=240pt]
+\begin{axis}[%
+view={0}{90},
+%axis lines = left,
+xlabel = \(c\),
+ylabel = {\(T\)},
+xmajorgrids=true,
+ymajorgrids=true,
+scaled ticks=false,
+% xticklabel=\empty,
+% yticklabel=\empty,
+grid style=dashed,
+% xmin=0.3,
+% xmax=0.8,
+] % end axis options
+
+
+% \addplot3 [
+% domain=0:1,
+% domain y=\Tmin:10,
+% surf,
+% shader=interp,
+% ] {\freeEnergy{\valA}{\valCA}{\valCB}{y}{\valEA}};
+
+
+
+\addplot[
+domain=0:1,
+samples=100,
+color=red, 
+]% end plot options
+{\criticalTemp{\valA}{\valCA}{\valCB}+\valDTa}; % end plot func
+
+\addplot[
+domain=0:1,
+samples=100,
+color=green, 
+]% end plot options
+{\criticalTemp{\valA}{\valCA}{\valCB}+\valDTb}; % end plot func
+
+\addplot[
+domain=0:1,
+samples=100,
+color=blue, 
+]% end plot options
+{\criticalTemp{\valA}{\valCA}{\valCB}+\valDTc}; % end plot func
+% \addlegendentry{Courbe spinodale}
+
+
+
+
+\addplot[
+domain=0:1,
+samples=100,
+color=black, 
+dashed,
+]% end plot options
+{\Tspinodal{\valA}{\valCA}{\valCB}{x}}; % end plot func
+
+
+
+
+\addplot[
+domain=0:1,
+samples=100,
+color=black, 
+]% end plot options
+{\Tbinodal{\valA}{\valCA}{\valCB}{x}}; % end plot func
+
+% \addplot3[domain=0:1,
+        % domain y=-20:10,
+        % contour gnuplot={levels={0},labels=false},
+        % thick,samples=100,samples y=100,
+    % ] {\freeEnergyP{\valA}{\valCA}{\valCB}{y}};
+    
+
+% \addplot gnuplot[raw gnuplot,thick,mark=none]
+    % {
+        % unset surface;
+        % set cntrparam levels discrete -1,1;
+        % set contour;
+        % set yrange [\Tmin:10];
+        % splot [x=0:1] \freeEnergyP{\valA}{\valCA}{\valCB}{y}{\valEA};
+    % };
+
+
+
+
+% \addlegendentry{Courbe spinodale}
+\end{axis}
+
+\end{scope}
+
+% \coordinate (a) at (current bounding box.south);
+% \coordinate (b) at (current bounding box.north);
+% \pgfresetboundingbox
+% \useasboundingbox  (a) rectangle (b);
+\end{tikzpicture}

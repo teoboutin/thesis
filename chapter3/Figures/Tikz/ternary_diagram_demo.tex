@@ -1,0 +1,269 @@
+
+\usetikzlibrary{calc}
+
+\begin{tikzpicture}[x={(0.8cm,0cm)}, y={(0cm,0.8cm)}, z={(-3.85mm, -3.85mm)}, scale=1,every node/.style={transform shape}]
+\def\rayon{6cm}
+
+% \def\colorCone{red}
+% \def\colorCtwo{blue}
+% \def\colorCthree{green}
+\def\colorCone{black}
+\def\colorCtwo{black}
+\def\colorCthree{black}
+
+\def\colorPhaseBorders{orange}
+
+%styledesnœuds
+\tikzstyle{textLine}=[rectangle, text=black]
+\tikzstyle{textw}=[rectangle, text=black]
+\tikzstyle{pointx}=[circle, fill, scale=0.2]
+\tikzstyle{vector}=[-stealth,thin]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% ternary graph
+%local normal base
+\coordinate (00) at (0,0);
+
+\coordinate (C1) at (0:\rayon);
+\coordinate (C2) at (60:\rayon);
+\coordinate (C3) at (0,0);
+
+\newcommand{\defTernaryCoord}[3]{
+\coordinate (#3) at ($(C3)!#1!(C1)+(C3)!#2!(C2)-(C3)$);
+}
+
+% input C0A, C0B, C1A, C1B, zeta (tie line parameter, in [0,1])
+\newcommand{\drawTieLine}[5]{
+\draw ($(#1)!#5!(#2)$) -- ($(#3)!#5!(#4)$);
+}
+\newcommand{\annotateTieLine}[5]{
+\coordinate (clco) at ($(#1)!#5!(#2)$);
+\coordinate (csco) at ($(#3)!#5!(#4)$);
+}
+
+
+%triangle
+\draw (C1) -- (C2) -- (C3) -- (C1);
+
+% legend
+
+
+\node[textLine,rotate=0,color=\colorCone] (t) at ($(C1)+(-30:0.5)$) {$C_1$};
+\node[textLine,rotate=0,color=\colorCtwo] (t) at ($(C2)+(90:0.5)$) {$C_2$};
+\node[textLine,rotate=0,color=\colorCthree] (t) at ($(C3)+(240:0.5)$) {$C_3$};
+
+% ticks
+\def\ticklength{3pt}
+\edef\ticks{0.1,0.2}
+\foreach \t in {1,...,10} {
+\draw[color=\colorCone] ($(C3)!\t/10!(C1)$) -- ($(C3)!\t/10!(C1)+(-120:\ticklength)$);
+\draw[dotted,color=black] ($(C3)!\t/10!(C1)$) -- ($(C2)!\t/10!(C1)$);
+
+\draw[dashed,color=\colorCtwo] ($(C1)!\t/10!(C2)$) -- ($(C1)!\t/10!(C2)+(0:\ticklength)$);
+\draw[dotted,color=black] ($(C1)!\t/10!(C2)$) -- ($(C3)!\t/10!(C2)$);
+
+\draw[dashed,color=\colorCthree] ($(C2)!\t/10!(C3)$) -- ($(C2)!\t/10!(C3)+(120:\ticklength)$);
+\draw[dotted,color=black] ($(C2)!\t/10!(C3)$) -- ($(C1)!\t/10!(C3)$);
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Thermo definition
+
+% def phase diagram
+\def\CalphaOne{0.2}
+\def\CalphaTwo{0.3}
+
+\def\CbetaOne{0.5}
+
+\pgfmathparse{\CalphaTwo-\CalphaOne+\CbetaOne}
+\edef\CbetaTwo{\pgfmathresult}
+
+
+% C0 coords
+\defTernaryCoord{\CalphaOne}{0}{Calpha13}
+\defTernaryCoord{0}{\CalphaTwo}{Calpha23}
+%~ \coordinate (Calpha13) at ($(C3)!\CalphaA!(C1)$);
+
+\coordinate (Cbeta13) at ($(C3)!\CbetaOne!(C1)$);
+\coordinate (Cbeta23) at ($(C3)!\CbetaTwo!(C2)$);
+
+
+
+%plot eqs
+\draw[color=\colorPhaseBorders] (Calpha13) -- (Calpha23);
+\draw[color=\colorPhaseBorders] (Cbeta13) -- (Cbeta23);
+
+
+% plot some tielines
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.5}
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.4}
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.3}
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.1}
+
+
+\annotateTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.5}
+% \node[anchor=north east] at (clco) {$\boldsymbol{C}^{co}_1$};
+
+
+\node[draw, circle, color=red] (clco_circle) at (clco) {};
+\defTernaryCoord{-0.1}{0.3}{clco_legend_pos}
+\node (clco_legend) at (clco_legend_pos) {$\boldsymbol{C}^{1,co}$};
+
+\draw[color=red] (clco_circle) -- (clco_legend);
+
+\node[draw, circle, color=red] (csco_circle) at (csco) {};
+\defTernaryCoord{0.55}{0.55}{csco_legend_pos}
+\node[anchor=south west] (csco_legend) at (csco_legend_pos) {$\boldsymbol{C}^{0,co}$};
+\draw[color=red] (csco_circle) -- (csco_legend);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% cartesian graph
+
+\pgfmathparse{sqrt(3)/2*6}
+\def\rayon{\pgfmathresult cm}
+\begin{scope}[xshift=8cm]
+%local normal base
+\coordinate (00) at (0,0);
+% \node (00) at (90:\rayon) {\rayon};
+% \node (00) at (90:\rayon) {\pgfmathresult};
+
+\coordinate (C1) at (0:\rayon);
+\coordinate (C2) at (90:\rayon);
+\coordinate (C3) at (0,0);
+
+\renewcommand{\defTernaryCoord}[3]{
+\coordinate (#3) at ($(C3)!#1!(C1)+(C3)!#2!(C2)-(C3)$);
+}
+
+% input C0A, C0B, C1A, C1B, zeta (tie line parameter, in [0,1])
+\renewcommand{\drawTieLine}[5]{
+\draw ($(#1)!#5!(#2)$) -- ($(#3)!#5!(#4)$);
+}
+\renewcommand{\annotateTieLine}[5]{
+\coordinate (clco) at ($(#1)!#5!(#2)$);
+\coordinate (csco) at ($(#3)!#5!(#4)$);
+}
+
+
+%triangle
+\draw (C1) -- (C2) -- (C3) -- (C1);
+
+% legend
+
+\node[textLine,rotate=0,color=\colorCone] (t) at ($(C1)+(-30:0.5)$) {$C_1$};
+\node[textLine,rotate=0,color=\colorCtwo] (t) at ($(C2)+(90:0.5)$) {$C_2$};
+\node[textLine,rotate=0,color=\colorCthree] (t) at ($(C3)+(240:0.5)$) {$C_3$};
+
+% ticks
+\def\ticklength{3pt}
+\edef\ticks{0.1,0.2}
+\foreach \t in {1,...,10} {
+\draw[color=\colorCone] ($(C3)!\t/10!(C1)$) -- ($(C3)!\t/10!(C1)+(-120:\ticklength)$);
+\draw[dotted,color=black] ($(C3)!\t/10!(C1)$) -- ($(C2)!\t/10!(C1)$);
+
+\draw[dashed,color=\colorCtwo] ($(C1)!\t/10!(C2)$) -- ($(C1)!\t/10!(C2)+(0:\ticklength)$);
+\draw[dotted,color=black] ($(C1)!\t/10!(C2)$) -- ($(C3)!\t/10!(C2)$);
+
+\draw[dashed,color=\colorCthree] ($(C2)!\t/10!(C3)$) -- ($(C2)!\t/10!(C3)+(120:\ticklength)$);
+\draw[dotted,color=black] ($(C2)!\t/10!(C3)$) -- ($(C1)!\t/10!(C3)$);
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% Thermo definition
+
+% def phase diagram
+\def\CalphaOne{0.2}
+\def\CalphaTwo{0.3}
+
+\def\CbetaOne{0.5}
+
+\pgfmathparse{\CalphaTwo-\CalphaOne+\CbetaOne}
+\edef\CbetaTwo{\pgfmathresult}
+
+
+% C0 coords
+\defTernaryCoord{\CalphaOne}{0}{Calpha13}
+\defTernaryCoord{0}{\CalphaTwo}{Calpha23}
+%~ \coordinate (Calpha13) at ($(C3)!\CalphaA!(C1)$);
+
+\coordinate (Cbeta13) at ($(C3)!\CbetaOne!(C1)$);
+\coordinate (Cbeta23) at ($(C3)!\CbetaTwo!(C2)$);
+
+
+
+%plot eqs
+\draw[color=\colorPhaseBorders] (Calpha13) -- (Calpha23);
+\draw[color=\colorPhaseBorders] (Cbeta13) -- (Cbeta23);
+
+
+% plot some tielines
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.5}
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.4}
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.3}
+\drawTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.1}
+
+
+\annotateTieLine{Calpha13}{Calpha23}{Cbeta13}{Cbeta23}{0.5}
+
+
+\node[draw, circle, color=red] (clco_circle) at (clco) {};
+\defTernaryCoord{-0.15}{0.1}{clco_legend_pos}
+\node (clco_legend) at (clco_legend_pos) {$\boldsymbol{C}^{1,co}$};
+
+\draw[color=red] (clco_circle) -- (clco_legend);
+
+\node[draw, circle, color=red] (csco_circle) at (csco) {};
+\defTernaryCoord{0.55}{0.55}{csco_legend_pos}
+\node[anchor=south west] (csco_legend) at (csco_legend_pos) {$\boldsymbol{C}^{0,co}$};
+\draw[color=red] (csco_circle) -- (csco_legend);
+
+
+
+
+
+\end{scope}
+
+
+
+
+
+
+
+\end{tikzpicture}
+
+

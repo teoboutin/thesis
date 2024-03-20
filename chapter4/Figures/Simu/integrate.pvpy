@@ -1,0 +1,73 @@
+# trace generated using paraview version 5.10.1
+#import paraview
+#paraview.compatibility.major = 5
+#paraview.compatibility.minor = 10
+
+#### import the simple module from the paraview
+from paraview.simple import *
+#### disable automatic camera reset on 'Show'
+paraview.simple._DisableFirstRenderCameraReset()
+
+# create a new 'XDMF Reader'
+simu_Stefanxmf = XDMFReader(registrationName='Simu_insta_maugis.xmf', FileNames=['./Simu_insta_maugis.xmf'])
+
+# ~ print(len(simu_Stefanxmf[0].PointData))
+
+# ~ print(simu_Stefanxmf.GetDataInformation().GetExtent())
+# ~ for prop in simu_Stefanxmf.ListProperties():
+    # ~ print(prop)
+    # ~ print(simu_Stefanxmf.GetProperty(prop))
+
+
+
+UpdatePipeline(time=0.0, proxy=simu_Stefanxmf)
+
+# create a new 'Integrate Variables'
+integrateVariables1 = IntegrateVariables(registrationName='IntegrateVariables1', Input=simu_Stefanxmf)
+
+UpdatePipeline(time=0.0, proxy=integrateVariables1)
+
+# save data
+SaveData('./integrals.csv', proxy=integrateVariables1, WriteTimeSteps=1,Precision=10,
+    CellDataArrays=['Area', 'chempot', 'composition', 'phi'],
+    FieldAssociation='Cell Data')
+
+
+
+# create a new 'Plot Over Line'
+plotOverLine1 = PlotOverLine(registrationName='PlotOverLine1', Input=simu_Stefanxmf,Resolution=1999)
+
+
+xmin=plotOverLine1.Point1[1]
+xmax=plotOverLine1.Point2[1]
+
+ymin=plotOverLine1.Point1[2]
+ymax=plotOverLine1.Point2[2]
+ymed=(ymin+ymax)/2
+# Properties modified on plotOverLine1
+plotOverLine1.Point1 = [0.0, xmin, ymed]
+plotOverLine1.Point2 = [0.0, xmax, ymed]
+
+# ~ for prop in plotOverLine1.ListProperties():
+    # ~ print(prop)
+    # ~ print(plotOverLine1.GetProperty(prop))
+    
+UpdatePipeline(time=1000.0, proxy=plotOverLine1)
+# save data
+SaveData('./profile.csv', proxy=plotOverLine1, WriteTimeSteps=1,Precision=10,
+    PointDataArrays=['arc_length', 'chempot', 'composition', 'phi',  'vtkValidPointMask'])
+    
+# create a new 'Cell Data to Point Data'
+cellDatatoPointData1 = CellDatatoPointData(registrationName='CellDatatoPointData1', Input=simu_Stefanxmf)
+cellDatatoPointData1.CellDataArraytoprocess = ['cB', 'composition', 'free_energy', 'grand_potential', 'interfacial_energy', 'mu', 'muB', 'phi']
+
+# create a new 'Contour'
+contour1 = Contour(registrationName='Contour1', Input=cellDatatoPointData1)
+contour1.ContourBy = ['POINTS', 'phi']
+contour1.Isosurfaces = [0.5]
+contour1.PointMergeMethod = 'Uniform Binning'
+
+SaveData('./interf.csv', proxy=contour1, WriteTimeSteps=1,Precision=10,
+    PointDataArrays=['phi'],
+    CellDataArrays=['phi'])
+

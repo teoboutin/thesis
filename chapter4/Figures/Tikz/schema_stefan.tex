@@ -1,0 +1,32 @@
+%RequirePackage amsmath
+
+
+
+
+\def\stefanLength{5}%
+\def\stefanHeight{1}%
+
+\begin{tikzpicture}[]
+%styledesnœuds
+\tikzstyle{textLine}=[text=black]
+\tikzstyle{arrow}=[-stealth]
+
+%figure
+\draw (-\stefanLength,-\stefanHeight) -- (\stefanLength,-\stefanHeight);
+\draw (-\stefanLength,\stefanHeight) -- (\stefanLength,\stefanHeight);
+\draw (0,\stefanHeight) -- (0,-\stefanHeight);
+
+
+
+\node[textLine] at (0,-\stefanHeight-0.3) {$x_I(t)$};
+
+\draw[arrow] (0,0) -- (1,0);
+\node[textLine] at (1.1,0.3) {$v_I(t)$};
+
+
+\node[textLine] at (-0.5*\stefanLength,\stefanHeight-0.3) {$\Phi=s$};
+\node[textLine] at (0.5*\stefanLength,\stefanHeight-0.3) {$\Phi=l$};
+
+\node[textLine,anchor=east] at (-\stefanLength,0) {$\boldsymbol{C}=\boldsymbol{C}^{s,\infty}$};
+\node[textLine,anchor=west] at (\stefanLength,0) {$\boldsymbol{C}=\boldsymbol{C}^{l,\infty}$};
+\end{tikzpicture}
