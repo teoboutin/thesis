@@ -54,7 +54,7 @@ class ThermoK:
         print("K1inv = ", self.K1inv)
 
     def fs(self,cA, cB):
-        return 0
+        return 0 * cA
         
     # vector of mu
     def mu0(self,cA, cB):
@@ -62,35 +62,33 @@ class ThermoK:
     
     # for external interface
     def mus1(self,cA, cB):
-        return self.mu0(cA, cB)[0]
+        return cA * self.K0[0,0] + cB * self.K0[0,1]
         
     def mus2(self,cA, cB):
-        return self.mu0(cA, cB)[1]
+        return cB * self.K0[1,1] + cA * self.K0[0,1]
 
     # vector of C
     def c0(self,muA, muB):
         return self.ceq0 + np.matmul(self.K0inv, column(muA, muB) )
         
     def Cs1(self, mu1, mu2):
-        c = self.ceq0 + np.matmul(self.K0inv, column(mu1, mu2) )
-        return c[0]
+        return self.ceq0[0,0] + mu1 * self.K0inv[0,0] + mu2 * self.K0inv[0,1]
         
     def Cs2(self, mu1, mu2):
-        c = self.ceq0 + np.matmul(self.K0inv, column(mu1, mu2) )
-        return c[1]
+        return self.ceq0[1,0] + mu2 * self.K0inv[1,1] + mu1 * self.K0inv[0,1]
         
     def fl(self,c1, c2):
-        return 0
+        return 0 * c1
         
     # vector of mu
     def mu1(self,cA, cB):
         return np.matmul(self.K1, column(cA, cB) - self.ceq1)
         
     def mul1(self,cA, cB):
-        return self.mu1(cA, cB)[0]
+        return cA * self.K1[0,0] + cB * self.K1[0,1]
         
     def mul2(self,cA, cB):
-        return self.mu1(cA, cB)[1]
+        return cB * self.K1[1,1] + cA * self.K1[0,1]
         
 
     # vector of C
@@ -98,23 +96,24 @@ class ThermoK:
         return self.ceq1 + np.matmul(self.K1inv, column(muA, muB) )
         
     def Cl1(self,mu1, mu2):
-        c = self.ceq1 + np.matmul(self.K1inv, column(mu1, mu2) )
-        return c[0]
+        return self.ceq1[0,0] + mu1 * self.K1inv[0,0] + mu2 * self.K1inv[0,1]
         
     def Cl2(self,mu1, mu2):
-        c = self.ceq1 + np.matmul(self.K1inv, column(mu1, mu2) )
-        return c[1]
+        return self.ceq1[1,0] + mu2 * self.K1inv[1,1] + mu1 * self.K1inv[0,1]
         
     def ws(self,mu1, mu2):
-        w =  - np.matmul(row(mu1, mu2) , self.ceq0)
-        w += - 0.5* np.matmul(row(mu1, mu2), np.matmul(self.K0inv , column(mu1, mu2)))
-        return w[0,0]
+        w =  - (mu1 * self.ceq0[0,0] + mu2 * self.ceq0[1,0] )
+        v1 =   mu1 * self.K0inv[0,0] + mu2 * self.K0inv[0,1]
+        v2 =   mu2 * self.K0inv[1,1] + mu1 * self.K0inv[0,1]
+        w += - 0.5* (mu1 * v1 + mu2 * v2)
+        return w
+        
     def wl(self,mu1, mu2):
-        # ~ print(np.shape(row(mu1, mu2)))
-        # ~ print(np.shape(self.ceq1))
-        w =  - np.matmul(row(mu1, mu2) , self.ceq1)
-        w += - 0.5* np.matmul(row(mu1, mu2), np.matmul(self.K1inv , column(mu1, mu2)))
-        return w[0,0]
+        w =  - (mu1 * self.ceq1[0,0] + mu2 * self.ceq1[1,0] )
+        v1 =   mu1 * self.K1inv[0,0] + mu2 * self.K1inv[0,1]
+        v2 =   mu2 * self.K1inv[1,1] + mu1 * self.K1inv[0,1]
+        w += - 0.5* (mu1 * v1 + mu2 * v2)
+        return w
         
     def dw(self, mu1, mu2):
         return self.wl(mu1, mu2) - self.ws(mu1, mu2)
