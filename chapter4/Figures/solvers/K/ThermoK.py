@@ -133,8 +133,10 @@ class ThermoK:
         c0A, c0B = c0[0,0], c0[1,0]
         c1A, c1B = c1[0,0], c1[1,0]
         
-        # ~ if c0A < 0 or c0B < 0 or c1A <0 or c1B <0:
-            # ~ continue
+        if c0A < 0 or c0B < 0 or c1A <0 or c1B <0:
+            return
+        if c0A + c0B > 1 or c1A + c1B > 1:
+            return
         # ~ else:
             # ~ print("found valid point")
         self.front0[0].append(c0A)
@@ -221,7 +223,7 @@ class ThermoK:
                     c1A, c1B = sol.x
                     dw = self.dw( muA, muB)
                     if abs(dw)<1e-2:
-                        fun2 = lambda mu: abs(self.dw(mu[0], mu[1]))
+                        fun2 = lambda mu: (self.dw(mu[0], mu[1]))**2
                         sol = scipy.optimize.minimize(fun2, x0 = [muA, muB], method='Nelder-Mead')
                         if sol.success:
                             # ~ print("may have improved")
@@ -244,6 +246,8 @@ if __name__ == "__main__":
     ceqA1 = 0.2
     ceqB1 = 0.2
     
+    
+    # ~ from ThermoK import ThermoK, mat
     # params capu MoO3 = 1.5 %mol
     K0 = mat(1.4207, 1.9431, 1.6123)
     K1 = mat(6.4636, 22.7486, -9.8138)
@@ -265,14 +269,14 @@ if __name__ == "__main__":
     # ~ ciniB = 0.392
     
     # params capu MoO3 = 3 %mol
-    # ~ K0 = mat(2.3345,3.0121,2.6463)
-    # ~ K1 = mat(10.4042,44.4530,-21.0754)
-    # ~ ceqA0 = 0.610548
-    # ~ ceqB0 = 0.381839
-    # ~ ceqA1 = 0.020803
-    # ~ ceqB1 = 0.509110
-    # ~ ciniA = 0.582
-    # ~ ciniB = 0.388
+    K0 = mat(2.3345,3.0121,2.6463)
+    K1 = mat(10.4042,44.4530,-21.0754)
+    ceqA0 = 0.610548
+    ceqB0 = 0.381839
+    ceqA1 = 0.020803
+    ceqB1 = 0.509110
+    ciniA = 0.582
+    ciniB = 0.388
     
     
     TK = ThermoK(K0, ceqA0, ceqB0, K1, ceqA1, ceqB1)
@@ -282,11 +286,12 @@ if __name__ == "__main__":
     plt.plot([0,1,0,0], [0,0,1,0], color="k")
     
     Na2O=1
-    plt.scatter(TK.front0[Na2O], TK.front0[1-Na2O], color="b", label="Frontiere phase 0")
-    plt.scatter(TK.front1[Na2O], TK.front1[1-Na2O], color="r", label="Frontiere phase 1")
+    plt.plot(TK.front0[Na2O], TK.front0[1-Na2O], color="b", label="Frontiere phase 0")
+    plt.plot(TK.front1[Na2O], TK.front1[1-Na2O], color="r", label="Frontiere phase 1")
     
     
-    plt.scatter([ciniA], [ciniB], color="purple", label="Cini")
+    plt.scatter([ciniB], [ciniA], color="purple", label="Cini")
+    plt.scatter([ceqB0, ceqB1], [ceqA0, ceqA1], color="green", label="Ceq")
     
     for tl in TK.tielines:
         plt.plot(tl[Na2O], tl[1-Na2O], color = "gray", zorder= -10)

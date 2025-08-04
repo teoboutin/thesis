@@ -289,7 +289,7 @@ if __name__=="__main__":
     ciniB = 0.394
 
     Thermo = ThermoK(K0, ceqA0, ceqB0, K1, ceqA1, ceqB1)
-    Diff=DiffusionSpec(Dl1=1,Ds1=2,Dl2=1.2,Ds2=1)
+    Diff=DiffusionSpec(Dl1=1,Ds1=1,Dl2=1,Ds2=1)
     
     Init=InitSpec(Clinf1=0.021,Clinf2=0.51,Csinf1=ciniA,Csinf2=ciniB)
 # print the params
