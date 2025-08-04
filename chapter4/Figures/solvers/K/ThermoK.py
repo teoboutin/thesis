@@ -28,7 +28,17 @@ class ThermoK:
     
     def __init__(self,K0,ceqA0,ceqB0,K1,ceqA1,ceqB1):
 
-
+        if not np.all(np.linalg.eigvals(K0) > 0):
+            raise RuntimeError("Matrix K0 should be positive definite")
+        
+        if not K0[1,0] == K0[0,1]:
+            raise RuntimeError("Matrix K0 should be symetric")
+            
+        if not np.all(np.linalg.eigvals(K1) > 0):
+            raise RuntimeError("Matrix K1 should be positive definite")
+            
+        if not K1[1,0] == K1[0,1]:
+            raise RuntimeError("Matrix K1 should be symetric")
         
         self.K0=K0
         self.ceq0=column(ceqA0,ceqB0)
@@ -44,14 +54,95 @@ class ThermoK:
         self.K1inv = np.linalg.inv(self.K1) 
         
         
-        
         print("Thermo params:")
-        print("ceq0 =", self.ceq0)
-        print("K0 = ", self.K0)
-        print("K0inv = ", self.K0inv)
-        print("ceq1 =", self.ceq1)
-        print("K1 = ", self.K1)
-        print("K1inv = ", self.K1inv)
+        rm=5
+        print("ceq0".center(rm)+ " | " + "K0".center(2*rm) + " | " + "K0inv".center(2*rm))
+        print( str(self.ceq0[0,0]).center(rm) + " | " + str(self.K0[0,0]).center(rm) + str(self.K0[0,1]).center(rm) + " | " + str(self.K0inv[0,0]).center(rm) + str(self.K0inv[0,1]).center(rm))
+        print( str(self.ceq0[1,0]).center(rm) + " | " + str(self.K0[1,0]).center(rm) + str(self.K0[1,1]).center(rm) + " | " + str(self.K0inv[1,0]).center(rm) + str(self.K0inv[1,1]).center(rm))
+        print("ceq1".center(rm)+ " | " + "K1".center(2*rm) + " | " + "K1inv".center(2*rm))
+        print( str(self.ceq1[0,0]).center(rm) + " | " + str(self.K1[0,0]).center(rm) + str(self.K1[0,1]).center(rm) + " | " + str(self.K1inv[0,0]).center(rm) + str(self.K1inv[0,1]).center(rm))
+        print( str(self.ceq1[1,0]).center(rm) + " | " + str(self.K1[1,0]).center(rm) + str(self.K1[1,1]).center(rm) + " | " + str(self.K1inv[1,0]).center(rm) + str(self.K1inv[1,1]).center(rm))
+
+        # print the eigen props of deltaKinv
+        res=np.linalg.eig(self.K1inv - self.K0inv)
+        print("eigenvalues of deltaKinv")
+        print(res.eigenvalues)
+        print("eigenvectors of deltaKinv")
+        print(res.eigenvectors)
+
+        # nature of the phase diagram:
+        # the function dw is a quadratic function of 2 variables whose hessian is H=(Kinv1 - Kinv0)
+        # the equation dw = 0 takes the isocontour at 0 of this function
+        # Then, the sign of  det(H) gives the kind of graph of the quadratic function and its isocontours
+        # see https://en.wikipedia.org/wiki/Quadratic_function#Bivariate_(two_variable)_quadratic_function
+        # this is the same as taking a conic by instersecting a plane with a cone
+        # det(H) > 0 : dw is an elliptic paraboloid and the frontiers will be ellipses
+        # det(H) < 0 : dw is an hyperbolic paraboloid and the frontiers will be hyperbolas
+        # det(H) = 0 : two possibilities:
+        #          - if H = 0: the curve is simply a line (mu orthogonal to ceq1 - ceq0)
+        #          - if H !=0: dw is a parabolic cylinder function, and the isocontour is a parabola. An example is given below, where H has a single nonzero eigenvalue.
+        
+        # more details in https://en.wikipedia.org/wiki/Matrix_representation_of_conic_sections
+        # actually, there should also be the case of two intersecting lines possible (degenerated hyberbola)
+        # and single point (degenerate ellipse), possible here if delta_ceq=0
+        
+        # actually, the diagram may be computable analytically:
+        # see https://en.wikipedia.org/wiki/Conic_section#General_Cartesian_form
+        
+        H=self.K1inv - self.K0inv
+        rhs =  -2 * (self.ceq1 - self.ceq0)
+        
+        A = H[0,0]
+        B = H[1,0] + H[0,1]
+        C = H[1,1]
+        D = -rhs[0,0]
+        E = -rhs[1,0]
+        F=0
+        Aq = [ [ A  , B/2, D/2 ],
+               [ B/2, C  , E/2 ],
+               [ D/2, E/2, F   ] ]
+        A33 = [ [ A  , B/2 ],
+                [ B/2, C   ] ]
+        
+        
+        print("Matrix of the quadratic function describing the diagram (Aq):")
+        print(Aq[0])
+        print(Aq[1])
+        print(Aq[2])
+        detAq = np.linalg.det(Aq)
+        detA33 = np.linalg.det(A33)
+        eps=1e-10
+        if abs(detAq)>eps:
+            if abs(detA33) < eps:
+                print("diagram should be made of parabolas")
+            elif detA33 < 0:
+                print("diagram should be made of hyperbolas")
+            elif detA33 > 0:
+                print("diagram should be made of ellipses")
+            else:
+                raise RuntimeError("wrong case of detAq ??")
+        else:
+            print("degenerate conic section")
+            if abs(detA33) < eps:
+                print("diagram should be made of straight lines")
+            elif detA33 < 0:
+                print("diagram should be made of intersecting lines")
+            elif detA33 > 0:
+                print("diagram should be made of a single point (should not happen)")
+            else:
+                raise RuntimeError("wrong case of detAq ??")
+                
+        # old way (that i came up myself...)
+        # ~ det = res.eigenvalues[0] * res.eigenvalues[1]
+        
+        # ~ if det>0:
+            # ~ print("deltaKinv has positive determinant, phase diagram will be composed of ellipses")
+        # ~ if det<0:
+            # ~ print("deltaKinv has negative determinant, phase diagram will be composed of hyperbolas")
+        # ~ if det==0 and np.all(res.eigenvalues == 0 ):
+            # ~ print("deltaKinv is zero, phase diagram will be made of straigth lines")
+        # ~ if det==0 and np.any(res.eigenvalues != 0 ):
+            # ~ print("deltaKinv has null determinant and is non zero, phase diagram will be made of parabolas")
 
     def fs(self,cA, cB):
         return 0 * cA
@@ -102,17 +193,15 @@ class ThermoK:
         return self.ceq1[1,0] + mu2 * self.K1inv[1,1] + mu1 * self.K1inv[0,1]
         
     def ws(self,mu1, mu2):
-        w =  - (mu1 * self.ceq0[0,0] + mu2 * self.ceq0[1,0] )
         v1 =   mu1 * self.K0inv[0,0] + mu2 * self.K0inv[0,1]
         v2 =   mu2 * self.K0inv[1,1] + mu1 * self.K0inv[0,1]
-        w += - 0.5* (mu1 * v1 + mu2 * v2)
+        w =  - (mu1 * self.ceq0[0,0] + mu2 * self.ceq0[1,0] ) - 0.5* (mu1 * v1 + mu2 * v2)
         return w
         
-    def wl(self,mu1, mu2):
-        w =  - (mu1 * self.ceq1[0,0] + mu2 * self.ceq1[1,0] )
+    def wl(self,mu1, mu2): 
         v1 =   mu1 * self.K1inv[0,0] + mu2 * self.K1inv[0,1]
         v2 =   mu2 * self.K1inv[1,1] + mu1 * self.K1inv[0,1]
-        w += - 0.5* (mu1 * v1 + mu2 * v2)
+        w =   - (mu1 * self.ceq1[0,0] + mu2 * self.ceq1[1,0] ) - 0.5* (mu1 * v1 + mu2 * v2)
         return w
         
     def dw(self, mu1, mu2):
@@ -137,8 +226,6 @@ class ThermoK:
             return
         if c0A + c0B > 1 or c1A + c1B > 1:
             return
-        # ~ else:
-            # ~ print("found valid point")
         self.front0[0].append(c0A)
         self.front0[1].append(c0B)
         self.front1[0].append(c1A)
@@ -228,35 +315,98 @@ class ThermoK:
                         if sol.success:
                             # ~ print("may have improved")
                             self.add_point(*sol.x)
-                        else:
-                            self.add_point(muA, muB)
+                        # ~ else:
+                            # ~ self.add_point(muA, muB)
                         
 
 
+def fit_ellipse(XX, YY):
+    # see https://stackoverflow.com/questions/47873759/how-to-fit-a-2d-ellipse-to-given-points
+    # Extract x coords and y coords of the data as column vectors
+    X = np.array([[vv] for vv in XX])
+    Y = np.array([[vv] for vv in YY])
+    
+    # Formulate and solve the least squares problem ||Ax - b ||^2
+    A = np.hstack([X**2, X * Y, Y**2, X, Y])
+    b = np.ones_like(X)
+    x = np.linalg.lstsq(A, b)[0].squeeze()
+    
+    # Print the equation of the ellipse in standard form
+    print('The ellipse is given by {0:.3}x^2 + {1:.3}xy + {2:.3}y^2 + {3:.3}x + {4:.3}y = 1'.format(x[0], x[1],x[2],x[3],x[4]))
+    return x, [min(XX), max(XX)], [min(YY), max(YY)]
+
 if __name__ == "__main__":
     
-    # cas test de base
-    K0 = np.array([[1, 0],[0, 1]])
-    # peut enlever le 2* ci dessous, devrait donner deux droites
-    # (je crois que ca correspond au cas test basique que werner utilisait dans sa NT)
-    # avec le 2*, deux cercles concentriques
-    K1 = 2*np.array([[1, 0],[0, 1]]) 
-    ceqA0 = 0.1
-    ceqB0 = 0.1
-    ceqA1 = 0.2
-    ceqB1 = 0.2
+    
+    # diagram with parabolas: deltaKinv has exaclty 1 non zero eigenvalue
+    K0 = np.linalg.inv(mat(1,2,1))
+    K1 = np.linalg.inv(mat(1,3,1))
+    K0 = mat(2,1,0)
+    K1 = mat(2,4,0)
+    ceqA0 = 0.3
+    ceqB0 = 0.3
+    ceqA1 = 0.4
+    ceqB1 = 0.4
+    
+    # ~ # diagram with straigth lines: deltaKinv = 0, degenerate parabolas
+    # ~ K0 = mat(1,1,0)
+    # ~ K1 = mat(1,1,0)
+    # ~ ceqA0 = 0.1
+    # ~ ceqB0 = 0.1
+    # ~ ceqA1 = 0.2
+    # ~ ceqB1 = 0.2
+    
+    # diagram with circles deltaKinv != 0, eigenvalues are equals
+    # ~ K0 = mat(1,1,0)
+    # ~ K1 = 2*mat(1,1,0)
+    # ~ ceqA0 = 0.1
+    # ~ ceqB0 = 0.1
+    # ~ ceqA1 = 0.2
+    # ~ ceqB1 = 0.2
+    
+    # diagram with ellipses: det(deltaKinv) > 0
+    # ~ K0 = mat(1,1,0)
+    # ~ K1 = mat(2,2,0.2)
+    # ~ ceqA0 = 0.1
+    # ~ ceqB0 = 0.1
+    # ~ ceqA1 = 0.2
+    # ~ ceqB1 = 0.2
+    
+    # diagram with a single point: degenerate ellipses. Numerical resolution is very unstable
+    # ~ K0 = mat(1,1,0)
+    # ~ K1 = 2*mat(1,1,0)
+    # ~ ceqA0 = 0.2
+    # ~ ceqB0 = 0.2
+    # ~ ceqA1 = 0.2
+    # ~ ceqB1 = 0.2
+    
+    # diagram with hyperbolas: det(deltaKinv) < 0. managed to get both section in the gibbs triangle, yay !
+    # ~ K0 = mat(2,1,0)
+    # ~ K1 = mat(1,2,1)
+    # ~ ceqA0 = 0.1
+    # ~ ceqB0 = 0.1
+    # ~ ceqA1 = 0.2
+    # ~ ceqB1 = 0.2
+    
+    # diagram with intersecting lines (degenerate hyperbola)
+    # ~ K0 = mat(2,1,0)
+    # ~ K1 = mat(1,2,0)
+    # ~ ceqA0 = 0.1
+    # ~ ceqB0 = 0.1
+    # ~ ceqA1 = 0.2
+    # ~ ceqB1 = 0.2
     
     
     # ~ from ThermoK import ThermoK, mat
     # params capu MoO3 = 1.5 %mol
-    K0 = mat(1.4207, 1.9431, 1.6123)
-    K1 = mat(6.4636, 22.7486, -9.8138)
-    ceqA0 = 0.600056
-    ceqB0 = 0.392136
-    ceqA1 = 0.023910
-    ceqB1 = 0.510693
-    ciniA = 0.591
-    ciniB = 0.394
+    # ~ K0 = mat(1.4207, 1.9431, 1.6123)
+    # ~ K1 = mat(6.4636, 22.7486, -9.8138)
+    # ~ ceqA0 = 0.600056
+    # ~ ceqB0 = 0.392136
+    # ~ ceqA1 = 0.023910
+    # ~ ceqB1 = 0.510693
+    # ~ ciniA = 0.591
+    # ~ ciniB = 0.394
     
     # params capu MoO3 = 2 %mol
     # ~ K0 = mat(1.4705,1.9490,1.6757)
@@ -269,12 +419,12 @@ if __name__ == "__main__":
     # ~ ciniB = 0.392
     
     # params capu MoO3 = 3 %mol
-    K0 = mat(2.3345,3.0121,2.6463)
-    K1 = mat(10.4042,44.4530,-21.0754)
-    ceqA0 = 0.610548
-    ceqB0 = 0.381839
-    ceqA1 = 0.020803
-    ceqB1 = 0.509110
+    # ~ K0 = mat(2.3345,3.0121,2.6463)
+    # ~ K1 = mat(10.4042,44.4530,-21.0754)
+    # ~ ceqA0 = 0.610548
+    # ~ ceqB0 = 0.381839
+    # ~ ceqA1 = 0.020803
+    # ~ ceqB1 = 0.509110
     ciniA = 0.582
     ciniB = 0.388
     
@@ -286,12 +436,30 @@ if __name__ == "__main__":
     plt.plot([0,1,0,0], [0,0,1,0], color="k")
     
     Na2O=1
-    plt.plot(TK.front0[Na2O], TK.front0[1-Na2O], color="b", label="Frontiere phase 0")
-    plt.plot(TK.front1[Na2O], TK.front1[1-Na2O], color="r", label="Frontiere phase 1")
+    plt.scatter(TK.front0[Na2O], TK.front0[1-Na2O], color="b", label="Frontiere phase 0")
+    plt.scatter(TK.front1[Na2O], TK.front1[1-Na2O], color="r", label="Frontiere phase 1")
     
+
+    # ~ x, rx, ry = fit_ellipse(TK.front0[Na2O], TK.front0[1-Na2O])
+    
+    # ~ rr = 10000
+    # ~ x_coord = np.linspace(rx[0],rx[1],rr)
+    # ~ y_coord = np.linspace(ry[0],ry[1],rr)
+    # ~ X_coord, Y_coord = np.meshgrid(x_coord, y_coord)
+    # ~ Z_coord = x[0] * X_coord ** 2 + x[1] * X_coord * Y_coord + x[2] * Y_coord**2 + x[3] * X_coord + x[4] * Y_coord
+    # ~ plt.contour(X_coord, Y_coord, Z_coord, levels=[1], colors=('red'), linewidths=2)
+
+    # ~ x, rx, ry = fit_ellipse(TK.front1[Na2O], TK.front1[1-Na2O])
+    
+    # ~ rr = 10000
+    # ~ x_coord = np.linspace(rx[0],rx[1],rr)
+    # ~ y_coord = np.linspace(ry[0],ry[1],rr)
+    # ~ X_coord, Y_coord = np.meshgrid(x_coord, y_coord)
+    # ~ Z_coord = x[0] * X_coord ** 2 + x[1] * X_coord * Y_coord + x[2] * Y_coord**2 + x[3] * X_coord + x[4] * Y_coord
+    # ~ plt.contour(X_coord, Y_coord, Z_coord, levels=[1], colors=('blue'), linewidths=2)
     
     plt.scatter([ciniB], [ciniA], color="purple", label="Cini")
-    plt.scatter([ceqB0, ceqB1], [ceqA0, ceqA1], color="green", label="Ceq")
+    plt.plot([ceqB0, ceqB1], [ceqA0, ceqA1], color="green", label="Ceq", marker="o")
     
     for tl in TK.tielines:
         plt.plot(tl[Na2O], tl[1-Na2O], color = "gray", zorder= -10)
@@ -300,4 +468,5 @@ if __name__ == "__main__":
     plt.xlim([0,1])
     plt.ylim([0,1])
     plt.legend()
+    plt.savefig("diagramK.pdf")
     plt.show()
