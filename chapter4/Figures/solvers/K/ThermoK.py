@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from scipy import special
 import scipy.optimize
 # ~ import ternary
-
+from minimize_curve import solve_TSP
 
 def row(a,b):
     r=np.zeros((1,2))
@@ -23,6 +23,12 @@ def column(a,b):
     return c
 def mat(a,b,c):
     return np.array([[a, c],[c, b]])
+
+def dist(p1, p2):
+    return (p1[0]-p2[0])**2 + (p1[1]-p2[1])**2
+    
+from minimize_curve import solve_TSP, solve_TSP_not_closed
+    
 class ThermoK:
 
     
@@ -216,6 +222,26 @@ class ThermoK:
         self.front0=[[], []]
         self.front1=[[], []]
         
+        self.front0p = []
+        self.front1p = []
+        
+    def complete_diagram(self):
+        
+        self.front0A = [p[0] for p in self.front0p]
+        self.front0B = [p[1] for p in self.front0p]
+        
+        front0_sorted = solve_TSP_not_closed(self.front0p)
+
+        self.front0sA = [p[0] for p in front0_sorted]
+        self.front0sB = [p[1] for p in front0_sorted]
+        
+        self.front0A = [p[0] for p in self.front0p]
+        self.front0B = [p[1] for p in self.front0p]
+        
+        front1_sorted = solve_TSP_not_closed(self.front1p)
+
+        self.front1sA = [p[0] for p in front1_sorted]
+        self.front1sB = [p[1] for p in front1_sorted]
         
     def add_point(self,muA, muB):
         c0, c1 = self.c0(muA, muB), self.c1(muA, muB)
@@ -228,12 +254,16 @@ class ThermoK:
             return
         self.front0[0].append(c0A)
         self.front0[1].append(c0B)
+        self.front0p.append((c0A,c0B))
+        
         self.front1[0].append(c1A)
         self.front1[1].append(c1B)
+        self.front1p.append((c1A,c1B))
+        
         cA = [c0A, c1A]
         cB = [c0B, c1B]
         self.tielines.append([ cA, cB ])
-        
+    
     def compute_diagram(self):
         self.init_diagram()
         
@@ -294,30 +324,43 @@ class ThermoK:
         
         return self.tielines, self.front0, self.front1
 
-    def compute_diagram_from_c(self):
+    def compute_diagram_from_c(self, switch_reference_phase=False, tol_dw=1e-2, n=100, cAmin=0, cAmax=1, cBmin=0, cBmax=1,  method='Powell'):
         self.init_diagram()
         
-        n=200
+        self.search_boundaries_A = [ cAmin, cAmin, cAmax, cAmax, cAmin ]
+        self.search_boundaries_B = [ cBmin, cBmax, cBmax, cBmin, cBmin ]
         
-        for c0A in np.linspace(0,1,n):
-            for c0B in np.linspace(0,1-c0A,int(n * (1-c0A))):
-                mu0 = self.mu0(c0A, c0B)
-                muA, muB = mu0[:,0]
+        fun_mu_ref = lambda ca, cb: self.mu0(ca, cb)
+        fun_mu_other = lambda ca, cb: self.mu1(ca, cb)
+        if switch_reference_phase:
+            fun_mu_ref = lambda ca, cb: self.mu1(ca, cb)
+            fun_mu_other = lambda ca, cb: self.mu0(ca, cb)
+        
+        for c0A in np.linspace(cAmin,cAmax,n):
+            for c0B in np.linspace(cBmin, cBmax, n):
+                mu_ref = fun_mu_ref(c0A, c0B)
+                muA, muB = mu_ref[:,0]
                 # find c1A, c1B with same mu
-                fun = lambda c: ((mu0 - self.mu1(c[0], c[1]))[:,0])
+                fun = lambda c: ((mu_ref - fun_mu_other(c[0], c[1]))[:,0])
                 sol = scipy.optimize.root(fun, x0 = [c0A, c0B])
                 if sol.success:
                     c1A, c1B = sol.x
                     dw = self.dw( muA, muB)
-                    if abs(dw)<1e-2:
+                    if abs(dw)<tol_dw:
                         fun2 = lambda mu: (self.dw(mu[0], mu[1]))**2
-                        sol = scipy.optimize.minimize(fun2, x0 = [muA, muB], method='Nelder-Mead')
+                        # ~ sol = scipy.optimize.minimize(fun2, x0 = [muA, muB], method='Nelder-Mead')
+                        sol = scipy.optimize.minimize(fun2, x0 = [muA, muB], method=method)
                         if sol.success:
                             # ~ print("may have improved")
                             self.add_point(*sol.x)
                         # ~ else:
                             # ~ self.add_point(muA, muB)
-                        
+
+
+        
+        
+        self.complete_diagram()
+        
 
 
 def fit_ellipse(XX, YY):
@@ -339,14 +382,14 @@ if __name__ == "__main__":
     
     
     # diagram with parabolas: deltaKinv has exaclty 1 non zero eigenvalue
-    K0 = np.linalg.inv(mat(1,2,1))
-    K1 = np.linalg.inv(mat(1,3,1))
-    K0 = mat(2,1,0)
-    K1 = mat(2,4,0)
-    ceqA0 = 0.3
-    ceqB0 = 0.3
-    ceqA1 = 0.4
-    ceqB1 = 0.4
+    # ~ K0 = np.linalg.inv(mat(1,2,1))
+    # ~ K1 = np.linalg.inv(mat(1,3,1))
+    # ~ K0 = mat(2,1,0)
+    # ~ K1 = mat(2,4,0)
+    # ~ ceqA0 = 0.3
+    # ~ ceqB0 = 0.3
+    # ~ ceqA1 = 0.4
+    # ~ ceqB1 = 0.4
     
     # ~ # diagram with straigth lines: deltaKinv = 0, degenerate parabolas
     # ~ K0 = mat(1,1,0)
@@ -357,12 +400,12 @@ if __name__ == "__main__":
     # ~ ceqB1 = 0.2
     
     # diagram with circles deltaKinv != 0, eigenvalues are equals
-    # ~ K0 = mat(1,1,0)
-    # ~ K1 = 2*mat(1,1,0)
-    # ~ ceqA0 = 0.1
-    # ~ ceqB0 = 0.1
-    # ~ ceqA1 = 0.2
-    # ~ ceqB1 = 0.2
+    K0 = mat(1,1,0)
+    K1 = 2*mat(1,1,0)
+    ceqA0 = 0.1
+    ceqB0 = 0.1
+    ceqA1 = 0.2
+    ceqB1 = 0.2
     
     # diagram with ellipses: det(deltaKinv) > 0
     # ~ K0 = mat(1,1,0)
@@ -419,25 +462,32 @@ if __name__ == "__main__":
     # ~ ciniB = 0.392
     
     # params capu MoO3 = 3 %mol
-    # ~ K0 = mat(2.3345,3.0121,2.6463)
-    # ~ K1 = mat(10.4042,44.4530,-21.0754)
-    # ~ ceqA0 = 0.610548
-    # ~ ceqB0 = 0.381839
-    # ~ ceqA1 = 0.020803
-    # ~ ceqB1 = 0.509110
+    K0 = mat(2.3345,3.0121,2.6463)
+    K1 = mat(10.4042,44.4530,-21.0754)
+    ceqA0 = 0.610548
+    ceqB0 = 0.381839
+    ceqA1 = 0.020803
+    ceqB1 = 0.509110
     ciniA = 0.582
     ciniB = 0.388
     
     
     TK = ThermoK(K0, ceqA0, ceqB0, K1, ceqA1, ceqB1)
     
-    TK.compute_diagram_from_c()
+    TK.compute_diagram_from_c(n=300, cAmin=0.0136, cAmax=0.028, cBmin=0.505, cBmax=0.5126,switch_reference_phase=True)
+    
+    
+    
+    # ~ TK.compute_diagram_from_c(n=300)
     
     plt.plot([0,1,0,0], [0,0,1,0], color="k")
+    plt.plot(TK.search_boundaries_B, TK.search_boundaries_A, color="k")
     
     Na2O=1
-    plt.scatter(TK.front0[Na2O], TK.front0[1-Na2O], color="b", label="Frontiere phase 0")
-    plt.scatter(TK.front1[Na2O], TK.front1[1-Na2O], color="r", label="Frontiere phase 1")
+    # ~ plt.plot(TK.front0[Na2O], TK.front0[1-Na2O], color="b", marker="o", label="Frontiere phase 0")
+    plt.plot(TK.front0sB, TK.front0sA, color="b", marker="", label="Frontiere phase 0")
+    
+    plt.plot(TK.front1sB, TK.front1sA, color="r", label="Frontiere phase 1")
     
 
     # ~ x, rx, ry = fit_ellipse(TK.front0[Na2O], TK.front0[1-Na2O])
@@ -461,7 +511,8 @@ if __name__ == "__main__":
     plt.scatter([ciniB], [ciniA], color="purple", label="Cini")
     plt.plot([ceqB0, ceqB1], [ceqA0, ceqA1], color="green", label="Ceq", marker="o")
     
-    for tl in TK.tielines:
+    for i in range(0,len(TK.tielines), 30):
+        tl=TK.tielines[i]
         plt.plot(tl[Na2O], tl[1-Na2O], color = "gray", zorder= -10)
     plt.xlabel("Na2O")
     plt.ylabel("SiO2")
